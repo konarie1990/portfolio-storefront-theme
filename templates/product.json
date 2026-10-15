@@ -95,7 +95,7 @@
         "text_Ej6ykD": {
           "type": "text",
           "settings": {
-            "text": "<h2><strong>Place a test order...</strong></h2><p></p><p>If you are familiar with placing test orders on Shopify, you can enter \"1\" for the credit card number and any date in the future - \"123\" for the cvv.&nbsp;</p><p>The custom analytics Web Pixel is a secure, high-performance tracking extension that operates entirely within Shopify's sandboxed Web Worker, replacing legacy, DOM-reliant frontend scripts. Configured via the Shopify Admin to accept custom API endpoint URLs, it natively subscribes to the checkout_completed event stream and executes background TypeScript logic to parse the checkout schema. It extracts critical order data—such as the checkout total, currency, and order ID—while iterating through cart lines to dynamically evaluate a custom has_subscription boolean flag.&nbsp;</p>"
+            "text": "<h2><strong>Place a test order...</strong></h2><p></p><h2>If you are familiar with placing test orders on Shopify, you can enter \"1\" for the credit card number and any date in the future for exp - use \"123\" for the cvv.&nbsp;</h2><p>The custom analytics Web Pixel is a secure, high-performance tracking extension that operates entirely within Shopify's sandboxed Web Worker, replacing legacy, DOM-reliant frontend scripts. Configured via the Shopify Admin to accept custom API endpoint URLs, it natively subscribes to the checkout_completed event stream and executes background TypeScript logic to parse the checkout schema. It extracts critical order data—such as the checkout total, currency, and order ID—while iterating through cart lines to dynamically evaluate a custom has_subscription boolean flag.&nbsp;</p>"
           }
         },
         "button_fxJYkC": {
@@ -132,14 +132,14 @@
         "heading_VDYHdN": {
           "type": "heading",
           "settings": {
-            "heading": "Inspect Web Console at Checkout",
-            "heading_size": "h1"
+            "heading": "Inspect Web Console at Checkout Completed",
+            "heading_size": "h2"
           }
         },
         "text_4YbEPL": {
           "type": "text",
           "settings": {
-            "text": "<p>This structured payload is then output as a console group for debugging, and is built to securely pipe the JSON data to third-party endpoints (like VWO or Server-Side GTM) using non-blocking fetch requests with keepalive: true to guarantee data delivery during page teardown.</p>",
+            "text": "<p>This structured payload is then output as a console group for debugging, and is built to securely pipe the JSON data to third-party endpoints (like VWO or Server-Side GTM) using non-blocking fetch requests with keepalive: true to guarantee data delivery during page teardown. Inspect the web console after placing a test order to see the payload.</p>",
             "text_style": "body"
           }
         },
@@ -159,11 +159,12 @@
       ],
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
+        "heading_id": "",
         "image": "shopify://shop_images/Screen_Shot_2026-10-07_at_09.24.57_AM_04cae818-2f11-4c71-aa43-edeeb5fc5c5b.png",
         "height": "adapt",
         "desktop_image_width": "medium",
         "layout": "image_first",
-        "desktop_content_position": "top",
+        "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
         "color_scheme": "accent-2",
@@ -250,7 +251,8 @@
       ],
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
-        "image": "shopify://shop_images/Screen_Shot_2026-10-08_at_14.49.36_PM.png",
+        "heading_id": "",
+        "image": "shopify://shop_images/Screen_Shot_2026-10-09_at_14.10.16_PM.png",
         "height": "adapt",
         "desktop_image_width": "medium",
         "layout": "text_first",
@@ -260,6 +262,93 @@
         "color_scheme": "background-1",
         "image_behavior": "none",
         "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_product_Lhwqxd": {
+      "type": "featured-product",
+      "blocks": {
+        "text_KGfhRN": {
+          "type": "text",
+          "settings": {
+            "text": "{{ section.settings.product.vendor }}",
+            "text_style": "uppercase"
+          }
+        },
+        "title_xa8U4e": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "text_dMaYie": {
+          "type": "text",
+          "settings": {
+            "text": "Add the starter kit to your cart or click \"<strong>BUY IT NOW\"</strong> to see some examples of <strong>checkout extensibility</strong>.",
+            "text_style": "subtitle"
+          }
+        },
+        "text_qcFadT": {
+          "type": "text",
+          "settings": {
+            "text": "You can also checkout my <a href=\"https://github.com/konarie1990/portfolio-checkout-extensions/tree/main/extensions\" target=\"_blank\" title=\"https://github.com/konarie1990/portfolio-checkout-extensions/tree/main/extensions\">GitHub</a> to see how I setup the extensions.",
+            "text_style": "subtitle"
+          }
+        },
+        "price_NDP8xe": {
+          "type": "price",
+          "disabled": true,
+          "settings": {}
+        },
+        "variant_picker_CYffMM": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "quantity_selector_dtrKHr": {
+          "type": "quantity_selector",
+          "disabled": true,
+          "settings": {}
+        },
+        "buy_buttons_LYpiF3": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true
+          }
+        },
+        "share_XaHg7f": {
+          "type": "share",
+          "disabled": true,
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "text_KGfhRN",
+        "title_xa8U4e",
+        "text_dMaYie",
+        "text_qcFadT",
+        "price_NDP8xe",
+        "variant_picker_CYffMM",
+        "quantity_selector_dtrKHr",
+        "buy_buttons_LYpiF3",
+        "share_XaHg7f"
+      ],
+      "name": "t:sections.featured-product.presets.name",
+      "settings": {
+        "product": "robot-starter-kit",
+        "color_scheme": "background-1",
+        "secondary_background": true,
+        "media_size": "small",
+        "constrain_to_viewport": true,
+        "media_fit": "cover",
+        "media_position": "right",
+        "image_zoom": "lightbox",
+        "hide_variants": false,
+        "enable_video_looping": false,
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -288,6 +377,7 @@
     "image_with_text_MjHbxr",
     "rich_text_KwNFEx",
     "image_with_text_QimBgc",
+    "featured_product_Lhwqxd",
     "related-products"
   ]
 }

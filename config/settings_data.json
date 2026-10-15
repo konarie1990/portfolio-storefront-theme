@@ -296,5 +296,10 @@
         }
       }
     }
+  },
+  "platform_customizations": {
+    "custom_css": [
+      ".shopify-payment-button__button {text-transform: uppercase;}"
+    ]
   }
 }

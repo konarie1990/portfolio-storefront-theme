@@ -22,15 +22,15 @@
         "template--18309637636369__6a3bb789-ce10-45f5-ae67-e2063ef8c76b-168016437761699a6e-1": {
           "type": "text",
           "settings": {
-            "text": "I am a Shopify Developer with nearly a decade of web development experience—including over 6 years scaling DTC e-commerce brands—I specialize in architecting high-performance digital storefronts that balance meticulous front-end design with robust backend infrastructure. I drive scalable solutions, leveraging modern frameworks and cloud technologies to elevate user experiences and drive revenue. - Enjoy the demo store!",
+            "text": "With nearly a decade of web development experience—and 6+ years scaling DTC brands—I architect high-performance Shopify storefronts. I bridge meticulous front-end design with robust cloud infrastructure to elevate user experiences and drive revenue. Enjoy the demo store!",
             "text_style": "body"
           }
         },
         "template--18309637636369__6a3bb789-ce10-45f5-ae67-e2063ef8c76b-168016437761699a6e-2": {
           "type": "buttons",
           "settings": {
-            "button_label_1": "SHOP ROBOTS",
-            "button_link_1": "shopify://collections/all",
+            "button_label_1": "EXPLORE MY WORK",
+            "button_link_1": "#functions",
             "button_style_secondary_1": false,
             "button_label_2": "",
             "button_link_2": "",
@@ -47,13 +47,13 @@
       "settings": {
         "image": "shopify://shop_images/3c773590-dc62-45f3-bcfa-2b166a474869.jpg",
         "image_overlay_opacity": 0,
-        "image_height": "large",
+        "image_height": "medium",
         "desktop_content_position": "middle-left",
         "show_text_box": true,
         "desktop_content_alignment": "left",
         "color_scheme": "accent-2",
         "image_behavior": "none",
-        "mobile_content_alignment": "center",
+        "mobile_content_alignment": "left",
         "stack_images_on_mobile": true,
         "show_text_below": true
       }
@@ -98,15 +98,15 @@
         "template--18309637636369__f1552b18-6017-4231-810d-74e61da22c37-1680164422d7fb2efc-1": {
           "type": "text",
           "settings": {
-            "text": "<p>Here I loop through the cart lines, finds any items that have the bundle metafield, parse the JSON list of variant IDs from the admin, and tell Shopify to execute an expand operation.</p>",
+            "text": "<p>Using Shopify Functions to create a bundle - here we loop through the cart lines, find any items that have the bundle metafield, parse the JSON list of variant IDs from the admin, and tell Shopify to execute an expand operation. Now you will see the bundled items at the checkout.&nbsp;</p>",
             "text_style": "body"
           }
         },
         "template--18309637636369__f1552b18-6017-4231-810d-74e61da22c37-1680164422d7fb2efc-2": {
           "type": "button",
           "settings": {
-            "button_label": "CART TRANSFORM FUNCTION",
-            "button_link": "shopify://products/robot-starter-kit"
+            "button_label": "CHECKOUT EXTENSIBILITY",
+            "button_link": "#extensibility"
           }
         }
       },
@@ -116,6 +116,7 @@
         "template--18309637636369__f1552b18-6017-4231-810d-74e61da22c37-1680164422d7fb2efc-2"
       ],
       "settings": {
+        "heading_id": "functions",
         "image": "shopify://shop_images/e86918f4-230f-44fa-9442-3f56941a2245.jpg",
         "height": "adapt",
         "desktop_image_width": "medium",
@@ -143,7 +144,7 @@
         "text_KDkPT3": {
           "type": "text",
           "settings": {
-            "text": "<p>The \"Free Sticker Pack\" block is a custom Checkout UI Extension built with Preact and Shopify's native web components that allows customers to seamlessly add a complimentary gift to their order. Driven by admin-configurable settings for the target Variant GID, custom heading, and optional subtext, the extension dynamically fetches the product's image and details via a GraphQL query and renders them in a responsive grid layout. It leverages the Storefront Cart API to handle the \"Add\" action without page reloads, while incorporating robust error handling and lifecycle cleanup to silently hide the component if misconfigured, ensuring the core checkout experience is never disrupted.</p><p></p><p>Add any product to your cart and go to checkout to see it in action!</p>",
+            "text": "<p>The \"Free Sticker Pack\" block is a custom Checkout UI Extension built with Preact and Shopify's native web components that allows customers to seamlessly add a complimentary gift to their order. Driven by admin-configurable settings for the target Variant GID, custom heading, and optional subtext, the extension dynamically fetches the product's image and details via a GraphQL query and renders them in a responsive grid layout. It leverages the Storefront Cart API to handle the \"Add\" action without page reloads, while incorporating robust error handling and lifecycle cleanup to silently hide the component if misconfigured, ensuring the core checkout experience is never disrupted.</p><p></p><p>Add the \"Robot Started Kit\" to your cart and go to checkout to see these in action!</p>",
             "text_style": "body"
           }
         },
@@ -162,6 +163,7 @@
       ],
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
+        "heading_id": "extensibility",
         "image": "shopify://shop_images/generated-robot-stickers-thumb.jpg",
         "height": "adapt",
         "desktop_image_width": "medium",
