@@ -3147,3 +3147,27 @@ details-disclosure > details {
     100% { transform: rotate(360deg) translateX(1em) rotate(-360deg) scale(1.2); }
   }
 }
+
+/* Scroll Reveal Animation */
+.scroll-reveal {
+  --scroll-animation-delay: 0ms;
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(var(--scroll-animation-offset, 30px));
+    transition: opacity var(--scroll-animation-duration, .6s) var(--ease-out-cubic, cubic-bezier(.33, 1, .68, 1)),
+                transform var(--scroll-animation-duration, .6s) var(--ease-out-cubic, cubic-bezier(.33, 1, .68, 1));
+    transition-delay: var(--scroll-animation-delay, 0ms);
+    will-change: opacity, transform;
+  }
+
+  .scroll-reveal.scroll-reveal--visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
