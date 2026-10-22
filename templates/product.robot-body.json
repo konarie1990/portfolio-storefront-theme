@@ -1,0 +1,253 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "vendor": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.vendor }}",
+            "text_style": "body"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "disabled": true,
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": false
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "share": {
+          "type": "share",
+          "disabled": true,
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "vendor",
+        "variant_picker",
+        "quantity_selector",
+        "price",
+        "buy_buttons",
+        "description",
+        "share"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "media_size": "large",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "thumbnail_slider",
+        "media_position": "left",
+        "image_zoom": "hover",
+        "mobile_thumbnails": "show",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    },
+    "rich_text_robot_body_intro": {
+      "type": "rich-text",
+      "blocks": {
+        "caption_robot_body": {
+          "type": "caption",
+          "settings": {
+            "caption": "CORE MODULAR TORSO CHASSIS",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "medium"
+          }
+        },
+        "heading_robot_body": {
+          "type": "heading",
+          "settings": {
+            "heading": "Robot Body: High-Capacity Power & Compute Torso",
+            "heading_size": "h1"
+          }
+        },
+        "text_robot_body": {
+          "type": "text",
+          "settings": {
+            "text": "<p>The structural backbone of our modular robotics ecosystem. Featured in the <strong>Robot Starter Kit</strong>, the <strong>Robot Body</strong> houses the central 2.4 kWh battery pack, main control computer, and universal quick-lock ports for heads, arms, legs, or treads.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "caption_robot_body",
+        "heading_robot_body",
+        "text_robot_body"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "inverse",
+        "full_width": true,
+        "padding_top": 48,
+        "padding_bottom": 52
+      }
+    },
+    "multicolumn_robot_body_features": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_body_ports": {
+          "type": "column",
+          "settings": {
+            "title": "Universal Modular Bay Ports",
+            "text": "<p>Standardized cranial, dual-shoulder, and lower-chassis mounts automatically negotiate power and EtherCAT data on attachment.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_body_battery": {
+          "type": "column",
+          "settings": {
+            "title": "2.4 kWh Structural Battery Core",
+            "text": "<p>Low-center-of-gravity LiFePO4 cell array provides up to 14 hours of mixed household or warehouse duty per charge.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_body_waist": {
+          "type": "column",
+          "settings": {
+            "title": "3-Axis Actuated Torso Waist",
+            "text": "<p>Yaw, pitch, and roll waist articulation extends arm reach to floor level while maintaining core balance.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_body_ports",
+        "column_body_battery",
+        "column_body_waist"
+      ],
+      "settings": {
+        "title": "The Heart of Your Custom Robot Build",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "background-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
+    "collapsible_robot_body_specs": {
+      "type": "collapsible-content",
+      "blocks": {
+        "spec_body_frame": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Frame & Load Architecture",
+            "icon": "check_mark",
+            "row_content": "<p><strong>Chassis Material:</strong> Die-cast magnesium-aluminum alloy endoskeleton with impact-resistant polymer fairings.<br/><strong>Lift Rating:</strong> Supports up to 60 kg torso-borne payload.</p>",
+            "page": ""
+          }
+        },
+        "spec_body_power": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Central Power & Compute Bus",
+            "icon": "lightning_bolt",
+            "row_content": "<p><strong>Battery:</strong> 48V 50Ah (2.4 kWh) internal pack + dual 24V/12V regulated accessory rails.<br/><strong>Mainboard:</strong> Octa-core real-time motion controller with Wi-Fi 6E & 5G modem bay.</p>",
+            "page": ""
+          }
+        },
+        "spec_body_box": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What's Included",
+            "icon": "box",
+            "row_content": "<p>Includes Robot Body torso unit, 1,200W wall fast-charger, protective port dust covers, and diagnostic USB-C cable.</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "spec_body_frame",
+        "spec_body_power",
+        "spec_body_box"
+      ],
+      "settings": {
+        "caption": "TECHNICAL SPECIFICATIONS",
+        "heading": "Robot Body Hardware Breakdown",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "row",
+        "color_scheme": "accent-1",
+        "container_color_scheme": "background-1",
+        "open_first_collapsible_row": true,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "Related products",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "color_scheme": "background-1",
+        "image_ratio": "portrait",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "padding_top": 48,
+        "padding_bottom": 28
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_robot_body_intro",
+    "multicolumn_robot_body_features",
+    "collapsible_robot_body_specs",
+    "related-products"
+  ]
+}

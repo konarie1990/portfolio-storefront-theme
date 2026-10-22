@@ -1,0 +1,253 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "vendor": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.vendor }}",
+            "text_style": "body"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "disabled": true,
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": false
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "share": {
+          "type": "share",
+          "disabled": true,
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "vendor",
+        "variant_picker",
+        "quantity_selector",
+        "price",
+        "buy_buttons",
+        "description",
+        "share"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "media_size": "large",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "thumbnail_slider",
+        "media_position": "left",
+        "image_zoom": "hover",
+        "mobile_thumbnails": "show",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    },
+    "rich_text_landscape_bot_intro": {
+      "type": "rich-text",
+      "blocks": {
+        "caption_landscape_bot": {
+          "type": "caption",
+          "settings": {
+            "caption": "AUTONOMOUS GROUNDSKEEPING SERIES",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "medium"
+          }
+        },
+        "heading_landscape_bot": {
+          "type": "heading",
+          "settings": {
+            "heading": "Landscape Bot: Precision Turf & Grounds Automation",
+            "heading_size": "h1"
+          }
+        },
+        "text_landscape_bot": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Keep campuses, parks, and estates manicured without boundary wires. The <strong>Landscape Bot</strong> combines RTK-GNSS centimeter positioning with modular mowing, edging, and leaf-mulching attachments.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "caption_landscape_bot",
+        "heading_landscape_bot",
+        "text_landscape_bot"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "inverse",
+        "full_width": true,
+        "padding_top": 48,
+        "padding_bottom": 52
+      }
+    },
+    "multicolumn_landscape_bot_features": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_lb_rtk": {
+          "type": "column",
+          "settings": {
+            "title": "Wire-Free RTK + Vision Mapping",
+            "text": "<p>Define virtual perimeters, no-go flower beds, and multi-zone schedules in minutes with 1 cm path-following accuracy.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_lb_deck": {
+          "type": "column",
+          "settings": {
+            "title": "Adaptive Floating Cutter Deck",
+            "text": "<p>Electronically adjusts blade height from 20mm to 100mm and automatically slows in dense grass for an even, stripe-perfect finish.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_lb_eco": {
+          "type": "column",
+          "settings": {
+            "title": "Whisper-Quiet Solar Assist",
+            "text": "<p>Operates below 54 dB for early-morning groundskeeping while an integrated top solar panel extends field endurance.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_lb_rtk",
+        "column_lb_deck",
+        "column_lb_eco"
+      ],
+      "settings": {
+        "title": "Smart Groundskeeping, Zero Emissions",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "background-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
+    "collapsible_landscape_bot_specs": {
+      "type": "collapsible-content",
+      "blocks": {
+        "spec_lb_coverage": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Coverage Area & Slope Climbing",
+            "icon": "leaf",
+            "row_content": "<p><strong>Coverage:</strong> Up to 10,000 m² (2.5 acres) per day.<br/><strong>Max Incline:</strong> 45% (24°) all-wheel-drive traction control.</p>",
+            "page": ""
+          }
+        },
+        "spec_lb_weather": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Weatherproofing & Safety",
+            "icon": "check_mark",
+            "row_content": "<p><strong>Weather Rating:</strong> IPX6 hose-washable deck with automatic rain-sense docking and instant blade-brake lift sensors.</p>",
+            "page": ""
+          }
+        },
+        "spec_lb_box": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Included in the Box",
+            "icon": "box",
+            "row_content": "<p>Includes Landscape Bot, RTK base station pole, weatherproof charging garage, and 3 sets of titanium-coated mulching blades.</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "spec_lb_coverage",
+        "spec_lb_weather",
+        "spec_lb_box"
+      ],
+      "settings": {
+        "caption": "TECHNICAL SPECIFICATIONS",
+        "heading": "Landscape Bot Hardware Breakdown",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "row",
+        "color_scheme": "accent-1",
+        "container_color_scheme": "background-1",
+        "open_first_collapsible_row": true,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "Related products",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "color_scheme": "background-1",
+        "image_ratio": "portrait",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "padding_top": 48,
+        "padding_bottom": 28
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_landscape_bot_intro",
+    "multicolumn_landscape_bot_features",
+    "collapsible_landscape_bot_specs",
+    "related-products"
+  ]
+}

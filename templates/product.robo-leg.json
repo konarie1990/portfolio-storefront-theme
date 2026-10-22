@@ -1,0 +1,253 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "vendor": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.vendor }}",
+            "text_style": "body"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "disabled": true,
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": false
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "share": {
+          "type": "share",
+          "disabled": true,
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "vendor",
+        "variant_picker",
+        "quantity_selector",
+        "price",
+        "buy_buttons",
+        "description",
+        "share"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "media_size": "large",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "thumbnail_slider",
+        "media_position": "left",
+        "image_zoom": "hover",
+        "mobile_thumbnails": "show",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    },
+    "rich_text_robo_leg_intro": {
+      "type": "rich-text",
+      "blocks": {
+        "caption_robo_leg": {
+          "type": "caption",
+          "settings": {
+            "caption": "BIPEDAL LOCOMOTION ACTUATOR",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "medium"
+          }
+        },
+        "heading_robo_leg": {
+          "type": "heading",
+          "settings": {
+            "heading": "Robo Leg: Dynamic Bipedal Mobility Limb",
+            "heading_size": "h1"
+          }
+        },
+        "text_robo_leg": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Step over thresholds, climb standard staircases, and navigate tight indoor corridors. The <strong>Robo Leg</strong> uses quasi-direct-drive (QDD) planetary actuators to deliver smooth, balanced bipedal gait control.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "caption_robo_leg",
+        "heading_robo_leg",
+        "text_robo_leg"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "inverse",
+        "full_width": true,
+        "padding_top": 48,
+        "padding_bottom": 52
+      }
+    },
+    "multicolumn_robo_leg_features": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_leg_qdd": {
+          "type": "column",
+          "settings": {
+            "title": "Backdrivable QDD Actuators",
+            "text": "<p>Low gear-ratio brushless motors absorb ground impact naturally without mechanical springs, recovering balance instantly if bumped.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_leg_foot": {
+          "type": "column",
+          "settings": {
+            "title": "6-Axis Sole Pressure Array",
+            "text": "<p>Measures center-of-pressure across heel and toe pads at 500 Hz for stable footing on tile, carpet, and gravel.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_leg_regen": {
+          "type": "column",
+          "settings": {
+            "title": "Regenerative Descent Braking",
+            "text": "<p>Recaptures kinetic energy during stair descent and deceleration phases, feeding power back into the main torso battery.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_leg_qdd",
+        "column_leg_foot",
+        "column_leg_regen"
+      ],
+      "settings": {
+        "title": "Engineered for Natural Bipedal Stride",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "background-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
+    "collapsible_robo_leg_specs": {
+      "type": "collapsible-content",
+      "blocks": {
+        "spec_leg_kinematics": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Degrees of Freedom & Torque",
+            "icon": "ruler",
+            "row_content": "<p><strong>Joints:</strong> 5-DOF per leg (3 hip, 1 knee, 1 ankle pitch).<br/><strong>Peak Knee Torque:</strong> 180 Nm continuous / 310 Nm peak.</p>",
+            "page": ""
+          }
+        },
+        "spec_leg_speed": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Walking Speed & Load Capacity",
+            "icon": "lightning_bolt",
+            "row_content": "<p><strong>Max Walking Speed:</strong> 1.6 m/s (5.8 km/h).<br/><strong>Supported Torso + Payload Mass:</strong> Up to 85 kg (paired configuration).</p>",
+            "page": ""
+          }
+        },
+        "spec_leg_box": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Package Details",
+            "icon": "box",
+            "row_content": "<p>Includes Robo Leg actuator assembly, non-marking elastomer foot pad, hip bus coupler, and mounting hardware.</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "spec_leg_kinematics",
+        "spec_leg_speed",
+        "spec_leg_box"
+      ],
+      "settings": {
+        "caption": "TECHNICAL SPECIFICATIONS",
+        "heading": "Robo Leg Hardware Breakdown",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "row",
+        "color_scheme": "accent-1",
+        "container_color_scheme": "background-1",
+        "open_first_collapsible_row": true,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "Related products",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "color_scheme": "background-1",
+        "image_ratio": "portrait",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "padding_top": 48,
+        "padding_bottom": 28
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_robo_leg_intro",
+    "multicolumn_robo_leg_features",
+    "collapsible_robo_leg_specs",
+    "related-products"
+  ]
+}
