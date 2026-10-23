@@ -1,0 +1,253 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "vendor": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.vendor }}",
+            "text_style": "body"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "disabled": true,
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": false
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "share": {
+          "type": "share",
+          "disabled": true,
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "vendor",
+        "variant_picker",
+        "quantity_selector",
+        "price",
+        "buy_buttons",
+        "description",
+        "share"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "media_size": "large",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "thumbnail_slider",
+        "media_position": "left",
+        "image_zoom": "hover",
+        "mobile_thumbnails": "show",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    },
+    "rich_text_fire_adv_intro": {
+      "type": "rich-text",
+      "blocks": {
+        "caption_fire_adv": {
+          "type": "caption",
+          "settings": {
+            "caption": "HEAVY INDUSTRIAL FIRE SUPPRESSION",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "medium"
+          }
+        },
+        "heading_fire_adv": {
+          "type": "heading",
+          "settings": {
+            "heading": "Fire Safety Robot Advanced: Extreme-Duty Response",
+            "heading_size": "h1"
+          }
+        },
+        "text_fire_adv": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Engineered for refineries, hangars, and high-risk chemical facilities, the <strong>Fire Safety Robot Advanced</strong> upgrades our standard platform with a high-flow water/foam cannon, active liquid-cooled armor, and stair-climbing steel tracks.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "caption_fire_adv",
+        "heading_fire_adv",
+        "text_fire_adv"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "inverse",
+        "full_width": true,
+        "padding_top": 48,
+        "padding_bottom": 52
+      }
+    },
+    "multicolumn_fire_adv_features": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_fire_adv_cannon": {
+          "type": "column",
+          "settings": {
+            "title": "2,500 LPM Foam & Water Monitor",
+            "text": "<p>Articulated turret connects directly to standard fire hoses or onboard AFFF foam reserves with a 65-meter throw range.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_fire_adv_cooling": {
+          "type": "column",
+          "settings": {
+            "title": "Self-Drenching Water Curtain",
+            "text": "<p>Perimeter misting nozzles envelope the chassis in a protective cooling veil to survive extreme flashover conditions.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_fire_adv_winch": {
+          "type": "column",
+          "settings": {
+            "title": "Obstacle Clearing & Tow Winch",
+            "text": "<p>Delivers 4,000 N of drawbar pull to drag pressurized supply lines, clear fallen debris, or extract stranded equipment.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_fire_adv_cannon",
+        "column_fire_adv_cooling",
+        "column_fire_adv_winch"
+      ],
+      "settings": {
+        "title": "Maximum Firepower for High-Risk Zones",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "background-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
+    "collapsible_fire_adv_specs": {
+      "type": "collapsible-content",
+      "blocks": {
+        "spec_fire_adv_thermal": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Extreme Thermal & Blast Protection",
+            "icon": "fire",
+            "row_content": "<p><strong>Thermal Survivability:</strong> Rated to 1,000°C radiant heat with active water curtain engaged.<br/><strong>Enclosure:</strong> ATEX Zone 1 explosion-proof sealed electronics.</p>",
+            "page": ""
+          }
+        },
+        "spec_fire_adv_comms": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Long-Range Mesh Telemetry",
+            "icon": "lightning_bolt",
+            "row_content": "<p><strong>Range:</strong> 2 km line-of-sight encrypted RF control with autonomous return-to-signal fallback.</p>",
+            "page": ""
+          }
+        },
+        "spec_fire_adv_box": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Deployment Kit Contents",
+            "icon": "box",
+            "row_content": "<p>Includes Fire Safety Robot Advanced, ruggedized dual-screen tactical controller, Storz hose adapter kit, and heavy-duty ramp dock.</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "spec_fire_adv_thermal",
+        "spec_fire_adv_comms",
+        "spec_fire_adv_box"
+      ],
+      "settings": {
+        "caption": "TECHNICAL SPECIFICATIONS",
+        "heading": "Fire Safety Robot Advanced Specs",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "row",
+        "color_scheme": "accent-1",
+        "container_color_scheme": "background-1",
+        "open_first_collapsible_row": true,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "Related products",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "color_scheme": "background-1",
+        "image_ratio": "portrait",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "padding_top": 48,
+        "padding_bottom": 28
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_fire_adv_intro",
+    "multicolumn_fire_adv_features",
+    "collapsible_fire_adv_specs",
+    "related-products"
+  ]
+}

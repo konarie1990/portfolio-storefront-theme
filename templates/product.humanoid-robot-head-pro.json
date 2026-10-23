@@ -1,0 +1,253 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "vendor": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.vendor }}",
+            "text_style": "body"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "disabled": true,
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": false
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "share": {
+          "type": "share",
+          "disabled": true,
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "vendor",
+        "variant_picker",
+        "quantity_selector",
+        "price",
+        "buy_buttons",
+        "description",
+        "share"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "media_size": "large",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "thumbnail_slider",
+        "media_position": "left",
+        "image_zoom": "hover",
+        "mobile_thumbnails": "show",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    },
+    "rich_text_humanoid_pro_intro": {
+      "type": "rich-text",
+      "blocks": {
+        "caption_humanoid_pro": {
+          "type": "caption",
+          "settings": {
+            "caption": "FLAGSHIP COGNITIVE CRANIAL MODULE",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "medium"
+          }
+        },
+        "heading_humanoid_pro": {
+          "type": "heading",
+          "settings": {
+            "heading": "Humanoid Robot Head Pro: Neural Vision & Micro-Expression Array",
+            "heading_size": "h1"
+          }
+        },
+        "text_humanoid_pro": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Our highest-tier perception module. The <strong>Humanoid Robot Head Pro</strong> adds solid-state LiDAR, thermal imaging, high-refresh OLED expression visors, and 275 TOPS of onboard AI compute for autonomous decision-making.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "caption_humanoid_pro",
+        "heading_humanoid_pro",
+        "text_humanoid_pro"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "inverse",
+        "full_width": true,
+        "padding_top": 48,
+        "padding_bottom": 52
+      }
+    },
+    "multicolumn_humanoid_pro_features": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_hhp_lidar": {
+          "type": "column",
+          "settings": {
+            "title": "Integrated Solid-State LiDAR",
+            "text": "<p>Generates millimeter-accurate 3D point clouds at 30 Hz alongside RGB-D and LWIR thermal overlays.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_hhp_npu": {
+          "type": "column",
+          "settings": {
+            "title": "275 TOPS Neural Compute",
+            "text": "<p>Runs multi-modal vision-language-action (VLA) models locally on the head unit with sub-10ms latency.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_hhp_visor": {
+          "type": "column",
+          "settings": {
+            "title": "6-DOF Neck & OLED Visor",
+            "text": "<p>Fluid, lifelike head gestures and customizable status animations communicate intent clearly in shared workspaces.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_hhp_lidar",
+        "column_hhp_npu",
+        "column_hhp_visor"
+      ],
+      "settings": {
+        "title": "Research-Grade Perception & Compute",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "background-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
+    "collapsible_humanoid_pro_specs": {
+      "type": "collapsible-content",
+      "blocks": {
+        "spec_hhp_optics": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Sensor Fusion Stack",
+            "icon": "eye",
+            "row_content": "<p><strong>Sensors:</strong> Dual 4K global-shutter stereo cameras, solid-state LiDAR (120° FOV), radiometric thermal camera, and 9-axis IMU.</p>",
+            "page": ""
+          }
+        },
+        "spec_hhp_compute": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Processor & SDK Support",
+            "icon": "lightning_bolt",
+            "row_content": "<p><strong>Compute:</strong> 275 TOPS INT8 AI SoC with 64GB LPDDR5.<br/><strong>Software:</strong> Full ROS 2 Humble/Jazzy, Isaac ROS, and Python/C++ gRPC SDKs.</p>",
+            "page": ""
+          }
+        },
+        "spec_hhp_box": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What's in the Box",
+            "icon": "box",
+            "row_content": "<p>Includes Humanoid Robot Head Pro, high-speed 10GbE + power neck harness, desk development stand, and SDK license key.</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "spec_hhp_optics",
+        "spec_hhp_compute",
+        "spec_hhp_box"
+      ],
+      "settings": {
+        "caption": "TECHNICAL SPECIFICATIONS",
+        "heading": "Humanoid Robot Head Pro Breakdown",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "row",
+        "color_scheme": "accent-1",
+        "container_color_scheme": "background-1",
+        "open_first_collapsible_row": true,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "Related products",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "color_scheme": "background-1",
+        "image_ratio": "portrait",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "padding_top": 48,
+        "padding_bottom": 28
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_humanoid_pro_intro",
+    "multicolumn_humanoid_pro_features",
+    "collapsible_humanoid_pro_specs",
+    "related-products"
+  ]
+}

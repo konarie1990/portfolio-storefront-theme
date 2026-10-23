@@ -1,0 +1,383 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "vendor": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.vendor }}",
+            "text_style": "body"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "disabled": true,
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": false
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "share": {
+          "type": "share",
+          "disabled": true,
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "vendor",
+        "variant_picker",
+        "quantity_selector",
+        "price",
+        "buy_buttons",
+        "description",
+        "share"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "media_size": "large",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "thumbnail_slider",
+        "media_position": "left",
+        "image_zoom": "hover",
+        "mobile_thumbnails": "show",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    },
+    "rich_text_9xfaNE": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_6ibqxE": {
+          "type": "heading",
+          "settings": {
+            "heading": "When You Get to Checkout...",
+            "heading_size": "h1"
+          }
+        },
+        "text_Ej6ykD": {
+          "type": "text",
+          "settings": {
+            "text": "<h2><strong>Place a test order...</strong></h2><p></p><h2>If you are familiar with placing test orders on Shopify, you can enter \"1\" for the credit card number and any date in the future for exp - use \"123\" for the cvv.&nbsp;</h2><p>The custom analytics Web Pixel is a secure, high-performance tracking extension that operates entirely within Shopify's sandboxed Web Worker, replacing legacy, DOM-reliant frontend scripts. Configured via the Shopify Admin to accept custom API endpoint URLs, it natively subscribes to the checkout_completed event stream and executes background TypeScript logic to parse the checkout schema. It extracts critical order data—such as the checkout total, currency, and order ID—while iterating through cart lines to dynamically evaluate a custom has_subscription boolean flag.&nbsp;</p>"
+          }
+        },
+        "button_fxJYkC": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_6ibqxE",
+        "text_Ej6ykD",
+        "button_fxJYkC"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "left",
+        "color_scheme": "inverse",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "image_with_text_MjHbxr": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_VDYHdN": {
+          "type": "heading",
+          "settings": {
+            "heading": "Inspect Web Console at Checkout Completed",
+            "heading_size": "h2"
+          }
+        },
+        "text_4YbEPL": {
+          "type": "text",
+          "settings": {
+            "text": "<p>This structured payload is then output as a console group for debugging, and is built to securely pipe the JSON data to third-party endpoints (like VWO or Server-Side GTM) using non-blocking fetch requests with keepalive: true to guarantee data delivery during page teardown. Inspect the web console after placing a test order to see the payload.</p>",
+            "text_style": "body"
+          }
+        },
+        "button_VRUaAh": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_VDYHdN",
+        "text_4YbEPL",
+        "button_VRUaAh"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "heading_id": "",
+        "image": "shopify://shop_images/Screen_Shot_2026-10-07_at_09.24.57_AM_04cae818-2f11-4c71-aa43-edeeb5fc5c5b.png",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "color_scheme": "accent-2",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "rich_text_KwNFEx": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_ax9ipd": {
+          "type": "heading",
+          "settings": {
+            "heading": "Shopify's Checkout Branding API",
+            "heading_size": "h1"
+          }
+        },
+        "text_WTKQpB": {
+          "type": "text",
+          "settings": {
+            "text": "<p>To overhaul the checkout experience using Shopify's Checkout Branding API, I executed a checkoutBrandingUpsert GraphQL mutation to implement a custom design system without relying on legacy CSS overrides. The architecture leverages isolated color schemes mapped to specific checkout zones—such as the header, main input area, and order summary—to visually compartmentalize the page. I utilized the API's typography controls to integrate custom fonts and force heading capitalizations, while manipulating global corner radius parameters to generate fully rounded, pill-shaped buttons. Finally, I explicitly nested button color overrides within each individual scheme payload to guarantee that any custom Checkout UI extension blocks seamlessly inherit the native storefront styling.</p>"
+          }
+        },
+        "button_3FqBTg": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_ax9ipd",
+        "text_WTKQpB",
+        "button_3FqBTg"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "left",
+        "color_scheme": "accent-1",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "image_with_text_QimBgc": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_UPm7qg": {
+          "type": "heading",
+          "settings": {
+            "heading": "Advanced Checkout Styles",
+            "heading_size": "h1"
+          }
+        },
+        "text_JrgMcw": {
+          "type": "text",
+          "settings": {
+            "text": "<p>While the standard Shopify Admin UI offers basic color and typography tweaks, the Checkout Branding API unlocks granular, programmatic control over the entire checkout design system. It allows developers to define complex, multi-tiered color schemes, implement global corner radius shapes, and explicitly route specific UI elements (like headers vs. order summaries) to different structural layouts—level of customization that is physically impossible using just the standard theme editor.</p>",
+            "text_style": "body"
+          }
+        },
+        "button_xzQ4Ni": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_UPm7qg",
+        "text_JrgMcw",
+        "button_xzQ4Ni"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "heading_id": "",
+        "image": "shopify://shop_images/Screen_Shot_2026-10-09_at_14.10.16_PM.png",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "color_scheme": "background-1",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_product_Lhwqxd": {
+      "type": "featured-product",
+      "blocks": {
+        "text_KGfhRN": {
+          "type": "text",
+          "settings": {
+            "text": "{{ section.settings.product.vendor }}",
+            "text_style": "uppercase"
+          }
+        },
+        "title_xa8U4e": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "text_dMaYie": {
+          "type": "text",
+          "settings": {
+            "text": "Add the starter kit to your cart or click \"<strong>BUY IT NOW\"</strong> to see some examples of <strong>checkout extensibility</strong>.",
+            "text_style": "subtitle"
+          }
+        },
+        "text_qcFadT": {
+          "type": "text",
+          "settings": {
+            "text": "You can also checkout my <a href=\"https://github.com/konarie1990/portfolio-checkout-extensions/tree/main/extensions\" target=\"_blank\" title=\"https://github.com/konarie1990/portfolio-checkout-extensions/tree/main/extensions\">GitHub</a> to see how I setup the extensions.",
+            "text_style": "subtitle"
+          }
+        },
+        "price_NDP8xe": {
+          "type": "price",
+          "disabled": true,
+          "settings": {}
+        },
+        "variant_picker_CYffMM": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "quantity_selector_dtrKHr": {
+          "type": "quantity_selector",
+          "disabled": true,
+          "settings": {}
+        },
+        "buy_buttons_LYpiF3": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true
+          }
+        },
+        "share_XaHg7f": {
+          "type": "share",
+          "disabled": true,
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "text_KGfhRN",
+        "title_xa8U4e",
+        "text_dMaYie",
+        "text_qcFadT",
+        "price_NDP8xe",
+        "variant_picker_CYffMM",
+        "quantity_selector_dtrKHr",
+        "buy_buttons_LYpiF3",
+        "share_XaHg7f"
+      ],
+      "name": "t:sections.featured-product.presets.name",
+      "settings": {
+        "product": "robot-starter-kit",
+        "color_scheme": "background-1",
+        "secondary_background": true,
+        "media_size": "small",
+        "constrain_to_viewport": true,
+        "media_fit": "cover",
+        "media_position": "right",
+        "image_zoom": "lightbox",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "Related products",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "color_scheme": "background-1",
+        "image_ratio": "portrait",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "padding_top": 48,
+        "padding_bottom": 28
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_9xfaNE",
+    "image_with_text_MjHbxr",
+    "rich_text_KwNFEx",
+    "image_with_text_QimBgc",
+    "featured_product_Lhwqxd",
+    "related-products"
+  ]
+}

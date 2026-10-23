@@ -1,0 +1,253 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "vendor": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.vendor }}",
+            "text_style": "body"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "disabled": true,
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": false
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "share": {
+          "type": "share",
+          "disabled": true,
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "vendor",
+        "variant_picker",
+        "quantity_selector",
+        "price",
+        "buy_buttons",
+        "description",
+        "share"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "media_size": "large",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "thumbnail_slider",
+        "media_position": "left",
+        "image_zoom": "hover",
+        "mobile_thumbnails": "show",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    },
+    "rich_text_robo_arm_intro": {
+      "type": "rich-text",
+      "blocks": {
+        "caption_robo_arm": {
+          "type": "caption",
+          "settings": {
+            "caption": "7-DOF ARTICULATED MANIPULATOR",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "medium"
+          }
+        },
+        "heading_robo_arm": {
+          "type": "heading",
+          "settings": {
+            "heading": "Robo Arm 3000: Precision Force-Feedback Manipulator",
+            "heading_size": "h1"
+          }
+        },
+        "text_robo_arm": {
+          "type": "text",
+          "settings": {
+            "text": "<p>From delicate glassware handling to heavy workshop assembly, the <strong>Robo Arm 3000</strong> delivers sub-millimeter repeatability with 7 degrees of freedom and integrated torque-sensing harmonic drives.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "caption_robo_arm",
+        "heading_robo_arm",
+        "text_robo_arm"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "inverse",
+        "full_width": true,
+        "padding_top": 48,
+        "padding_bottom": 52
+      }
+    },
+    "multicolumn_robo_arm_features": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_arm_torque": {
+          "type": "column",
+          "settings": {
+            "title": "Joint-Level Torque Sensing",
+            "text": "<p>Strain-gauge harmonic actuators in all 7 joints enable compliant cobot interaction and instant collision stop within 2ms.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_arm_gripper": {
+          "type": "column",
+          "settings": {
+            "title": "Quick-Swap End-Effector Bus",
+            "text": "<p>Switch seamlessly between adaptive 3-finger grippers, vacuum suction cups, and precision soldering or screw-driving heads.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_arm_reach": {
+          "type": "column",
+          "settings": {
+            "title": "950mm Spherical Reach",
+            "text": "<p>Mount directly to the Robot Body shoulder socket or bolt to a workbench base plate for standalone lab automation.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_arm_torque",
+        "column_arm_gripper",
+        "column_arm_reach"
+      ],
+      "settings": {
+        "title": "Industrial Strength, Cobot Dexterity",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "background-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
+    "collapsible_robo_arm_specs": {
+      "type": "collapsible-content",
+      "blocks": {
+        "spec_arm_payload": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Payload & Repeatability",
+            "icon": "ruler",
+            "row_content": "<p><strong>Continuous Payload:</strong> 12 kg at full extension (18 kg peak).<br/><strong>Pose Repeatability:</strong> ±0.03 mm (ISO 9283).</p>",
+            "page": ""
+          }
+        },
+        "spec_arm_interface": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Power & Control Protocol",
+            "icon": "lightning_bolt",
+            "row_content": "<p><strong>Bus Interface:</strong> 48V DC power bus with EtherCAT / CAN-FD 1 kHz real-time servo loop.</p>",
+            "page": ""
+          }
+        },
+        "spec_arm_box": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Included Hardware",
+            "icon": "box",
+            "row_content": "<p>Includes Robo Arm 3000 assembly, adaptive 2-finger tactile gripper, shoulder mounting flange, and benchtop power supply.</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "spec_arm_payload",
+        "spec_arm_interface",
+        "spec_arm_box"
+      ],
+      "settings": {
+        "caption": "TECHNICAL SPECIFICATIONS",
+        "heading": "Robo Arm 3000 Hardware Breakdown",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "row",
+        "color_scheme": "accent-1",
+        "container_color_scheme": "background-1",
+        "open_first_collapsible_row": true,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "Related products",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "color_scheme": "background-1",
+        "image_ratio": "portrait",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "padding_top": 48,
+        "padding_bottom": 28
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_robo_arm_intro",
+    "multicolumn_robo_arm_features",
+    "collapsible_robo_arm_specs",
+    "related-products"
+  ]
+}

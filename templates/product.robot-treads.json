@@ -1,0 +1,253 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "vendor": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.vendor }}",
+            "text_style": "body"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "disabled": true,
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": false
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "share": {
+          "type": "share",
+          "disabled": true,
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "vendor",
+        "variant_picker",
+        "quantity_selector",
+        "price",
+        "buy_buttons",
+        "description",
+        "share"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "media_size": "large",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "thumbnail_slider",
+        "media_position": "left",
+        "image_zoom": "hover",
+        "mobile_thumbnails": "show",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    },
+    "rich_text_robot_treads_intro": {
+      "type": "rich-text",
+      "blocks": {
+        "caption_robot_treads": {
+          "type": "caption",
+          "settings": {
+            "caption": "ALL-TERRAIN TRACKED MOBILITY BASE",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "medium"
+          }
+        },
+        "heading_robot_treads": {
+          "type": "heading",
+          "settings": {
+            "heading": "Robot Treads: Heavy-Payload Tracked Drive Base",
+            "heading_size": "h1"
+          }
+        },
+        "text_robot_treads": {
+          "type": "text",
+          "settings": {
+            "text": "<p>The rock-solid mobility base included in our <strong>Robot Starter Kit</strong>. Engineered for maximum stability, transporting heavy supplies, and zero-turn maneuverability across indoor floors, gravel, grass, and workshops.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "caption_robot_treads",
+        "heading_robot_treads",
+        "text_robot_treads"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "inverse",
+        "full_width": true,
+        "padding_top": 48,
+        "padding_bottom": 52
+      }
+    },
+    "multicolumn_robot_treads_features": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_treads_suspension": {
+          "type": "column",
+          "settings": {
+            "title": "Independent Christie Bogie Suspension",
+            "text": "<p>Six spring-damped road wheels per side keep the track footprint firmly planted over cords, thresholds, and uneven terrain.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_treads_motors": {
+          "type": "column",
+          "settings": {
+            "title": "Dual Hub-Drive Brushless Motors",
+            "text": "<p>High-torque direct planetary drives execute true zero-radius pivot turns and haul up to 120 kg of supplies effortlessly.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_treads_belt": {
+          "type": "column",
+          "settings": {
+            "title": "Non-Marking Kevlar-Reinforced Belts",
+            "text": "<p>Molded vulcanized rubber treads grip slick surfaces without scuffing hardwood, polished concrete, or tile floors.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_treads_suspension",
+        "column_treads_motors",
+        "column_treads_belt"
+      ],
+      "settings": {
+        "title": "Unstoppable Traction & Zero-Turn Control",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "background-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
+    "collapsible_robot_treads_specs": {
+      "type": "collapsible-content",
+      "blocks": {
+        "spec_treads_payload": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Payload & Climbing Grade",
+            "icon": "truck",
+            "row_content": "<p><strong>Max Payload:</strong> 120 kg (including Robot Body & attachments).<br/><strong>Max Grade:</strong> 35° incline / 25° lateral side-slope.</p>",
+            "page": ""
+          }
+        },
+        "spec_treads_drive": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Drive Motors & Speed",
+            "icon": "lightning_bolt",
+            "row_content": "<p><strong>Motors:</strong> 2x 850W sealed BLDC hub motors with electromagnetic parking brakes.<br/><strong>Top Speed:</strong> 2.4 m/s (8.6 km/h).</p>",
+            "page": ""
+          }
+        },
+        "spec_treads_box": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Included Components",
+            "icon": "box",
+            "row_content": "<p>Includes assembled Robot Treads base, lower-torso quick-lock adapter plate, and track tension adjustment tool.</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "spec_treads_payload",
+        "spec_treads_drive",
+        "spec_treads_box"
+      ],
+      "settings": {
+        "caption": "TECHNICAL SPECIFICATIONS",
+        "heading": "Robot Treads Hardware Breakdown",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "row",
+        "color_scheme": "accent-1",
+        "container_color_scheme": "background-1",
+        "open_first_collapsible_row": true,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "Related products",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "color_scheme": "background-1",
+        "image_ratio": "portrait",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "padding_top": 48,
+        "padding_bottom": 28
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_robot_treads_intro",
+    "multicolumn_robot_treads_features",
+    "collapsible_robot_treads_specs",
+    "related-products"
+  ]
+}
