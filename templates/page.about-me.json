@@ -1,0 +1,349 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "image_banner_pUkM6y": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_REDRj8": {
+          "type": "heading",
+          "settings": {
+            "heading": "Ron Hajewski",
+            "heading_size": "h1"
+          }
+        },
+        "text_bGWa7P": {
+          "type": "text",
+          "settings": {
+            "text": "Shopify Developer",
+            "text_style": "body"
+          }
+        },
+        "buttons_FGJyYq": {
+          "type": "buttons",
+          "disabled": true,
+          "settings": {
+            "button_label_1": "Button label",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "Button label",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_REDRj8",
+        "text_bGWa7P",
+        "buttons_FGJyYq"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/6f54e29a-4034-45b7-8ef0-c3cd2e545d3e.jpg",
+        "image_overlay_opacity": 30,
+        "image_height": "medium",
+        "desktop_content_position": "bottom-right",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "color_scheme": "accent-2",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "rich_text_9htDXN": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_FabB9w": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "Ron Hajewski - Shopify Dev",
+            "heading_size": "h1"
+          }
+        },
+        "text_iAEdVM": {
+          "type": "text",
+          "settings": {
+            "text": "<h2>My engineering philosophy is simple: write scalable code, optimize for Core Web Vitals, and build infrastructure that empowers marketing teams to move faster. Having transitioned into development from a background in enterprise tech sales almost 10 years ago, I approach every Jira ticket and codebase refactor with a strict focus on business impact and ROI. I don't just build features; <strong>I engineer solutions that increase conversions and reduce operational bottlenecks.</strong><br/><br/>I am looking for a role where I can take lead of a storefront's technical roadmap, streamline development operations, and directly impact the bottom line.&nbsp;</h2>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_FabB9w",
+        "text_iAEdVM"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "left",
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "collapsible_content_rAkKXN": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_row_3pqmad": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Shopify Plus & Custom Architecture:",
+            "icon": "check_mark",
+            "row_content": "<p>Expert in modular Liquid templating, Shopify Functions, and custom app development. I specialize in backend problem-solving, such as architecting AWS Lambda solutions to bypass slow third-party APIs and achieve instant on-page rendering.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_cPLTYE": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Performance & Conversion Optimization (CRO):",
+            "icon": "check_mark",
+            "row_content": "<p>Proven track record of transforming legacy themes into high-performing platforms. I consistently drive up Lighthouse scores and engineer technical A/B tests that yield double-digit conversion lifts.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_zRWDUn": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Complex Integrations & Subscriptions:",
+            "icon": "check_mark",
+            "row_content": "<p>Deep experience managing advanced subscription logic (Recharge), dynamic custom bundling, and tiered quantity-based pricing models designed to increase Average Order Value (AOV).</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_38GhnM": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "AI-Accelerated Workflows:",
+            "icon": "check_mark",
+            "row_content": "<p>I actively integrate LLMs (Claude, Gemini) into my daily development operations. By utilizing AI for rapid boilerplate generation and complex bug tracing, I consistently reduce time-to-delivery on custom applications and landing pages by 30%.&nbsp;</p><p><em>While customizing the checkout styles on this demo with the Branding API, </em><em><strong>AI </strong></em><em>couldn't figure it out! It was breaking the styles throughout the account pages and checkout - but through my knowledge I knew to setup a new scheme, configure, and place it into the GraphQL query for more precise targeting.&nbsp;</em></p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_3pqmad",
+        "collapsible_row_cPLTYE",
+        "collapsible_row_zRWDUn",
+        "collapsible_row_38GhnM"
+      ],
+      "name": "t:sections.collapsible_content.presets.name",
+      "settings": {
+        "caption": "",
+        "heading": "<strong>WHAT I BRING TO THE ENGINEERING TEAM</strong>",
+        "heading_size": "h2",
+        "heading_alignment": "left",
+        "layout": "row",
+        "color_scheme": "accent-2",
+        "container_color_scheme": "accent-2",
+        "open_first_collapsible_row": true,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "collapsible_content_9djCr6": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_row_k4Uy3m": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Languages & Core Web:",
+            "icon": "none",
+            "row_content": "<p>JavaScript, TypeScript, React, Vue, Node.js, HTML, CSS, Liquid, Remix, PHP, Twig, SQL.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_rm9qXj": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Development Ops & Cloud:",
+            "icon": "none",
+            "row_content": "<p>Git, GitHub, Shopify CLI, AWS, Azure, Agile Sprints, Jira, ClickUp.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_ajYGyz": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "E-Commerce Ecosystem:",
+            "icon": "none",
+            "row_content": "<p>Shopify Plus, Shopify Functions (Shopify Checkout Extensibility), Recharge, Rebuy, BigCommerce, Drupal, Shogun, Custom Apps.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_BVVRq7": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Tracking & CRO:",
+            "icon": "none",
+            "row_content": "<p>Google Tag Manager (GTM), GA4, Segment, Meta Pixel, Dynamic Yield, VWO.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_78ULdN": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Quiz & Marketing Tech:",
+            "icon": "none",
+            "row_content": "<p>Outgrow, Qualtrics, Typeform, SurveySparrow, Salesforce Marketing Cloud.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_zqWVaQ": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "AI Tooling:",
+            "icon": "none",
+            "row_content": "<p>Gemini, Claude Code, Copilot.</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_k4Uy3m",
+        "collapsible_row_rm9qXj",
+        "collapsible_row_ajYGyz",
+        "collapsible_row_BVVRq7",
+        "collapsible_row_78ULdN",
+        "collapsible_row_zqWVaQ"
+      ],
+      "name": "t:sections.collapsible_content.presets.name",
+      "settings": {
+        "caption": "",
+        "heading": "<strong>TECHNICAL SKILLS</strong>",
+        "heading_size": "h2",
+        "heading_alignment": "left",
+        "layout": "none",
+        "color_scheme": "background-1",
+        "container_color_scheme": "background-2",
+        "open_first_collapsible_row": true,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "rich_text_4XBmMJ": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_aiw64x": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>PROFESSIONAL EXPERIENCE</strong>",
+            "heading_size": "h2"
+          }
+        }
+      },
+      "block_order": [
+        "heading_aiw64x"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "left",
+        "color_scheme": "inverse",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "rich_text_hjHrqt": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_RtNQhq": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Humann</strong> - Austin, TX / Remote <strong>Web Developer & Storefront Lead</strong> | <em>March 2024 – October 2024</em>",
+            "heading_size": "h2"
+          }
+        },
+        "text_gBnz7M": {
+          "type": "text",
+          "settings": {
+            "text": "<ul><li>Elevated direct to consumer web experience by increasing site performance and conversion rates through <strong>4 consecutive Inc. 5000 awards</strong>.</li><li>Engineered scalable AWS Lambda serverless architectures (custom APIs, middleware proxies, scheduled tasks) to eliminate storefront bottlenecks.</li><li>Managed and overhauled complex Shopify integrations.</li><li>Accelerated the storefront development pipeline and slashed new landing page development time by 30% by integrating AI tools (Gemini, Claude) for rapid Liquid boilerplate generation and complex bug tracing.</li></ul>"
+          }
+        },
+        "heading_khYpjq": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Humann - </strong>Austin, TX / Remote <strong>Front End Web Developer</strong> | <em>March 2022 – March 2024</em>",
+            "heading_size": "h2"
+          }
+        },
+        "text_N7ekXp": {
+          "type": "text",
+          "settings": {
+            "text": "<ul><li>Maintained custom Shopify Plus themes, driving Lighthouse performance scores from low 20s to 60s by optimizing Liquid image delivery, reducing layout shifts, and optimizing network dependencies.</li><li>Built and optimized high-volume acquisition landing pages for paid social campaigns using Liquid, custom code, and Shogun, supporting rapid marketing tests.</li></ul>"
+          }
+        },
+        "text_zxVbqq": {
+          "type": "text",
+          "settings": {
+            "text": "<h1>For more details about my background and experience <a href=\"https://cdn.shopify.com/s/files/1/0858/3453/1037/files/ron_hajewski_web_developer_resume.pdf?v=1791923031\" target=\"_blank\" title=\"https://cdn.shopify.com/s/files/1/0858/3453/1037/files/ron_hajewski_web_developer_resume.pdf?v=1791923031\"><strong>view my full resume</strong></a><strong>.</strong></h1>"
+          }
+        },
+        "button_6gFhxi": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "VIEW MY FULL RESUME",
+            "button_link": "https://cdn.shopify.com/s/files/1/0858/3453/1037/files/ron_hajewski_web_developer_resume.pdf?v=1791923031",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_RtNQhq",
+        "text_gBnz7M",
+        "heading_khYpjq",
+        "text_N7ekXp",
+        "text_zxVbqq",
+        "button_6gFhxi"
+      ],
+      "custom_css": [
+        "h1 > a > strong {color: green;}"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "left",
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_banner_pUkM6y",
+    "rich_text_9htDXN",
+    "collapsible_content_rAkKXN",
+    "collapsible_content_9djCr6",
+    "rich_text_4XBmMJ",
+    "rich_text_hjHrqt"
+  ]
+}
