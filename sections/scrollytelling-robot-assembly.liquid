@@ -1,0 +1,969 @@
+{% comment %}
+  Section 1: The Blueprint Assembly (Refactored - Tokyo Night Edition)
+  Description:
+    - Flat 2D Intro Header ("SCROLL DOWN ▼ ▼ ▼") with intense CRT glitch/flicker that fades out on scroll start.
+    - 6 intricate cybernetic CAD blueprint schematic SVG modules (thin glowing cyan/blue wireframes, measurement ticks, crosshairs, geometric nodes).
+    - Pinned horizontal-mapped GSAP ScrollTrigger assembly that locks into a smooth, rhythmic, continuous neon pulsing glow.
+    - Horizontal slide-in typography reveal with 8-bit CRT flicker + dynamic 4-corner floating "Forge" Tag.
+{% endcomment %}
+
+{%- style -%}
+  #ScrollyRobot-{{ section.id }} {
+    --tn-bg: {{ section.settings.bg_color | default: '#1a1b26' }};
+    --tn-bg-dark: {{ section.settings.bg_dark_color | default: '#16161e' }};
+    --tn-fg: {{ section.settings.text_color | default: '#c0caf5' }};
+    --tn-blue: {{ section.settings.accent_blue | default: '#7aa2f7' }};
+    --tn-purple: {{ section.settings.accent_purple | default: '#bb9af7' }};
+    --tn-cyan: {{ section.settings.accent_cyan | default: '#7dcfff' }};
+    --tn-green: #9ece6a;
+    --tn-red: #f7768e;
+    --sticky-header-offset: 98px;
+
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 50% 52%, rgba(122, 162, 247, 0.12) 0%, transparent 58%),
+      radial-gradient(circle at 50% 50%, var(--tn-bg) 0%, var(--tn-bg-dark) 100%);
+    color: var(--tn-fg);
+    padding-top: calc(var(--sticky-header-offset) + {{ section.settings.padding_top }}px);
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    user-select: none;
+  }
+
+  /* Technical CAD Blueprint Micro-Grid Backdrop */
+  #ScrollyRobot-{{ section.id }} .sr-grid-backdrop {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(to right, rgba(125, 207, 255, 0.08) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(125, 207, 255, 0.08) 1px, transparent 1px),
+      linear-gradient(to right, rgba(122, 162, 247, 0.035) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(122, 162, 247, 0.035) 1px, transparent 1px);
+    background-size: 80px 80px, 80px 80px, 16px 16px, 16px 16px;
+    mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.95) 25%, transparent 88%);
+    -webkit-mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.95) 25%, transparent 88%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* CRT Scanline Overlay */
+  #ScrollyRobot-{{ section.id }} .sr-crt-scanlines {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      rgba(22, 22, 30, 0) 50%, 
+      rgba(22, 22, 30, 0.35) 50%
+    );
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 10;
+    opacity: 0.4;
+  }
+
+  /* ==========================================================================
+     1. FLAT 2D INTRO TYPOGRAPHY HEADER ("SCROLL DOWN ▼ ▼ ▼")
+     Intense Retro CRT Glitch & Flicker (Matching Resume Crawl Style, Strictly 2D)
+     ========================================================================== */
+  #ScrollyRobot-{{ section.id }} .sr-intro-header {
+    position: absolute;
+    top: calc(var(--sticky-header-offset) + 3.25rem);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 7;
+    text-align: center;
+    pointer-events: none;
+    will-change: opacity, transform;
+  }
+
+  #ScrollyRobot-{{ section.id }} .sr-intro-title {
+    margin: 0;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: clamp(1.35rem, 2.8vw, 2.25rem);
+    font-weight: 900;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--tn-cyan);
+    text-shadow:
+      -3px 0 var(--tn-red),
+      3px 0 var(--tn-blue),
+      0 0 20px rgba(125, 207, 255, 0.75),
+      0 0 42px rgba(122, 162, 247, 0.45);
+    animation: srIntroCrtGlitch-{{ section.id }} 1.35s steps(2, start) infinite;
+  }
+
+  #ScrollyRobot-{{ section.id }} .sr-intro-carets {
+    font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+    letter-spacing: 0.45em;
+    padding-left: 0.45em;
+    color: var(--tn-purple);
+    text-shadow:
+      -2px 0 var(--tn-red),
+      2px 0 var(--tn-cyan),
+      0 0 14px var(--tn-purple);
+  }
+
+  @keyframes srIntroCrtGlitch-{{ section.id }} {
+    0%, 100% {
+      opacity: 1;
+      text-shadow:
+        -3px 0 var(--tn-red),
+        3px 0 var(--tn-blue),
+        0 0 20px rgba(125, 207, 255, 0.75),
+        0 0 42px rgba(122, 162, 247, 0.45);
+    }
+    16% {
+      opacity: 0.9;
+      text-shadow:
+        4px -1px var(--tn-purple),
+        -4px 1px var(--tn-green),
+        0 0 26px var(--tn-cyan);
+    }
+    32% {
+      opacity: 0.98;
+      text-shadow:
+        -2px 0 var(--tn-red),
+        2px 0 var(--tn-cyan),
+        0 0 14px var(--tn-blue);
+    }
+    54% {
+      opacity: 0.74;
+      text-shadow:
+        6px 0 var(--tn-red),
+        -6px 0 var(--tn-blue),
+        0 0 34px var(--tn-purple);
+    }
+    72% {
+      opacity: 1;
+      text-shadow:
+        -3px 1px var(--tn-purple),
+        3px -1px var(--tn-cyan),
+        0 0 22px var(--tn-green);
+    }
+    88% {
+      opacity: 0.86;
+      text-shadow:
+        -4px 0 var(--tn-red),
+        4px 0 var(--tn-blue),
+        0 0 28px var(--tn-cyan);
+    }
+  }
+
+  /* ==========================================================================
+     2. FLOATING AESTHETIC "FORGE" TAG + DYNAMIC 4-CORNER POSITIONING
+     ========================================================================== */
+  #ScrollyRobot-{{ section.id }} .sr-forge-tag {
+    position: absolute;
+    z-index: 8;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.5rem 0.95rem;
+    background: rgba(22, 22, 30, 0.85);
+    border: 1px solid rgba(125, 207, 255, 0.4);
+    border-radius: 999px;
+    color: var(--tn-cyan);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 0 20px rgba(122, 162, 247, 0.2), inset 0 0 8px rgba(125, 207, 255, 0.1);
+    pointer-events: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  #ScrollyRobot-{{ section.id }} .sr-forge-tag-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--tn-green);
+    box-shadow: 0 0 8px var(--tn-green);
+    animation: forgePulse-{{ section.id }} 2s ease-in-out infinite;
+  }
+
+  @keyframes forgePulse-{{ section.id }} {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.45; transform: scale(0.8); }
+  }
+
+  #ScrollyRobot-{{ section.id }} .sr-forge-tag--top-left {
+    top: calc(var(--sticky-header-offset) + 3.5rem);
+    left: 2.5rem;
+  }
+
+  #ScrollyRobot-{{ section.id }} .sr-forge-tag--top-right {
+    top: calc(var(--sticky-header-offset) + 3.5rem);
+    right: 2.5rem;
+  }
+
+  #ScrollyRobot-{{ section.id }} .sr-forge-tag--bottom-left {
+    bottom: 2.5rem;
+    left: 2.5rem;
+  }
+
+  #ScrollyRobot-{{ section.id }} .sr-forge-tag--bottom-right {
+    bottom: 2.5rem;
+    right: 2.5rem;
+  }
+
+  /* Viewport Stage */
+  #ScrollyRobot-{{ section.id }} .sr-stage {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+  }
+
+  /* Horizontal Progress Track HUD */
+  #ScrollyRobot-{{ section.id }} .sr-hud-bar {
+    position: absolute;
+    top: calc(var(--sticky-header-offset) + 1rem);
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(88vw, 1100px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--tn-blue);
+    z-index: 6;
+    opacity: 0.85;
+  }
+
+  #ScrollyRobot-{{ section.id }} .sr-progress-track {
+    flex: 1;
+    height: 2px;
+    margin: 0 1.25rem;
+    background: rgba(192, 202, 245, 0.12);
+    position: relative;
+    overflow: hidden;
+  }
+
+  #ScrollyRobot-{{ section.id }} .sr-progress-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, var(--tn-blue), var(--tn-cyan), var(--tn-purple));
+    transform-origin: left center;
+    transform: scaleX(0);
+  }
+
+  /* ==========================================================================
+     3. CYBERNETIC BLUEPRINT SCHEMATIC CONTAINER & RHYTHMIC NEON PULSE
+     ========================================================================== */
+  #ScrollyRobot-{{ section.id }} .sr-robot-container {
+    position: relative;
+    width: min(78vw, 500px);
+    height: min(78vw, 500px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    filter: drop-shadow(0 0 8px rgba(125, 207, 255, 0.35));
+    will-change: filter, transform;
+  }
+
+  #ScrollyRobot-{{ section.id }} .sr-robot-svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  #ScrollyRobot-{{ section.id }} .robot-part {
+    will-change: transform, opacity;
+    transform-origin: center center;
+  }
+
+  /* Final State Trigger: Smooth, Rhythmic, Continuous Neon Pulsing Glow across Completed Blueprint */
+  #ScrollyRobot-{{ section.id }}.is-assembled .sr-robot-container {
+    animation: srBlueprintNeonPulse-{{ section.id }} 2.4s ease-in-out infinite;
+  }
+
+  @keyframes srBlueprintNeonPulse-{{ section.id }} {
+    0%, 100% {
+      filter:
+        drop-shadow(0 0 10px var(--tn-cyan))
+        drop-shadow(0 0 24px var(--tn-blue))
+        drop-shadow(0 0 48px rgba(187, 154, 247, 0.45));
+    }
+    50% {
+      filter:
+        drop-shadow(0 0 18px #ffffff)
+        drop-shadow(0 0 36px var(--tn-cyan))
+        drop-shadow(0 0 72px rgba(122, 162, 247, 0.85));
+    }
+  }
+
+  #ScrollyRobot-{{ section.id }}.is-assembled .robot-core-pulse {
+    stroke: var(--tn-green);
+    fill: rgba(158, 206, 106, 0.25);
+  }
+
+  #ScrollyRobot-{{ section.id }}.is-assembled .sr-forge-tag {
+    border-color: var(--tn-green);
+    box-shadow: 0 0 24px rgba(158, 206, 106, 0.35);
+  }
+
+  /* ==========================================================================
+     4. HORIZONTAL SLIDING TYPOGRAPHY REVEAL + CRT 8-BIT FLICKER
+     ========================================================================== */
+  #ScrollyRobot-{{ section.id }} .sr-typography-track {
+    position: absolute;
+    right: 5%;
+    bottom: 10%;
+    width: min(90vw, 540px);
+    z-index: 5;
+    pointer-events: none;
+    will-change: transform, opacity;
+  }
+
+  #ScrollyRobot-{{ section.id }} .sr-card {
+    background: rgba(22, 22, 30, 0.84);
+    border: 1px solid rgba(125, 207, 255, 0.35);
+    border-left: 4px solid var(--tn-cyan);
+    border-radius: 6px;
+    padding: 1.5rem 1.75rem;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65);
+  }
+
+  #ScrollyRobot-{{ section.id }} .sr-headline {
+    margin: 0;
+    font-size: clamp(1.05rem, 1.9vw, 1.45rem);
+    line-height: 1.45;
+    font-weight: 700;
+    color: var(--tn-fg);
+    letter-spacing: -0.01em;
+  }
+
+  #ScrollyRobot-{{ section.id }}.is-assembled .sr-headline {
+    color: var(--tn-cyan);
+    animation: crt8BitFlicker-{{ section.id }} 0.9s steps(2, start) infinite;
+  }
+
+  #ScrollyRobot-{{ section.id }}.is-assembled .sr-card {
+    border-color: var(--tn-purple);
+    box-shadow: 
+      0 0 24px rgba(125, 207, 255, 0.3),
+      inset 0 0 15px rgba(187, 154, 247, 0.15);
+  }
+
+  @keyframes crt8BitFlicker-{{ section.id }} {
+    0%, 100% {
+      opacity: 1;
+      text-shadow: 
+        -2px 0 var(--tn-red),
+        2px 0 var(--tn-blue),
+        0 0 12px var(--tn-cyan);
+      transform: translate(0, 0);
+    }
+    20% {
+      opacity: 0.88;
+      text-shadow: 
+        2px 0 var(--tn-purple),
+        -2px 0 var(--tn-green),
+        0 0 18px var(--tn-cyan);
+      transform: translate(-1px, 1px);
+    }
+    40% {
+      opacity: 0.96;
+      text-shadow: 
+        -1px 0 var(--tn-red),
+        1px 0 var(--tn-cyan),
+        0 0 8px var(--tn-blue);
+      transform: translate(1px, -1px);
+    }
+    60% {
+      opacity: 0.72;
+      text-shadow: 
+        3px 0 var(--tn-red),
+        -3px 0 var(--tn-blue),
+        0 0 22px var(--tn-purple);
+      transform: translate(-2px, 0);
+    }
+    80% {
+      opacity: 1;
+      text-shadow: 
+        0 2px var(--tn-purple),
+        0 -1px var(--tn-cyan),
+        0 0 14px var(--tn-green);
+      transform: translate(0, 1px);
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    #ScrollyRobot-{{ section.id }} {
+      --sticky-header-offset: 65px;
+    }
+
+    #ScrollyRobot-{{ section.id }} .sr-typography-track {
+      right: 50%;
+      transform: translateX(50%);
+      bottom: 5%;
+      width: 90vw;
+    }
+
+    #ScrollyRobot-{{ section.id }} .sr-forge-tag--top-left,
+    #ScrollyRobot-{{ section.id }} .sr-forge-tag--top-right {
+      top: calc(var(--sticky-header-offset) + 2.75rem);
+    }
+
+    #ScrollyRobot-{{ section.id }} .sr-forge-tag--bottom-left,
+    #ScrollyRobot-{{ section.id }} .sr-forge-tag--bottom-right {
+      bottom: 1.15rem;
+    }
+  }
+{%- endstyle -%}
+
+{%- liquid
+  assign forge_pos_class = 'sr-forge-tag--top-right'
+  case section.settings.forge_tag_position
+    when 'top_left'
+      assign forge_pos_class = 'sr-forge-tag--top-left'
+    when 'top_right'
+      assign forge_pos_class = 'sr-forge-tag--top-right'
+    when 'bottom_left'
+      assign forge_pos_class = 'sr-forge-tag--bottom-left'
+    when 'bottom_right'
+      assign forge_pos_class = 'sr-forge-tag--bottom-right'
+  endcase
+-%}
+
+<section id="ScrollyRobot-{{ section.id }}" class="scrolly-robot-section" data-section-id="{{ section.id }}">
+  <div class="sr-grid-backdrop"></div>
+  <div class="sr-crt-scanlines"></div>
+
+  <!-- Top Telemetry Bar -->
+  <div class="sr-hud-bar">
+    <span>CAD.SCHEMATIC // MK-IV BLUEPRINT</span>
+    <div class="sr-progress-track">
+      <div class="sr-progress-fill" data-progress-fill></div>
+    </div>
+    <span data-status-readout>SCHEMATIC: UNINDEXED</span>
+  </div>
+
+  <!-- 1. Flat 2D Intro Typography Header ("SCROLL DOWN ▼ ▼ ▼") -->
+  {%- if section.settings.intro_text != blank -%}
+    <div class="sr-intro-header" data-intro-header>
+      <div class="sr-intro-title">
+        <span>{{ section.settings.intro_text | escape }}</span>
+        <span class="sr-intro-carets" aria-hidden="true">▼ ▼ ▼</span>
+      </div>
+    </div>
+  {%- endif -%}
+
+  <!-- Floating Aesthetic "Forge" Tag -->
+  {%- if section.settings.forge_tag_text != blank -%}
+    <div class="sr-forge-tag {{ forge_pos_class }}">
+      <span class="sr-forge-tag-dot"></span>
+      <span>{{ section.settings.forge_tag_text | escape }}</span>
+    </div>
+  {%- endif -%}
+
+  <!-- Main Pinned Stage -->
+  <div class="sr-stage">
+    <div class="sr-robot-container" data-robot-container>
+      <!-- Intricate 6-Module Cybernetic Technical Blueprint SVG -->
+      <svg class="sr-robot-svg" viewBox="0 0 500 520" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Cybernetic Technical Blueprint Schematic">
+        <!-- Fixed Blueprint Datum Reference Crosshairs (Subtle Background Layer) -->
+        <g opacity="0.28" stroke="#7aa2f7" stroke-width="0.75">
+          <circle cx="250" cy="250" r="210" stroke-dasharray="4 8"/>
+          <line x1="250" y1="15" x2="250" y2="505" stroke-dasharray="8 6"/>
+          <line x1="20" y1="250" x2="480" y2="250" stroke-dasharray="8 6"/>
+        </g>
+
+        <!-- ==============================================================
+             SCHEMATIC MODULE 1: CRANIAL OPTIC & TELEMETRY ARRAY
+             ============================================================== -->
+        <g class="robot-part" data-part="cranial-sensor">
+          <!-- Dimension Callout & Angle Ticks -->
+          <line x1="175" y1="36" x2="325" y2="36" stroke="#7dcfff" stroke-width="1" stroke-dasharray="2 3"/>
+          <line x1="175" y1="31" x2="175" y2="41" stroke="#7dcfff" stroke-width="1.2"/>
+          <line x1="325" y1="31" x2="325" y2="41" stroke="#7dcfff" stroke-width="1.2"/>
+          <text x="250" y="29" text-anchor="middle" fill="#7dcfff" font-size="8" font-family="monospace">DIM // 150.0mm</text>
+
+          <!-- Telemetry Mast & Geometric Nodes -->
+          <line x1="250" y1="42" x2="250" y2="74" stroke="#7dcfff" stroke-width="1.8"/>
+          <circle cx="250" cy="42" r="4" stroke="#f7768e" stroke-width="1.5" fill="#16161e"/>
+          <circle cx="250" cy="56" r="2.5" fill="#7dcfff"/>
+
+          <!-- Wireframe Cranial Helmet Polygon -->
+          <polygon points="205,74 295,74 312,96 306,144 278,158 222,158 194,144 188,96" stroke="#7dcfff" stroke-width="1.8" fill="rgba(122, 162, 247, 0.04)"/>
+          <polygon points="214,82 286,82 298,100 294,138 226,148 206,138 202,100" stroke="#7aa2f7" stroke-width="1" stroke-dasharray="4 2"/>
+
+          <!-- Dual Optic Reticle Wireframes -->
+          <rect x="204" y="98" width="92" height="24" rx="3" stroke="#bb9af7" stroke-width="1.4"/>
+          <circle cx="226" cy="110" r="9" stroke="#7dcfff" stroke-width="1.5"/>
+          <circle cx="226" cy="110" r="3" fill="#7dcfff"/>
+          <line x1="213" y1="110" x2="239" y2="110" stroke="#7dcfff" stroke-width="0.8"/>
+          <line x1="226" y1="97" x2="226" y2="123" stroke="#7dcfff" stroke-width="0.8"/>
+
+          <circle cx="274" cy="110" r="9" stroke="#7dcfff" stroke-width="1.5"/>
+          <circle cx="274" cy="110" r="3" fill="#7dcfff"/>
+          <line x1="261" y1="110" x2="287" y2="110" stroke="#7dcfff" stroke-width="0.8"/>
+          <line x1="274" y1="97" x2="274" y2="123" stroke="#7dcfff" stroke-width="0.8"/>
+
+          <!-- Harmonic Vocoder Grid -->
+          <line x1="224" y1="136" x2="276" y2="136" stroke="#7aa2f7" stroke-width="1.2"/>
+          <line x1="232" y1="142" x2="268" y2="142" stroke="#bb9af7" stroke-width="1.2"/>
+        </g>
+
+        <!-- ==============================================================
+             SCHEMATIC MODULE 2: THORACIC EXOSKELETON CAGE
+             ============================================================== -->
+        <g class="robot-part" data-part="thoracic-cage">
+          <!-- Cervical Spine Coupling -->
+          <rect x="232" y="158" width="36" height="16" stroke="#7aa2f7" stroke-width="1.4" stroke-dasharray="3 2"/>
+          <line x1="238" y1="166" x2="262" y2="166" stroke="#7dcfff" stroke-width="1.2"/>
+
+          <!-- Outer Thoracic Structural Frame -->
+          <polygon
+            points="162,174 338,174 358,202 336,312 292,334 208,334 164,312 142,202"
+            stroke="#7dcfff"
+            stroke-width="2"
+            fill="rgba(125, 207, 255, 0.03)"
+          />
+          <!-- Internal Ribbed Truss Wireframe -->
+          <polygon
+            points="178,186 322,186 338,208 320,300 284,320 216,320 180,300 162,208"
+            stroke="#7aa2f7"
+            stroke-width="1.1"
+            stroke-dasharray="6 3"
+          />
+          <!-- Diagonal Load-Bearing Vector Struts -->
+          <line x1="162" y1="174" x2="212" y2="222" stroke="#7aa2f7" stroke-width="1"/>
+          <line x1="338" y1="174" x2="288" y2="222" stroke="#7aa2f7" stroke-width="1"/>
+          <line x1="164" y1="312" x2="212" y2="268" stroke="#7aa2f7" stroke-width="1"/>
+          <line x1="336" y1="312" x2="288" y2="268" stroke="#7aa2f7" stroke-width="1"/>
+
+          <!-- Corner Fiducial Nodes -->
+          <circle cx="178" cy="186" r="3" fill="#7dcfff"/>
+          <circle cx="322" cy="186" r="3" fill="#7dcfff"/>
+          <circle cx="180" cy="300" r="3" fill="#7dcfff"/>
+          <circle cx="320" cy="300" r="3" fill="#7dcfff"/>
+
+          <!-- Technical Blueprint Callout Leader -->
+          <polyline points="348,192 382,172 435,172" stroke="#bb9af7" stroke-width="1"/>
+          <circle cx="348" cy="192" r="2.5" fill="#bb9af7"/>
+          <text x="384" y="167" fill="#bb9af7" font-size="8" font-family="monospace">CHASSIS // TI-6AL-4V</text>
+        </g>
+
+        <!-- ==============================================================
+             SCHEMATIC MODULE 3: CENTRAL GYRO REACTOR CORE
+             ============================================================== -->
+        <g class="robot-part" data-part="reactor-gyro">
+          <!-- Outer Compass Ring with Degree Ticks -->
+          <circle cx="250" cy="246" r="44" stroke="#bb9af7" stroke-width="1.6"/>
+          <circle cx="250" cy="246" r="36" stroke="#7dcfff" stroke-width="1.2" stroke-dasharray="10 4 2 4"/>
+          <!-- Octagonal Containment Matrix -->
+          <polygon
+            points="250,218 270,226 278,246 270,266 250,274 230,266 222,246 230,226"
+            stroke="#7aa2f7"
+            stroke-width="1.4"
+          />
+          <!-- Core Singularity Node -->
+          <circle class="robot-core-pulse" cx="250" cy="246" r="14" stroke="#7dcfff" stroke-width="2" fill="rgba(125, 207, 255, 0.15)"/>
+          <circle cx="250" cy="246" r="4" fill="#ffffff"/>
+          <!-- Crosshair Axis Ticks -->
+          <line x1="198" y1="246" x2="216" y2="246" stroke="#7dcfff" stroke-width="1.4"/>
+          <line x1="284" y1="246" x2="302" y2="246" stroke="#7dcfff" stroke-width="1.4"/>
+          <line x1="250" y1="194" x2="250" y2="212" stroke="#7dcfff" stroke-width="1.4"/>
+          <line x1="250" y1="280" x2="250" y2="298" stroke="#7dcfff" stroke-width="1.4"/>
+        </g>
+
+        <!-- ==============================================================
+             SCHEMATIC MODULE 4: LEFT KINEMATIC ARM ACTUATOR
+             ============================================================== -->
+        <g class="robot-part" data-part="left-actuator">
+          <!-- Rotary Shoulder Gimbal -->
+          <circle cx="132" cy="202" r="20" stroke="#bb9af7" stroke-width="1.6" fill="#16161e"/>
+          <circle cx="132" cy="202" r="11" stroke="#7dcfff" stroke-width="1.2" stroke-dasharray="4 3"/>
+          <circle cx="132" cy="202" r="3" fill="#7dcfff"/>
+
+          <!-- Dual Hydraulic Upper & Forearm Struts -->
+          <rect x="96" y="222" width="44" height="94" rx="6" stroke="#7dcfff" stroke-width="1.8" fill="rgba(122, 162, 247, 0.03)"/>
+          <line x1="110" y1="222" x2="110" y2="316" stroke="#7aa2f7" stroke-width="1.2" stroke-dasharray="5 3"/>
+          <line x1="126" y1="222" x2="126" y2="316" stroke="#7aa2f7" stroke-width="1.2"/>
+          <!-- Elbow Joint Vector Node -->
+          <circle cx="118" cy="268" r="7" stroke="#bb9af7" stroke-width="1.4" fill="#16161e"/>
+
+          <!-- Tri-Prong Precision Servo Manipulator -->
+          <path d="M100 316 L90 348 L108 340 M118 316 L118 346 M136 316 L146 348 L128 340" stroke="#7dcfff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Measurement Tick -->
+          <line x1="76" y1="202" x2="76" y2="348" stroke="#7aa2f7" stroke-width="0.9" stroke-dasharray="3 3"/>
+          <line x1="71" y1="202" x2="81" y2="202" stroke="#7aa2f7" stroke-width="1"/>
+          <line x1="71" y1="348" x2="81" y2="348" stroke="#7aa2f7" stroke-width="1"/>
+        </g>
+
+        <!-- ==============================================================
+             SCHEMATIC MODULE 5: RIGHT KINEMATIC ARM ACTUATOR
+             ============================================================== -->
+        <g class="robot-part" data-part="right-actuator">
+          <!-- Rotary Shoulder Gimbal -->
+          <circle cx="368" cy="202" r="20" stroke="#bb9af7" stroke-width="1.6" fill="#16161e"/>
+          <circle cx="368" cy="202" r="11" stroke="#7dcfff" stroke-width="1.2" stroke-dasharray="4 3"/>
+          <circle cx="368" cy="202" r="3" fill="#7dcfff"/>
+
+          <!-- Dual Hydraulic Upper & Forearm Struts -->
+          <rect x="360" y="222" width="44" height="94" rx="6" stroke="#7dcfff" stroke-width="1.8" fill="rgba(122, 162, 247, 0.03)"/>
+          <line x1="374" y1="222" x2="374" y2="316" stroke="#7aa2f7" stroke-width="1.2"/>
+          <line x1="390" y1="222" x2="390" y2="316" stroke="#7aa2f7" stroke-width="1.2" stroke-dasharray="5 3"/>
+          <!-- Elbow Joint Vector Node -->
+          <circle cx="382" cy="268" r="7" stroke="#bb9af7" stroke-width="1.4" fill="#16161e"/>
+
+          <!-- Tri-Prong Precision Servo Manipulator -->
+          <path d="M364 316 L354 348 L372 340 M382 316 L382 346 M400 316 L410 348 L392 340" stroke="#7dcfff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Measurement Tick -->
+          <line x1="424" y1="202" x2="424" y2="348" stroke="#7aa2f7" stroke-width="0.9" stroke-dasharray="3 3"/>
+          <line x1="419" y1="202" x2="429" y2="202" stroke="#7aa2f7" stroke-width="1"/>
+          <line x1="419" y1="348" x2="429" y2="348" stroke="#7aa2f7" stroke-width="1"/>
+        </g>
+
+        <!-- ==============================================================
+             SCHEMATIC MODULE 6: BIPEDAL PELVIC & THRUSTER LEG SUB-ASSEMBLY
+             ============================================================== -->
+        <g class="robot-part" data-part="bipedal-frame">
+          <!-- Pelvic Truss Bridge -->
+          <polygon points="196,334 304,334 288,364 212,364" stroke="#bb9af7" stroke-width="1.6" fill="rgba(187, 154, 247, 0.04)"/>
+          <circle cx="250" cy="349" r="5" stroke="#7dcfff" stroke-width="1.4"/>
+
+          <!-- Left Leg Wireframe Column & Knee Gyro -->
+          <rect x="176" y="364" width="52" height="106" rx="4" stroke="#7dcfff" stroke-width="1.8" fill="rgba(125, 207, 255, 0.03)"/>
+          <line x1="176" y1="364" x2="228" y2="470" stroke="#7aa2f7" stroke-width="0.9" stroke-dasharray="4 3"/>
+          <line x1="228" y1="364" x2="176" y2="470" stroke="#7aa2f7" stroke-width="0.9" stroke-dasharray="4 3"/>
+          <circle cx="202" cy="416" r="10" stroke="#bb9af7" stroke-width="1.5" fill="#16161e"/>
+          <circle cx="202" cy="416" r="3" fill="#7dcfff"/>
+          <polygon points="162,470 238,470 246,492 154,492" stroke="#7dcfff" stroke-width="1.8" fill="#16161e"/>
+
+          <!-- Right Leg Wireframe Column & Knee Gyro -->
+          <rect x="272" y="364" width="52" height="106" rx="4" stroke="#7dcfff" stroke-width="1.8" fill="rgba(125, 207, 255, 0.03)"/>
+          <line x1="272" y1="364" x2="324" y2="470" stroke="#7aa2f7" stroke-width="0.9" stroke-dasharray="4 3"/>
+          <line x1="324" y1="364" x2="272" y2="470" stroke="#7aa2f7" stroke-width="0.9" stroke-dasharray="4 3"/>
+          <circle cx="298" cy="416" r="10" stroke="#bb9af7" stroke-width="1.5" fill="#16161e"/>
+          <circle cx="298" cy="416" r="3" fill="#7dcfff"/>
+          <polygon points="262,470 338,470 346,492 254,492" stroke="#7dcfff" stroke-width="1.8" fill="#16161e"/>
+
+          <!-- Base Ground Datum Line -->
+          <line x1="130" y1="498" x2="370" y2="498" stroke="#7aa2f7" stroke-width="1" stroke-dasharray="6 4"/>
+          <text x="250" y="512" text-anchor="middle" fill="#7aa2f7" font-size="8" font-family="monospace">DATUM // ZERO-PLANE [0.00]</text>
+        </g>
+      </svg>
+    </div>
+
+    <!-- Typography Reveal Block (Slides in horizontally from the right) -->
+    <div class="sr-typography-track" data-typography-block>
+      <div class="sr-card">
+        <h2 class="sr-headline">
+          {{ section.settings.reveal_text }}
+        </h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Load Lenis, GSAP & ScrollTrigger from CDN if not already loaded -->
+<script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+
+<script>
+  (function() {
+    const sectionId = '{{ section.id }}';
+    const sectionSelector = '#ScrollyRobot-' + sectionId;
+
+    function ensureLenisSmoothScroll() {
+      if (window.__tnLenisInstance || typeof Lenis === 'undefined' || typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+        return;
+      }
+      const lenis = new Lenis({
+        lerp: 0.08,
+        wheelMultiplier: 0.95,
+        smoothWheel: true,
+        syncTouch: false
+      });
+      window.__tnLenisInstance = lenis;
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add(function(time) {
+        lenis.raf(time * 1000);
+      });
+      gsap.ticker.lagSmoothing(0);
+    }
+
+    function initScrollyRobot() {
+      if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined' || typeof Lenis === 'undefined') {
+        setTimeout(initScrollyRobot, 50);
+        return;
+      }
+
+      gsap.registerPlugin(ScrollTrigger);
+      ensureLenisSmoothScroll();
+
+      const sectionEl = document.querySelector(sectionSelector);
+      if (!sectionEl) return;
+
+      ScrollTrigger.getAll().forEach((st) => {
+        if (st.vars && st.vars.id === 'scrolly-robot-' + sectionId) {
+          st.kill();
+        }
+      });
+
+      const introHeader = sectionEl.querySelector('[data-intro-header]');
+      const progressFill = sectionEl.querySelector('[data-progress-fill]');
+      const statusReadout = sectionEl.querySelector('[data-status-readout]');
+      const textBlock = sectionEl.querySelector('[data-typography-block]');
+
+      // Scattered starting vectors for the 6 blueprint schematic sub-assemblies
+      const scatteredVectors = {
+        'cranial-sensor': { x: -360, y: -220, rotation: -125, scale: 1.35, opacity: 0.35 },
+        'thoracic-cage':  { x: 380,  y: -170, rotation: 85,   scale: 0.65, opacity: 0.4  },
+        'reactor-gyro':   { x: 440,  y: 40,   rotation: 220,  scale: 1.95, opacity: 0.35 },
+        'left-actuator':  { x: -460, y: 110,  rotation: -160, scale: 1.25, opacity: 0.4  },
+        'right-actuator': { x: 460,  y: 210,  rotation: 155,  scale: 1.25, opacity: 0.4  },
+        'bipedal-frame':  { x: -280, y: 290,  rotation: 110,  scale: 0.72, opacity: 0.38 }
+      };
+
+      Object.keys(scatteredVectors).forEach((partKey) => {
+        const el = sectionEl.querySelector('[data-part="' + partKey + '"]');
+        if (el) {
+          gsap.set(el, scatteredVectors[partKey]);
+        }
+      });
+
+      if (introHeader) {
+        gsap.set(introHeader, { opacity: 1, y: 0 });
+      }
+
+      gsap.set(textBlock, {
+        xPercent: 130,
+        opacity: 0
+      });
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          id: 'scrolly-robot-' + sectionId,
+          trigger: sectionEl,
+          pin: true,
+          pinSpacing: true,
+          start: 'top top',
+          end: '+=2600',
+          scrub: 1.2,
+          anticipatePin: 1,
+          onUpdate: (self) => {
+            if (progressFill) {
+              gsap.set(progressFill, { scaleX: self.progress });
+            }
+
+            if (self.progress >= 0.95) {
+              if (!sectionEl.classList.contains('is-assembled')) {
+                sectionEl.classList.add('is-assembled');
+                if (statusReadout) statusReadout.textContent = 'BLUEPRINT: LOCKED // PULSE ACTIVE';
+              }
+            } else {
+              if (sectionEl.classList.contains('is-assembled')) {
+                sectionEl.classList.remove('is-assembled');
+              }
+              if (statusReadout) {
+                statusReadout.textContent = self.progress > 0.02
+                  ? 'ALIGNING CAD VECTORS (' + Math.round(self.progress * 100) + '%)'
+                  : 'SCHEMATIC: UNINDEXED';
+              }
+            }
+          }
+        }
+      });
+
+      // 1. Fade out flat 2D "SCROLL DOWN ▼ ▼ ▼" intro header as user begins scrolling
+      if (introHeader) {
+        tl.to(introHeader, {
+          opacity: 0,
+          y: -28,
+          ease: 'power2.out',
+          duration: 0.22
+        }, 0);
+      }
+
+      // 2. Translate, scale & rotate schematic modules into centralized blueprint alignment
+      Object.keys(scatteredVectors).forEach((partKey, index) => {
+        const el = sectionEl.querySelector('[data-part="' + partKey + '"]');
+        if (el) {
+          tl.to(el, {
+            x: 0,
+            y: 0,
+            rotation: 0,
+            scale: 1,
+            opacity: 1,
+            ease: 'power3.out',
+            duration: 0.95
+          }, index * 0.035);
+        }
+      });
+
+      // 3. Synchronized horizontal slide-in of the typography block
+      tl.to(textBlock, {
+        xPercent: 0,
+        opacity: 1,
+        ease: 'power2.out',
+        duration: 0.72
+      }, 0.35);
+
+      // Hold final locked blueprint state briefly at end of scrub
+      tl.to({}, { duration: 0.15 });
+    }
+
+    document.addEventListener('DOMContentLoaded', initScrollyRobot);
+    document.addEventListener('shopify:section:load', function(event) {
+      if (event.detail && event.detail.sectionId === sectionId) {
+        initScrollyRobot();
+      }
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Scrolly Blueprint Robot",
+  "tag": "section",
+  "class": "section-scrollytelling-robot",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Intro Header Typography"
+    },
+    {
+      "type": "text",
+      "id": "intro_text",
+      "label": "Intro Prompt Text",
+      "default": "SCROLL DOWN"
+    },
+    {
+      "type": "header",
+      "content": "Floating Forge Tag"
+    },
+    {
+      "type": "text",
+      "id": "forge_tag_text",
+      "label": "Forge Tag Text",
+      "default": "Agentic Forge // Verified"
+    },
+    {
+      "type": "select",
+      "id": "forge_tag_position",
+      "label": "Forge Tag Position",
+      "default": "top_right",
+      "options": [
+        {
+          "value": "top_left",
+          "label": "Top Left"
+        },
+        {
+          "value": "top_right",
+          "label": "Top Right"
+        },
+        {
+          "value": "bottom_left",
+          "label": "Bottom Left"
+        },
+        {
+          "value": "bottom_right",
+          "label": "Bottom Right"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Typography & Copy"
+    },
+    {
+      "type": "textarea",
+      "id": "reveal_text",
+      "label": "Reveal Copy",
+      "default": "Acme robot parts are objectively the greatest, forged through the agentic AI workflows of Ron Hajewski!"
+    },
+    {
+      "type": "header",
+      "content": "Tokyo Night Palette"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background (#1a1b26)",
+      "default": "#1a1b26"
+    },
+    {
+      "type": "color",
+      "id": "bg_dark_color",
+      "label": "Dark Background (#16161e)",
+      "default": "#16161e"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Foreground / Text (#c0caf5)",
+      "default": "#c0caf5"
+    },
+    {
+      "type": "color",
+      "id": "accent_blue",
+      "label": "Primary Blue Accent (#7aa2f7)",
+      "default": "#7aa2f7"
+    },
+    {
+      "type": "color",
+      "id": "accent_purple",
+      "label": "Secondary Purple Accent (#bb9af7)",
+      "default": "#bb9af7"
+    },
+    {
+      "type": "color",
+      "id": "accent_cyan",
+      "label": "Cyan Highlight (#7dcfff)",
+      "default": "#7dcfff"
+    },
+    {
+      "type": "header",
+      "content": "Section Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Scrollytelling Blueprint Assembly"
+    }
+  ]
+}
+{% endschema %}

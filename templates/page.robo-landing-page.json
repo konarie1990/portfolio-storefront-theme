@@ -1,0 +1,107 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "scrollytelling_robot_assembly_QVrDqY": {
+      "type": "scrollytelling-robot-assembly",
+      "name": "Scrollytelling Robot Assembly",
+      "settings": {
+        "intro_text": "SCROLL DOWN",
+        "forge_tag_text": "AGENTS.MD",
+        "forge_tag_position": "top_right",
+        "reveal_text": "Giving Agile Marketing Teams the Power to Rapidly Deploy new Campaigns with Agentic AI workflows.",
+        "bg_color": "#1a1b26",
+        "bg_dark_color": "#16161e",
+        "text_color": "#c0caf5",
+        "accent_blue": "#7aa2f7",
+        "accent_purple": "#bb9af7",
+        "accent_cyan": "#7dcfff",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "scrollytelling_digital_storefront_YgFCah": {
+      "type": "scrollytelling-digital-storefront",
+      "name": "Scrollytelling Digital Storefront",
+      "settings": {
+        "forge_tag_text": "Modern Tools // High Quality Output",
+        "forge_tag_position": "top_right",
+        "headline_text": "Sell More Products // Increase Conversions",
+        "bg_color": "#1a1b26",
+        "bg_dark_color": "#16161e",
+        "text_color": "#c0caf5",
+        "accent_blue": "#7aa2f7",
+        "accent_purple": "#bb9af7",
+        "accent_cyan": "#7dcfff",
+        "padding_top": 120,
+        "padding_bottom": 120
+      }
+    },
+    "scrollytelling_car_evolution_WA8DQN": {
+      "type": "scrollytelling-car-evolution",
+      "name": "Scrollytelling Outrun Morph",
+      "settings": {
+        "caption_text": "Don't Get Left Behind!",
+        "bg_color": "#1a1b26",
+        "bg_dark_color": "#16161e",
+        "text_color": "#c0caf5",
+        "accent_blue": "#7aa2f7",
+        "accent_purple": "#bb9af7",
+        "accent_cyan": "#7dcfff",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "scrollytelling_resume_crawl_j688WX": {
+      "type": "scrollytelling-resume-crawl",
+      "name": "Scrollytelling Resume Crawl & CTA",
+      "settings": {
+        "subheading_text": "E-COMMERCE DEVELOPER // AGENTIC ARCHITECT",
+        "crawl_text": "CLICK THE CTA BELOW TO CONTACT ME",
+        "button_label": "CONTACT ME",
+        "button_link": "shopify://pages/contact",
+        "bg_color": "#1a1b26",
+        "bg_dark_color": "#16161e",
+        "text_color": "#c0caf5",
+        "accent_blue": "#7aa2f7",
+        "accent_purple": "#bb9af7",
+        "accent_cyan": "#7dcfff",
+        "padding_top": 0,
+        "padding_bottom": 120
+      }
+    },
+    "custom_liquid_ccmChC": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<style>\n.footer {\ndisplay: none;\n}\n</style>",
+        "color_scheme": "background-1",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "scrollytelling_robot_assembly_QVrDqY",
+    "scrollytelling_digital_storefront_YgFCah",
+    "scrollytelling_car_evolution_WA8DQN",
+    "scrollytelling_resume_crawl_j688WX",
+    "custom_liquid_ccmChC"
+  ]
+}

@@ -54,7 +54,11 @@
       ],
       "name": "t:sections.image-banner.presets.name",
       "settings": {
-        "image": "shopify://shop_images/6f54e29a-4034-45b7-8ef0-c3cd2e545d3e.jpg",
+        "image": "shopify://shop_images/IMG_5894.jpg",
+        "enable_sticky_zoom": false,
+        "sticky_scroll_distance": 400,
+        "header_offset": 106,
+        "enable_scroll_zoom": false,
         "image_overlay_opacity": 30,
         "image_height": "medium",
         "desktop_content_position": "bottom-right",
@@ -81,7 +85,7 @@
         "text_iAEdVM": {
           "type": "text",
           "settings": {
-            "text": "<h2>My engineering philosophy is simple: write scalable code, optimize for Core Web Vitals, and build infrastructure that empowers marketing teams to move faster. Having transitioned into development from a background in enterprise tech sales almost 10 years ago, I approach every Jira ticket and codebase refactor with a strict focus on business impact and ROI. I don't just build features; <strong>I engineer solutions that increase conversions and reduce operational bottlenecks.</strong><br/><br/>I am looking for a role where I can take lead of a storefront's technical roadmap, streamline development operations, and directly impact the bottom line.&nbsp;</h2>"
+            "text": "<h2>I build scalable storefronts that drive conversions and empower marketing teams to execute faster. With a background in enterprise sales, I treat code as a business accelerator. By integrating heavily tested, custom AI workflows into my daily engineering processes, I drastically reduce development time without sacrificing code quality or Core Web Vitals.</h2><h2>I'm seeking a role where I can lead technical strategy, optimize development operations, and deliver solutions that maximize ROI.</h2>"
           }
         }
       },
@@ -273,7 +277,7 @@
         "heading_RtNQhq": {
           "type": "heading",
           "settings": {
-            "heading": "<strong>Humann</strong> - Austin, TX / Remote <strong>Web Developer & Storefront Lead</strong> | <em>March 2024 – October 2024</em>",
+            "heading": "<strong>Humann</strong> - Austin, TX / Remote <strong>Web Developer & Storefront Lead</strong> | <em>March 2024 – October 2026</em>",
             "heading_size": "h2"
           }
         },
@@ -298,16 +302,16 @@
         },
         "text_zxVbqq": {
           "type": "text",
+          "disabled": true,
           "settings": {
-            "text": "<h1>For more details about my background and experience <a href=\"https://cdn.shopify.com/s/files/1/0858/3453/1037/files/ron_hajewski_web_developer_resume.pdf?v=1791923031\" target=\"_blank\" title=\"https://cdn.shopify.com/s/files/1/0858/3453/1037/files/ron_hajewski_web_developer_resume.pdf?v=1791923031\"><strong>view my full resume</strong></a><strong>.</strong></h1>"
+            "text": "<h1>You can view my full resume by clicking the button below.</h1>"
           }
         },
         "button_6gFhxi": {
           "type": "button",
-          "disabled": true,
           "settings": {
             "button_label": "VIEW MY FULL RESUME",
-            "button_link": "https://cdn.shopify.com/s/files/1/0858/3453/1037/files/ron_hajewski_web_developer_resume.pdf?v=1791923031",
+            "button_link": "https://cdn.shopify.com/s/files/1/0858/3453/1037/files/ron_hajewski_web_developer_resume_73ba38aa-d5ba-452b-8a0a-039f12f17fb3.pdf?v=1793258440",
             "button_style_secondary": false,
             "button_label_2": "",
             "button_link_2": "",
@@ -323,9 +327,7 @@
         "text_zxVbqq",
         "button_6gFhxi"
       ],
-      "custom_css": [
-        "h1 > a > strong {color: green;}"
-      ],
+      "custom_css": [],
       "name": "t:sections.rich-text.presets.name",
       "settings": {
         "desktop_content_position": "center",

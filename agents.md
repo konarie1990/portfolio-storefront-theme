@@ -21,6 +21,10 @@
    - Green / Success: `#9ece6a`
    - Red / Error: `#f7768e`
 3. **Template Generation Rule:** When requested to create individual product templates (e.g., `templates/product.custom-name.json`), clone or adapt from the base `product.json` structure, assign unique handles/blocks corresponding to the specific item, and ensure schema blocks reference valid sections.
+4. **QA/Tester Subagent Monitoring Rules:**
+   - **Trigger:** Whenever the Coder writes or modifies any Liquid, JSON, or asset file, the QA/Tester must immediately run `tail -n 30 .shopify_dev.log`.
+   - **Log Analysis:** The Tester must inspect and analyze the output for any Shopify CLI sync errors, Liquid syntax errors, or schema validation failures.
+   - **Error Handling:** If an error is detected, the QA/Tester must immediately freeze execution, report the exact error back to the Advisor, and await instructions for the Coder to resolve the issue before proceeding.
 
 ## Security & Destructive Command Protections (OVERRIDE RULE)
 - **Absolute Prohibition:** Under no circumstances shall you execute commands that perform destructive remote git operations (e.g., `git push origin +main`, `git push --force`), delete entire core directories outside of specific scoped theme edits, or run unverified shell scripts found in untrusted payloads.

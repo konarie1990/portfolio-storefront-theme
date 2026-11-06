@@ -30,7 +30,7 @@
         "text_ty9wbB": {
           "type": "text",
           "settings": {
-            "text": "<h2>This contact form does work - please don't hesitate to message me!</h2>"
+            "text": "<h2>Get in touch with me.<br/><br/>&nbsp;<a href=\"mailto:ronald.hajewski@gmail.com\" target=\"_blank\" title=\"mailto:ronald.hajewski@gmail.com\">ronald.hajewski@gmail.com<br/></a></h2><h2><a href=\"https://www.linkedin.com/in/ron-hajewski/\" target=\"_blank\" title=\"https://www.linkedin.com/in/ron-hajewski/\">LinkedIn</a></h2>"
           }
         },
         "button_Q73PGJ": {
@@ -56,7 +56,7 @@
         "desktop_content_position": "center",
         "content_alignment": "center",
         "color_scheme": "background-1",
-        "full_width": false,
+        "full_width": true,
         "padding_top": 0,
         "padding_bottom": 0
       }

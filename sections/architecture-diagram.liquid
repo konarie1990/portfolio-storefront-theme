@@ -1,0 +1,711 @@
+{%- comment -%}
+  Interactive Web Architecture Diagram Section
+  Tokyo Night Aesthetic | Pure HTML/CSS & Vanilla JS
+{%- endcomment -%}
+
+<section 
+  id="ArchitectureDiagram-{{ section.id }}" 
+  class="arch-diagram-section" 
+  data-section-id="{{ section.id }}"
+  aria-labelledby="ArchHeading-{{ section.id }}"
+>
+  <div class="arch-container">
+    <div class="arch-header">
+      <span class="arch-kicker">{{ section.settings.kicker | default: 'SYSTEM ARCHITECTURE // INTERACTIVE' }}</span>
+      <h2 id="ArchHeading-{{ section.id }}" class="arch-title">{{ section.settings.heading | default: 'How This Storefront Is Built' }}</h2>
+      <p class="arch-subtitle">{{ section.settings.subheading | default: 'Click any node in the pipeline below to inspect the tech stack, data flow, and infrastructure components powering this portfolio.' }}</p>
+    </div>
+
+    <!-- Interactive Pipeline Nodes -->
+    <div class="arch-nodes-wrapper" role="tablist" aria-label="System Architecture Nodes">
+      <!-- Node 1: Local AI Workflow -->
+      <button 
+        type="button" 
+        class="arch-node-card arch-node-active" 
+        role="tab" 
+        id="ArchTab-1" 
+        aria-selected="true" 
+        aria-controls="ArchPanel" 
+        data-node-id="local-ai"
+        data-node-step="01"
+        data-node-title="Local AI Workflow"
+        data-node-badge="DEVELOPMENT & AGENTS"
+        data-node-tags="Antigravity IDE,Ollama (Qwen/Llama),Playwright E2E,Agent Orchestration"
+        data-node-desc="The development workflow runs locally inside the Antigravity IDE harness, powered by the Antigravity CLI and autonomous agent orchestration. Local Ollama instances run open-weights LLMs (such as Qwen 2.5 and Llama 3.2) for fast offline prototyping and prompt engineering, while Playwright provides continuous end-to-end integration and visual regression tests across desktop and mobile viewports."
+      >
+        <div class="arch-node-header">
+          <span class="arch-step-badge">STEP 01</span>
+          <span class="arch-node-status">LOCAL HARNESS</span>
+        </div>
+        <div class="arch-node-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="4 17 10 11 4 5"></polyline>
+            <line x1="12" y1="19" x2="20" y2="19"></line>
+          </svg>
+        </div>
+        <h3 class="arch-node-heading">Local AI Workflow</h3>
+        <p class="arch-node-tech">Antigravity CLI &bull; Ollama &bull; Playwright</p>
+        <span class="arch-active-indicator" aria-hidden="true"></span>
+      </button>
+
+      <div class="arch-connector" aria-hidden="true">
+        <span class="arch-connector-line"></span>
+        <span class="arch-connector-pulse"></span>
+      </div>
+
+      <!-- Node 2: The Storefront -->
+      <button 
+        type="button" 
+        class="arch-node-card" 
+        role="tab" 
+        id="ArchTab-2" 
+        aria-selected="false" 
+        aria-controls="ArchPanel" 
+        data-node-id="storefront"
+        data-node-step="02"
+        data-node-title="The Storefront"
+        data-node-badge="CORE COMMERCE ENGINE"
+        data-node-tags="Shopify Liquid,OS 2.0 Templates,Tokyo Night CSS,Vanilla JS"
+        data-node-desc="The customer-facing portfolio storefront is built directly on modern Shopify Online Store 2.0 Liquid architecture. Utilizing modular JSON templates, scoped Liquid sections, and semantic HTML5, the storefront adheres strictly to the Tokyo Night aesthetic. High-performance interactions, responsive media, and dynamic cart drawers are managed with lightweight vanilla JavaScript without heavy third-party runtime bloat."
+      >
+        <div class="arch-node-header">
+          <span class="arch-step-badge">STEP 02</span>
+          <span class="arch-node-status">STOREFRONT OS 2.0</span>
+        </div>
+        <div class="arch-node-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+        </div>
+        <h3 class="arch-node-heading">The Storefront</h3>
+        <p class="arch-node-tech">Shopify Liquid &bull; Tokyo Night UI</p>
+        <span class="arch-active-indicator" aria-hidden="true"></span>
+      </button>
+
+      <div class="arch-connector" aria-hidden="true">
+        <span class="arch-connector-line"></span>
+        <span class="arch-connector-pulse"></span>
+      </div>
+
+      <!-- Node 3: Checkout & Admin -->
+      <button 
+        type="button" 
+        class="arch-node-card" 
+        role="tab" 
+        id="ArchTab-3" 
+        aria-selected="false" 
+        aria-controls="ArchPanel" 
+        data-node-id="checkout-admin"
+        data-node-step="03"
+        data-node-title="Checkout & Admin"
+        data-node-badge="EXTENSIBILITY & API"
+        data-node-tags="Preact / React,Checkout UI Extensions,Admin GraphQL API,Metafields"
+        data-node-desc="Checkout functionality leverages Shopify Checkout Extensibility with custom Preact/React Checkout UI Extensions, allowing seamless in-checkout product offers and gift customization directly inside the native one-page checkout. Storefront metadata and product catalogs are synchronized securely via Shopify Admin GraphQL API queries, ensuring zero disruption to the PCI-compliant checkout pipeline."
+      >
+        <div class="arch-node-header">
+          <span class="arch-step-badge">STEP 03</span>
+          <span class="arch-node-status">GRAPHQL & EXTENSIONS</span>
+        </div>
+        <div class="arch-node-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+            <line x1="2" y1="10" x2="22" y2="10"></line>
+            <path d="m9 15 2 2 4-4"></path>
+          </svg>
+        </div>
+        <h3 class="arch-node-heading">Checkout & Admin</h3>
+        <p class="arch-node-tech">Checkout UI Extensions &bull; GraphQL API</p>
+        <span class="arch-active-indicator" aria-hidden="true"></span>
+      </button>
+
+      <div class="arch-connector" aria-hidden="true">
+        <span class="arch-connector-line"></span>
+        <span class="arch-connector-pulse"></span>
+      </div>
+
+      <!-- Node 4: Microservices -->
+      <button 
+        type="button" 
+        class="arch-node-card" 
+        role="tab" 
+        id="ArchTab-4" 
+        aria-selected="false" 
+        aria-controls="ArchPanel" 
+        data-node-id="microservices"
+        data-node-step="04"
+        data-node-title="Microservices"
+        data-node-badge="SERVERLESS & AI"
+        data-node-tags="Vercel Serverless,SvelteKit Backend,B1T-B0T AI Chat,Vector RAG"
+        data-node-desc="Advanced interactive microservices—including the B1T-B0T conversational assistant—are hosted as serverless edge functions on Vercel. Built with high-efficiency modern frameworks and integrated with cloud vector databases and AI endpoints, these microservices communicate securely with the Shopify storefront via CORS-enabled REST/JSON streaming endpoints."
+      >
+        <div class="arch-node-header">
+          <span class="arch-step-badge">STEP 04</span>
+          <span class="arch-node-status">EDGE SERVICES</span>
+        </div>
+        <div class="arch-node-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+            <rect x="9" y="9" width="6" height="6"></rect>
+            <line x1="9" y1="1" x2="9" y2="4"></line>
+            <line x1="15" y1="1" x2="15" y2="4"></line>
+            <line x1="9" y1="20" x2="9" y2="23"></line>
+            <line x1="15" y1="20" x2="15" y2="23"></line>
+            <line x1="20" y1="9" x2="23" y2="9"></line>
+            <line x1="20" y1="14" x2="23" y2="14"></line>
+            <line x1="1" y1="9" x2="4" y2="9"></line>
+            <line x1="1" y1="14" x2="4" y2="14"></line>
+          </svg>
+        </div>
+        <h3 class="arch-node-heading">Microservices</h3>
+        <p class="arch-node-tech">Vercel &bull; SvelteKit &bull; B1T-B0T</p>
+        <span class="arch-active-indicator" aria-hidden="true"></span>
+      </button>
+    </div>
+
+    <!-- Detail Display Panel -->
+    <div 
+      id="ArchPanel" 
+      class="arch-detail-panel" 
+      role="tabpanel" 
+      aria-live="polite"
+    >
+      <div class="arch-panel-header">
+        <div class="arch-panel-badge-group">
+          <span id="ArchDetailStep" class="arch-panel-step">STEP 01</span>
+          <span id="ArchDetailBadge" class="arch-panel-badge">DEVELOPMENT & AGENTS</span>
+        </div>
+        <div class="arch-panel-live-status">
+          <span class="arch-live-dot" aria-hidden="true"></span>
+          <span>SYSTEM ACTIVE</span>
+        </div>
+      </div>
+
+      <div class="arch-panel-body">
+        <h3 id="ArchDetailTitle" class="arch-panel-title">Local AI Workflow</h3>
+        <div id="ArchDetailTags" class="arch-panel-tags">
+          <span class="arch-tech-pill">Antigravity IDE</span>
+          <span class="arch-tech-pill">Ollama (Qwen/Llama)</span>
+          <span class="arch-tech-pill">Playwright E2E</span>
+          <span class="arch-tech-pill">Agent Orchestration</span>
+        </div>
+        <p id="ArchDetailDesc" class="arch-panel-desc">
+          The development workflow runs locally inside the Antigravity IDE harness, powered by the Antigravity CLI and autonomous agent orchestration. Local Ollama instances run open-weights LLMs (such as Qwen 2.5 and Llama 3.2) for fast offline prototyping and prompt engineering, while Playwright provides continuous end-to-end integration and visual regression tests across desktop and mobile viewports.
+        </p>
+      </div>
+
+      <div class="arch-panel-footer">
+        <span class="arch-footer-hint">Tip: Tap any other node above to inspect its architecture specifications.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Tokyo Night Palette */
+  #ArchitectureDiagram-{{ section.id }} {
+    --tn-bg: #1a1b26;
+    --tn-bg-dark: #16161e;
+    --tn-text: #c0caf5;
+    --tn-text-muted: #7aa2f7;
+    --tn-accent-blue: #7aa2f7;
+    --tn-purple: #bb9af7;
+    --tn-cyan: #7dcfff;
+    --tn-green: #9ece6a;
+    --tn-red: #f7768e;
+    --tn-border: rgba(122, 162, 247, 0.22);
+    --tn-border-active: #7dcfff;
+    --tn-glow: rgba(125, 207, 255, 0.25);
+
+    background-color: var(--tn-bg);
+    color: var(--tn-text);
+    padding-top: {{ section.settings.padding_top | default: 60 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | default: 60 }}px;
+    position: relative;
+    border-top: 1px solid var(--tn-border);
+    border-bottom: 1px solid var(--tn-border);
+  }
+
+  .arch-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .arch-header {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 40px auto;
+  }
+
+  .arch-kicker {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    color: var(--tn-cyan);
+    background: rgba(125, 207, 255, 0.08);
+    border: 1px solid rgba(125, 207, 255, 0.3);
+    padding: 4px 12px;
+    border-radius: 999px;
+    margin-bottom: 12px;
+    font-family: inherit;
+    text-transform: uppercase;
+  }
+
+  .arch-title {
+    font-size: 32px;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 12px 0;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+  }
+
+  .arch-subtitle {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--tn-text);
+    margin: 0;
+    opacity: 0.9;
+  }
+
+  /* Node Cards Wrapper & Grid */
+  .arch-nodes-wrapper {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+
+  .arch-node-card {
+    background: var(--tn-bg-dark);
+    border: 1px solid var(--tn-border);
+    border-radius: 12px;
+    padding: 20px 16px;
+    text-align: left;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    color: var(--tn-text);
+    font-family: inherit;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-height: 170px;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  .arch-node-card:hover {
+    border-color: var(--tn-accent-blue);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(122, 162, 247, 0.2);
+  }
+
+  .arch-node-card:focus-visible {
+    outline: none;
+    border-color: var(--tn-cyan);
+    box-shadow: 0 0 0 3px var(--tn-glow);
+  }
+
+  .arch-node-card.arch-node-active {
+    border-color: var(--tn-cyan);
+    background: linear-gradient(180deg, #1f2335 0%, #16161e 100%);
+    box-shadow: 0 0 25px var(--tn-glow), 0 8px 24px rgba(0, 0, 0, 0.45);
+    transform: translateY(-4px);
+  }
+
+  .arch-node-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+  }
+
+  .arch-step-badge {
+    color: var(--tn-cyan);
+    background: rgba(125, 207, 255, 0.12);
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  .arch-node-status {
+    color: var(--tn-text-muted);
+    font-size: 9px;
+  }
+
+  .arch-node-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    background: rgba(122, 162, 247, 0.12);
+    color: var(--tn-accent-blue);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 4px 0 2px 0;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .arch-node-card.arch-node-active .arch-node-icon {
+    background: rgba(125, 207, 255, 0.2);
+    color: var(--tn-cyan);
+  }
+
+  .arch-node-heading {
+    font-size: 15px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  .arch-node-tech {
+    font-size: 11px;
+    color: #a9b1d6;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .arch-active-indicator {
+    display: none;
+    position: absolute;
+    bottom: -11px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid var(--tn-cyan);
+  }
+
+  .arch-node-card.arch-node-active .arch-active-indicator {
+    display: block;
+  }
+
+  /* Connector Line */
+  .arch-connector {
+    width: 32px;
+    height: 2px;
+    background: rgba(122, 162, 247, 0.25);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .arch-connector::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: -3px;
+    width: 0;
+    height: 0;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-left: 6px solid var(--tn-accent-blue);
+  }
+
+  .arch-connector-pulse {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: var(--tn-cyan);
+    border-radius: 50%;
+    animation: arch-pulse-flow 2.4s infinite ease-in-out;
+  }
+
+  @keyframes arch-pulse-flow {
+    0% { transform: translateX(-14px); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateX(14px); opacity: 0; }
+  }
+
+  /* Detail Display Panel */
+  .arch-detail-panel {
+    background: var(--tn-bg-dark);
+    border: 1px solid var(--tn-border);
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+    position: relative;
+    overflow: hidden;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+
+  .arch-detail-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--tn-accent-blue) 0%, var(--tn-cyan) 50%, var(--tn-purple) 100%);
+  }
+
+  .arch-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .arch-panel-badge-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .arch-panel-step {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--tn-cyan);
+    background: rgba(125, 207, 255, 0.12);
+    padding: 3px 8px;
+    border-radius: 4px;
+  }
+
+  .arch-panel-badge {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--tn-text-muted);
+  }
+
+  .arch-panel-live-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--tn-green);
+    letter-spacing: 0.05em;
+  }
+
+  .arch-live-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--tn-green);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--tn-green);
+    animation: arch-blink 1.8s infinite alternate;
+  }
+
+  @keyframes arch-blink {
+    0% { opacity: 0.4; }
+    100% { opacity: 1; }
+  }
+
+  .arch-panel-title {
+    font-size: 24px;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 12px 0;
+    line-height: 1.3;
+  }
+
+  .arch-panel-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .arch-tech-pill {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--tn-text);
+    background: rgba(122, 162, 247, 0.1);
+    border: 1px solid rgba(122, 162, 247, 0.25);
+    padding: 4px 10px;
+    border-radius: 6px;
+  }
+
+  .arch-panel-desc {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #c0caf5;
+    margin: 0;
+  }
+
+  .arch-panel-footer {
+    margin-top: 20px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    font-size: 12px;
+    color: #7982a9;
+    font-style: italic;
+  }
+
+  /* Responsive Mobile Breakpoint */
+  @media (max-width: 989px) {
+    .arch-nodes-wrapper {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .arch-connector {
+      width: 2px;
+      height: 20px;
+      margin: 0 auto;
+    }
+
+    .arch-connector::after {
+      right: -3px;
+      top: auto;
+      bottom: 0;
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      border-top: 6px solid var(--tn-accent-blue);
+    }
+
+    .arch-connector-pulse {
+      animation: arch-pulse-flow-vertical 2.4s infinite ease-in-out;
+    }
+
+    @keyframes arch-pulse-flow-vertical {
+      0% { transform: translateY(-10px); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateY(10px); opacity: 0; }
+    }
+
+    .arch-active-indicator {
+      display: none !important;
+    }
+
+    .arch-node-card {
+      min-height: auto;
+      padding: 16px;
+    }
+
+    .arch-detail-panel {
+      padding: 20px 16px;
+    }
+
+    .arch-title {
+      font-size: 26px;
+    }
+  }
+</style>
+
+<script>
+  (() => {
+    const section = document.getElementById('ArchitectureDiagram-{{ section.id }}');
+    if (!section) return;
+
+    const cards = section.querySelectorAll('.arch-node-card');
+    const panel = section.querySelector('#ArchPanel');
+    const stepEl = section.querySelector('#ArchDetailStep');
+    const badgeEl = section.querySelector('#ArchDetailBadge');
+    const titleEl = section.querySelector('#ArchDetailTitle');
+    const tagsContainer = section.querySelector('#ArchDetailTags');
+    const descEl = section.querySelector('#ArchDetailDesc');
+
+    if (!cards.length || !panel) return;
+
+    cards.forEach((card) => {
+      card.addEventListener('click', () => {
+        // Remove active class and aria-selected from all
+        cards.forEach((c) => {
+          c.classList.remove('arch-node-active');
+          c.setAttribute('aria-selected', 'false');
+        });
+
+        // Activate clicked card
+        card.classList.add('arch-node-active');
+        card.setAttribute('aria-selected', 'true');
+
+        // Extract metadata from data- attributes
+        const step = card.dataset.nodeStep || '01';
+        const badge = card.dataset.nodeBadge || '';
+        const title = card.dataset.nodeTitle || '';
+        const tags = (card.dataset.nodeTags || '').split(',');
+        const desc = card.dataset.nodeDesc || '';
+
+        // Smooth panel update transition
+        panel.style.opacity = '0.5';
+        panel.style.transform = 'translateY(4px)';
+
+        setTimeout(() => {
+          if (stepEl) stepEl.textContent = `STEP ${step}`;
+          if (badgeEl) badgeEl.textContent = badge;
+          if (titleEl) titleEl.textContent = title;
+          if (descEl) descEl.textContent = desc;
+
+          if (tagsContainer) {
+            tagsContainer.innerHTML = '';
+            tags.forEach((tag) => {
+              const pill = document.createElement('span');
+              pill.className = 'arch-tech-pill';
+              pill.textContent = tag.trim();
+              tagsContainer.appendChild(pill);
+            });
+          }
+
+          panel.style.opacity = '1';
+          panel.style.transform = 'translateY(0)';
+        }, 120);
+      });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Architecture Diagram",
+  "settings": [
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Kicker / Pretitle",
+      "default": "SYSTEM ARCHITECTURE // INTERACTIVE"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "How This Storefront Is Built"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Click any node in the pipeline below to inspect the tech stack, data flow, and infrastructure components powering this portfolio."
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 20,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 20,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 60
+    }
+  ],
+  "presets": [
+    {
+      "name": "Architecture Diagram"
+    }
+  ]
+}
+{% endschema %}

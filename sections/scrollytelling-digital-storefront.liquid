@@ -1,0 +1,765 @@
+{% comment %}
+  Section 2: Scrollytelling Digital Storefront (Tokyo Night Edition)
+  Description: Pinned GSAP ScrollTrigger section that routes chaotic motherboard circuits & floating code streams into a retro CRT monitor displaying an e-commerce storefront, with a dynamic floating "Forge" Tag.
+{% endcomment %}
+
+{%- style -%}
+  #ScrollyStorefront-{{ section.id }} {
+    --tn-bg: {{ section.settings.bg_color | default: '#1a1b26' }};
+    --tn-bg-dark: {{ section.settings.bg_dark_color | default: '#16161e' }};
+    --tn-fg: {{ section.settings.text_color | default: '#c0caf5' }};
+    --tn-blue: {{ section.settings.accent_blue | default: '#7aa2f7' }};
+    --tn-purple: {{ section.settings.accent_purple | default: '#bb9af7' }};
+    --tn-cyan: {{ section.settings.accent_cyan | default: '#7dcfff' }};
+    --tn-green: #9ece6a;
+    --tn-red: #f7768e;
+    --sticky-header-offset: 98px;
+
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: radial-gradient(circle at 50% 45%, var(--tn-bg) 0%, var(--tn-bg-dark) 100%);
+    color: var(--tn-fg);
+    padding-top: calc(var(--sticky-header-offset) + {{ section.settings.padding_top }}px);
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    user-select: none;
+  }
+
+  /* Subtle Matrix / Circuit Dot Backdrop */
+  #ScrollyStorefront-{{ section.id }} .sf-backdrop {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(125, 207, 255, 0.14) 1px, transparent 1px);
+    background-size: 32px 32px;
+    mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.95) 25%, transparent 85%);
+    -webkit-mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.95) 25%, transparent 85%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* CRT Scanline Overlay */
+  #ScrollyStorefront-{{ section.id }} .sf-crt-scanlines {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      rgba(22, 22, 30, 0) 50%, 
+      rgba(22, 22, 30, 0.35) 50%
+    );
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 10;
+    opacity: 0.4;
+  }
+
+  /* Floating Aesthetic "Forge" Tag + Dynamic 4-Corner Positioning */
+  #ScrollyStorefront-{{ section.id }} .sf-forge-tag {
+    position: absolute;
+    z-index: 8;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.5rem 0.95rem;
+    background: rgba(22, 22, 30, 0.85);
+    border: 1px solid rgba(187, 154, 247, 0.45);
+    border-radius: 999px;
+    color: var(--tn-cyan);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 0 20px rgba(187, 154, 247, 0.2), inset 0 0 8px rgba(125, 207, 255, 0.1);
+    pointer-events: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  #ScrollyStorefront-{{ section.id }} .sf-forge-tag-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--tn-green);
+    box-shadow: 0 0 8px var(--tn-green);
+    animation: sfForgePulse-{{ section.id }} 2s ease-in-out infinite;
+  }
+
+  @keyframes sfForgePulse-{{ section.id }} {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.45; transform: scale(0.8); }
+  }
+
+  #ScrollyStorefront-{{ section.id }} .sf-forge-tag--top-left {
+    top: calc(var(--sticky-header-offset) + 3.5rem);
+    left: 2.5rem;
+  }
+
+  #ScrollyStorefront-{{ section.id }} .sf-forge-tag--top-right {
+    top: calc(var(--sticky-header-offset) + 3.5rem);
+    right: 2.5rem;
+  }
+
+  #ScrollyStorefront-{{ section.id }} .sf-forge-tag--bottom-left {
+    bottom: 2.5rem;
+    left: 2.5rem;
+  }
+
+  #ScrollyStorefront-{{ section.id }} .sf-forge-tag--bottom-right {
+    bottom: 2.5rem;
+    right: 2.5rem;
+  }
+
+  /* Top Telemetry HUD */
+  #ScrollyStorefront-{{ section.id }} .sf-hud-bar {
+    position: absolute;
+    top: calc(var(--sticky-header-offset) + 1rem);
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(88vw, 1100px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--tn-purple);
+    z-index: 6;
+    opacity: 0.85;
+  }
+
+  #ScrollyStorefront-{{ section.id }} .sf-progress-track {
+    flex: 1;
+    height: 2px;
+    margin: 0 1.25rem;
+    background: rgba(192, 202, 245, 0.12);
+    position: relative;
+    overflow: hidden;
+  }
+
+  #ScrollyStorefront-{{ section.id }} .sf-progress-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, var(--tn-purple), var(--tn-cyan), var(--tn-green));
+    transform-origin: left center;
+    transform: scaleX(0);
+  }
+
+  /* Main Stage & SVG Canvas */
+  #ScrollyStorefront-{{ section.id }} .sf-stage {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+  }
+
+  #ScrollyStorefront-{{ section.id }} .sf-canvas-wrap {
+    position: relative;
+    width: min(92vw, 900px);
+    height: min(68vh, 560px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    transition: filter 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  #ScrollyStorefront-{{ section.id }} .sf-main-svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  #ScrollyStorefront-{{ section.id }} .circuit-trace {
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    will-change: stroke-dashoffset, opacity, transform;
+  }
+
+  #ScrollyStorefront-{{ section.id }} .code-stream,
+  #ScrollyStorefront-{{ section.id }} .storefront-module,
+  #ScrollyStorefront-{{ section.id }} .monitor-rig {
+    will-change: transform, opacity;
+    transform-origin: center center;
+  }
+
+  /* Final State Lock: Neon Monitor Glow & Live Checkout Pulse */
+  #ScrollyStorefront-{{ section.id }}.is-live .sf-canvas-wrap {
+    filter:
+      drop-shadow(0 0 16px rgba(125, 207, 255, 0.55))
+      drop-shadow(0 0 38px rgba(122, 162, 247, 0.45))
+      drop-shadow(0 0 70px rgba(187, 154, 247, 0.35));
+  }
+
+  #ScrollyStorefront-{{ section.id }}.is-live .sf-buy-btn {
+    fill: var(--tn-green);
+    filter: drop-shadow(0 0 10px var(--tn-green));
+  }
+
+  #ScrollyStorefront-{{ section.id }}.is-live .sf-forge-tag {
+    border-color: var(--tn-green);
+    box-shadow: 0 0 24px rgba(158, 206, 106, 0.35);
+  }
+
+  /* Bottom Caption / Storefront Headline */
+  #ScrollyStorefront-{{ section.id }} .sf-caption-box {
+    margin-top: 1rem;
+    text-align: center;
+    max-width: 680px;
+    padding: 0 1.25rem;
+    z-index: 5;
+  }
+
+  #ScrollyStorefront-{{ section.id }} .sf-caption-title {
+    margin: 0;
+    font-size: clamp(1rem, 1.8vw, 1.35rem);
+    color: var(--tn-fg);
+    letter-spacing: 0.02em;
+  }
+
+  #ScrollyStorefront-{{ section.id }}.is-live .sf-caption-title {
+    color: var(--tn-cyan);
+    text-shadow: -1px 0 var(--tn-red), 1px 0 var(--tn-blue), 0 0 12px var(--tn-cyan);
+  }
+
+  @media screen and (max-width: 768px) {
+    #ScrollyStorefront-{{ section.id }} {
+      --sticky-header-offset: 65px;
+    }
+
+    #ScrollyStorefront-{{ section.id }} .sf-forge-tag--top-left,
+    #ScrollyStorefront-{{ section.id }} .sf-forge-tag--top-right {
+      top: calc(var(--sticky-header-offset) + 2.75rem);
+    }
+
+    #ScrollyStorefront-{{ section.id }} .sf-forge-tag--bottom-left,
+    #ScrollyStorefront-{{ section.id }} .sf-forge-tag--bottom-right {
+      bottom: 1.25rem;
+    }
+  }
+{%- endstyle -%}
+
+{%- liquid
+  assign forge_pos_class = 'sf-forge-tag--top-right'
+  case section.settings.forge_tag_position
+    when 'top_left'
+      assign forge_pos_class = 'sf-forge-tag--top-left'
+    when 'top_right'
+      assign forge_pos_class = 'sf-forge-tag--top-right'
+    when 'bottom_left'
+      assign forge_pos_class = 'sf-forge-tag--bottom-left'
+    when 'bottom_right'
+      assign forge_pos_class = 'sf-forge-tag--bottom-right'
+  endcase
+-%}
+
+<section id="ScrollyStorefront-{{ section.id }}" class="scrolly-storefront-section" data-section-id="{{ section.id }}">
+  <div class="sf-backdrop"></div>
+  <div class="sf-crt-scanlines"></div>
+
+  <!-- Top Telemetry Bar -->
+  <div class="sf-hud-bar">
+    <span>BUS.MOTHERBOARD // LIQUID-DOM</span>
+    <div class="sf-progress-track">
+      <div class="sf-progress-fill" data-progress-fill></div>
+    </div>
+    <span data-status-readout>BUS: RAW CIRCUITS</span>
+  </div>
+
+  <!-- Floating Aesthetic "Forge" Tag -->
+  {%- if section.settings.forge_tag_text != blank -%}
+    <div class="sf-forge-tag {{ forge_pos_class }}">
+      <span class="sf-forge-tag-dot"></span>
+      <span>{{ section.settings.forge_tag_text | escape }}</span>
+    </div>
+  {%- endif -%}
+
+  <!-- Pinned Stage -->
+  <div class="sf-stage">
+    <div class="sf-canvas-wrap">
+      <svg class="sf-main-svg" viewBox="0 0 900 540" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Motherboard Circuits Transforming into Digital Storefront">
+        <defs>
+          <linearGradient id="sf-crt-bezel-{{ section.id }}" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#24283b"/>
+            <stop offset="100%" stop-color="#16161e"/>
+          </linearGradient>
+          <linearGradient id="sf-screen-glow-{{ section.id }}" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#1a1b26"/>
+            <stop offset="100%" stop-color="#13141c"/>
+          </linearGradient>
+        </defs>
+
+        <!-- LAYER 1: MOTHERBOARD CIRCUIT TRACES (Route inward to CRT Bus) -->
+        <g data-circuits-layer>
+          <!-- Left Bus Traces -->
+          <path class="circuit-trace" data-trace="1" d="M 20 80 H 140 L 195 135 H 275" stroke="#7dcfff" stroke-width="3"/>
+          <circle class="circuit-node" cx="20" cy="80" r="5" fill="#7dcfff"/>
+          <path class="circuit-trace" data-trace="2" d="M 10 240 H 120 L 170 200 H 255" stroke="#bb9af7" stroke-width="2.5"/>
+          <circle class="circuit-node" cx="10" cy="240" r="5" fill="#bb9af7"/>
+          <path class="circuit-trace" data-trace="3" d="M 35 420 H 150 L 205 340 H 275" stroke="#7aa2f7" stroke-width="3"/>
+          <circle class="circuit-node" cx="35" cy="420" r="5" fill="#7aa2f7"/>
+
+          <!-- Right Bus Traces -->
+          <path class="circuit-trace" data-trace="4" d="M 880 95 H 760 L 705 150 H 625" stroke="#7dcfff" stroke-width="3"/>
+          <circle class="circuit-node" cx="880" cy="95" r="5" fill="#7dcfff"/>
+          <path class="circuit-trace" data-trace="5" d="M 890 265 H 775 L 725 225 H 645" stroke="#9ece6a" stroke-width="2.5"/>
+          <circle class="circuit-node" cx="890" cy="265" r="5" fill="#9ece6a"/>
+          <path class="circuit-trace" data-trace="6" d="M 865 430 H 740 L 690 355 H 625" stroke="#bb9af7" stroke-width="3"/>
+          <circle class="circuit-node" cx="865" cy="430" r="5" fill="#bb9af7"/>
+
+          <!-- Top & Bottom IC Pins -->
+          <path class="circuit-trace" data-trace="7" d="M 350 15 V 60 L 380 85" stroke="#7aa2f7" stroke-width="2"/>
+          <path class="circuit-trace" data-trace="8" d="M 550 15 V 60 L 520 85" stroke="#7dcfff" stroke-width="2"/>
+        </g>
+
+        <!-- LAYER 2: FLOATING STREAMS OF COMPUTER CODE (Converge into Monitor Core) -->
+        <g data-code-streams>
+          <g class="code-stream" data-code="stream-1">
+            <rect x="40" y="110" width="175" height="44" rx="4" fill="#16161e" stroke="#7dcfff" stroke-width="1.5"/>
+            <text x="52" y="129" fill="#7dcfff" font-size="11" font-family="monospace">01001100 01001001</text>
+            <text x="52" y="145" fill="#bb9af7" font-size="11" font-family="monospace">{% raw %}{{ product.title }}{% endraw %}</text>
+          </g>
+
+          <g class="code-stream" data-code="stream-2">
+            <rect x="685" y="115" width="180" height="44" rx="4" fill="#16161e" stroke="#bb9af7" stroke-width="1.5"/>
+            <text x="697" y="134" fill="#9ece6a" font-size="11" font-family="monospace">POST /cart/add.js</text>
+            <text x="697" y="150" fill="#c0caf5" font-size="11" font-family="monospace">status: 200 OK</text>
+          </g>
+
+          <g class="code-stream" data-code="stream-3">
+            <rect x="30" y="310" width="185" height="44" rx="4" fill="#16161e" stroke="#7aa2f7" stroke-width="1.5"/>
+            <text x="42" y="329" fill="#7aa2f7" font-size="11" font-family="monospace">const schema = {</text>
+            <text x="42" y="345" fill="#7dcfff" font-size="11" font-family="monospace">  mode: "agentic"</text>
+          </g>
+
+          <g class="code-stream" data-code="stream-4">
+            <rect x="685" y="315" width="185" height="44" rx="4" fill="#16161e" stroke="#9ece6a" stroke-width="1.5"/>
+            <text x="697" y="334" fill="#f7768e" font-size="11" font-family="monospace">&lt;shopify-section&gt;</text>
+            <text x="697" y="350" fill="#9ece6a" font-size="11" font-family="monospace">  hydrateStorefront()</text>
+          </g>
+
+          <g class="code-stream" data-code="stream-5">
+            <rect x="355" y="12" width="190" height="36" rx="4" fill="#16161e" stroke="#7dcfff" stroke-width="1.5"/>
+            <text x="368" y="34" fill="#7dcfff" font-size="11" font-family="monospace">0x7AA2F7 // TOKYO_NIGHT</text>
+          </g>
+        </g>
+
+        <!-- LAYER 3: RETRO COMPUTER MONITOR CHASSIS -->
+        <g class="monitor-rig" data-monitor-rig>
+          <!-- Monitor Pedestal & Swivel Base -->
+          <path d="M 380 415 L 355 468 H 545 L 520 415 Z" fill="url(#sf-crt-bezel-{{ section.id }})" stroke="#7aa2f7" stroke-width="3"/>
+          <rect x="315" y="468" width="270" height="18" rx="6" fill="#16161e" stroke="#7dcfff" stroke-width="2.5"/>
+
+          <!-- Outer Retro CRT Bezel -->
+          <rect x="220" y="65" width="460" height="350" rx="24" fill="url(#sf-crt-bezel-{{ section.id }})" stroke="#7aa2f7" stroke-width="4"/>
+          <!-- Inner CRT Glass Screen -->
+          <rect x="244" y="88" width="412" height="292" rx="14" fill="url(#sf-screen-glow-{{ section.id }})" stroke="#7dcfff" stroke-width="2.5"/>
+
+          <!-- Monitor Power LED & Retro Branding Bar -->
+          <circle cx="636" cy="398" r="5" fill="#9ece6a"/>
+          <rect x="255" y="394" width="60" height="8" rx="3" fill="#7aa2f7" opacity="0.5"/>
+        </g>
+
+        <!-- LAYER 4: DIGITAL E-COMMERCE STOREFRONT UI (Assembles inside the CRT screen) -->
+        <g data-storefront-ui>
+          <!-- Storefront Top Browser / Nav Header -->
+          <g class="storefront-module" data-ui-part="header">
+            <rect x="258" y="102" width="384" height="34" rx="6" fill="#16161e" stroke="#7aa2f7" stroke-width="1.5"/>
+            <circle cx="274" cy="119" r="4.5" fill="#f7768e"/>
+            <circle cx="289" cy="119" r="4.5" fill="#bb9af7"/>
+            <circle cx="304" cy="119" r="4.5" fill="#9ece6a"/>
+            <text x="326" y="123" fill="#c0caf5" font-size="11" font-weight="bold" font-family="monospace">ACME-ROBOTICS.MYSHOPIFY.COM</text>
+            <!-- Cart Pill -->
+            <rect x="588" y="110" width="44" height="18" rx="4" fill="#7aa2f7"/>
+            <text x="596" y="123" fill="#16161e" font-size="10" font-weight="bold" font-family="monospace">CART</text>
+          </g>
+
+          <!-- Storefront Hero Banner -->
+          <g class="storefront-module" data-ui-part="hero">
+            <rect x="258" y="146" width="384" height="64" rx="6" fill="#24283b" stroke="#bb9af7" stroke-width="1.5"/>
+            <text x="274" y="172" fill="#7dcfff" font-size="13" font-weight="bold" font-family="monospace">NEXT-GEN CYBERNETIC COMMERCE</text>
+            <text x="274" y="193" fill="#c0caf5" font-size="10" font-family="monospace">Forged via Agentic Liquid Architecture // Ready to Ship</text>
+            <rect x="562" y="164" width="66" height="26" rx="4" fill="#bb9af7"/>
+            <text x="573" y="181" fill="#16161e" font-size="10" font-weight="bold" font-family="monospace">EXPLORE</text>
+          </g>
+
+          <!-- Product Card 1 -->
+          <g class="storefront-module" data-ui-part="card-1">
+            <rect x="258" y="220" width="120" height="146" rx="6" fill="#16161e" stroke="#7aa2f7" stroke-width="1.5"/>
+            <rect x="268" y="230" width="100" height="58" rx="4" fill="#1a1b26" stroke="#7dcfff" stroke-width="1"/>
+            <circle cx="318" cy="259" r="16" stroke="#7dcfff" stroke-width="2"/>
+            <text x="268" y="306" fill="#c0caf5" font-size="10" font-weight="bold" font-family="monospace">OPTIC VISOR X1</text>
+            <text x="268" y="321" fill="#7dcfff" font-size="10" font-family="monospace">$420.00</text>
+            <rect class="sf-buy-btn" x="268" y="332" width="100" height="22" rx="4" fill="#7aa2f7"/>
+            <text x="292" y="347" fill="#16161e" font-size="9.5" font-weight="bold" font-family="monospace">ADD +</text>
+          </g>
+
+          <!-- Product Card 2 -->
+          <g class="storefront-module" data-ui-part="card-2">
+            <rect x="390" y="220" width="120" height="146" rx="6" fill="#16161e" stroke="#bb9af7" stroke-width="1.5"/>
+            <rect x="400" y="230" width="100" height="58" rx="4" fill="#1a1b26" stroke="#bb9af7" stroke-width="1"/>
+            <polygon points="450,242 468,274 432,274" stroke="#bb9af7" stroke-width="2" fill="none"/>
+            <text x="400" y="306" fill="#c0caf5" font-size="10" font-weight="bold" font-family="monospace">NEURAL CORE V4</text>
+            <text x="400" y="321" fill="#bb9af7" font-size="10" font-family="monospace">$890.00</text>
+            <rect class="sf-buy-btn" x="400" y="332" width="100" height="22" rx="4" fill="#7dcfff"/>
+            <text x="424" y="347" fill="#16161e" font-size="9.5" font-weight="bold" font-family="monospace">ADD +</text>
+          </g>
+
+          <!-- Product Card 3 -->
+          <g class="storefront-module" data-ui-part="card-3">
+            <rect x="522" y="220" width="120" height="146" rx="6" fill="#16161e" stroke="#7dcfff" stroke-width="1.5"/>
+            <rect x="532" y="230" width="100" height="58" rx="4" fill="#1a1b26" stroke="#9ece6a" stroke-width="1"/>
+            <rect x="566" y="244" width="32" height="30" rx="4" stroke="#9ece6a" stroke-width="2"/>
+            <text x="532" y="306" fill="#c0caf5" font-size="10" font-weight="bold" font-family="monospace">SERVO CLAW PRO</text>
+            <text x="532" y="321" fill="#9ece6a" font-size="10" font-family="monospace">$310.00</text>
+            <rect class="sf-buy-btn" x="532" y="332" width="100" height="22" rx="4" fill="#bb9af7"/>
+            <text x="556" y="347" fill="#16161e" font-size="9.5" font-weight="bold" font-family="monospace">ADD +</text>
+          </g>
+        </g>
+      </svg>
+    </div>
+
+    <div class="sf-caption-box">
+      <h2 class="sf-caption-title">{{ section.settings.headline_text }}</h2>
+    </div>
+  </div>
+</section>
+
+<!-- Load Lenis, GSAP & ScrollTrigger from CDN if not already loaded -->
+<script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+
+<script>
+  (function() {
+    const sectionId = '{{ section.id }}';
+    const sectionSelector = '#ScrollyStorefront-' + sectionId;
+
+    function ensureLenisSmoothScroll() {
+      if (window.__tnLenisInstance || typeof Lenis === 'undefined' || typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+        return;
+      }
+      const lenis = new Lenis({
+        lerp: 0.08,
+        wheelMultiplier: 0.95,
+        smoothWheel: true,
+        syncTouch: false
+      });
+      window.__tnLenisInstance = lenis;
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add(function(time) {
+        lenis.raf(time * 1000);
+      });
+      gsap.ticker.lagSmoothing(0);
+    }
+
+    function initScrollyStorefront() {
+      if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined' || typeof Lenis === 'undefined') {
+        setTimeout(initScrollyStorefront, 50);
+        return;
+      }
+
+      gsap.registerPlugin(ScrollTrigger);
+      ensureLenisSmoothScroll();
+
+      const sectionEl = document.querySelector(sectionSelector);
+      if (!sectionEl) return;
+
+      ScrollTrigger.getAll().forEach((st) => {
+        if (st.vars && st.vars.id === 'scrolly-storefront-' + sectionId) {
+          st.kill();
+        }
+      });
+
+      const progressFill = sectionEl.querySelector('[data-progress-fill]');
+      const statusReadout = sectionEl.querySelector('[data-status-readout]');
+      const monitorRig = sectionEl.querySelector('[data-monitor-rig]');
+      const traces = sectionEl.querySelectorAll('.circuit-trace');
+
+      // Prepare SVG circuit traces for stroke-dashoffset routing
+      traces.forEach((trace) => {
+        const length = trace.getTotalLength ? trace.getTotalLength() : 300;
+        gsap.set(trace, {
+          strokeDasharray: length,
+          strokeDashoffset: 0,
+          opacity: 1
+        });
+      });
+
+      // Initial Chaotic Positions for Floating Code Streams (filling the viewport)
+      const initialCodeVectors = {
+        'stream-1': { x: -90,  y: -50, rotation: -18, scale: 1.35, opacity: 1 },
+        'stream-2': { x: 85,   y: -60, rotation: 22,  scale: 1.3,  opacity: 1 },
+        'stream-3': { x: -110, y: 70,  rotation: 15,  scale: 1.4,  opacity: 1 },
+        'stream-4': { x: 95,   y: 80,  rotation: -20, scale: 1.35, opacity: 1 },
+        'stream-5': { x: 0,    y: -45, rotation: 8,   scale: 1.45, opacity: 1 }
+      };
+
+      Object.keys(initialCodeVectors).forEach((key) => {
+        const el = sectionEl.querySelector('[data-code="' + key + '"]');
+        if (el) {
+          gsap.set(el, initialCodeVectors[key]);
+        }
+      });
+
+      // Monitor starts deconstructed / scaled down in background
+      gsap.set(monitorRig, {
+        scale: 0.72,
+        opacity: 0.15,
+        y: 40
+      });
+
+      // Storefront UI modules start scattered & uncompiled
+      const uiStartVectors = {
+        'header': { y: -120, scale: 0.6, opacity: 0 },
+        'hero':   { x: -160, scale: 0.7, opacity: 0 },
+        'card-1': { x: -180, y: 140, rotation: -25, scale: 0.5, opacity: 0 },
+        'card-2': { y: 180,  rotation: 18,  scale: 0.5, opacity: 0 },
+        'card-3': { x: 180,  y: 140, rotation: 25,  scale: 0.5, opacity: 0 }
+      };
+
+      Object.keys(uiStartVectors).forEach((uiKey) => {
+        const el = sectionEl.querySelector('[data-ui-part="' + uiKey + '"]');
+        if (el) {
+          gsap.set(el, uiStartVectors[uiKey]);
+        }
+      });
+
+      // Create Pinned Scrubbing Timeline with standard pinSpacing and numeric scrub (1.2)
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          id: 'scrolly-storefront-' + sectionId,
+          trigger: sectionEl,
+          pin: true,
+          pinSpacing: true,
+          start: 'top top',
+          end: '+=2600',
+          scrub: 1.2,
+          anticipatePin: 1,
+          onUpdate: (self) => {
+            if (progressFill) {
+              gsap.set(progressFill, { scaleX: self.progress });
+            }
+
+            if (self.progress >= 0.95) {
+              if (!sectionEl.classList.contains('is-live')) {
+                sectionEl.classList.add('is-live');
+                if (statusReadout) statusReadout.textContent = 'STOREFRONT: LIVE // 200 OK';
+              }
+            } else {
+              if (sectionEl.classList.contains('is-live')) {
+                sectionEl.classList.remove('is-live');
+              }
+              if (statusReadout) {
+                statusReadout.textContent = self.progress > 0.03
+                  ? 'COMPILING DOM (' + Math.round(self.progress * 100) + '%)'
+                  : 'BUS: RAW CIRCUITS';
+              }
+            }
+          }
+        }
+      });
+
+      // Phase 1: Route & pulse circuit traces inward while materializing the Retro CRT Monitor
+      tl.to(monitorRig, {
+        scale: 1,
+        opacity: 1,
+        y: 0,
+        ease: 'power3.out',
+        duration: 0.55
+      }, 0);
+
+      // Phase 2: Route floating code streams directly into the CRT screen center and compile them
+      const codeTargets = {
+        'stream-1': { x: 260,  y: 80,  rotation: 0, scale: 0.35, opacity: 0 },
+        'stream-2': { x: -260, y: 80,  rotation: 0, scale: 0.35, opacity: 0 },
+        'stream-3': { x: 260,  y: -80, rotation: 0, scale: 0.35, opacity: 0 },
+        'stream-4': { x: -260, y: -80, rotation: 0, scale: 0.35, opacity: 0 },
+        'stream-5': { x: 0,    y: 190, rotation: 0, scale: 0.35, opacity: 0 }
+      };
+
+      Object.keys(codeTargets).forEach((key, idx) => {
+        const el = sectionEl.querySelector('[data-code="' + key + '"]');
+        if (el) {
+          tl.to(el, {
+            x: codeTargets[key].x,
+            y: codeTargets[key].y,
+            rotation: 0,
+            scale: codeTargets[key].scale,
+            opacity: 0,
+            ease: 'power2.inOut',
+            duration: 0.65
+          }, idx * 0.04);
+        }
+      });
+
+      // Retract outer circuit traces cleanly into the monitor bus
+      traces.forEach((trace, idx) => {
+        const length = trace.getTotalLength ? trace.getTotalLength() : 300;
+        tl.to(trace, {
+          strokeDashoffset: -length * 0.65,
+          opacity: 0.35,
+          ease: 'power2.inOut',
+          duration: 0.7
+        }, 0.1 + idx * 0.02);
+      });
+
+      // Phase 3: Assemble Digital E-Commerce Storefront UI inside the CRT Monitor
+      Object.keys(uiStartVectors).forEach((uiKey, idx) => {
+        const el = sectionEl.querySelector('[data-ui-part="' + uiKey + '"]');
+        if (el) {
+          tl.to(el, {
+            x: 0,
+            y: 0,
+            rotation: 0,
+            scale: 1,
+            opacity: 1,
+            ease: 'back.out(1.3)',
+            duration: 0.55
+          }, 0.38 + idx * 0.08);
+        }
+      });
+
+      tl.to({}, { duration: 0.15 });
+    }
+
+    document.addEventListener('DOMContentLoaded', initScrollyStorefront);
+    document.addEventListener('shopify:section:load', function(event) {
+      if (event.detail && event.detail.sectionId === sectionId) {
+        initScrollyStorefront();
+      }
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Scrolly Storefront",
+  "tag": "section",
+  "class": "section-scrollytelling-storefront",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Floating Forge Tag"
+    },
+    {
+      "type": "text",
+      "id": "forge_tag_text",
+      "label": "Forge Tag Text",
+      "default": "Agentic Forge // Verified"
+    },
+    {
+      "type": "select",
+      "id": "forge_tag_position",
+      "label": "Forge Tag Position",
+      "default": "top_right",
+      "options": [
+        {
+          "value": "top_left",
+          "label": "Top Left"
+        },
+        {
+          "value": "top_right",
+          "label": "Top Right"
+        },
+        {
+          "value": "bottom_left",
+          "label": "Bottom Left"
+        },
+        {
+          "value": "bottom_right",
+          "label": "Bottom Right"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Storefront Copy"
+    },
+    {
+      "type": "text",
+      "id": "headline_text",
+      "label": "Bottom Headline Copy",
+      "default": "From raw silicon and agentic Liquid streams to a high-converting digital storefront."
+    },
+    {
+      "type": "header",
+      "content": "Tokyo Night Palette"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background (#1a1b26)",
+      "default": "#1a1b26"
+    },
+    {
+      "type": "color",
+      "id": "bg_dark_color",
+      "label": "Dark Background (#16161e)",
+      "default": "#16161e"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Foreground / Text (#c0caf5)",
+      "default": "#c0caf5"
+    },
+    {
+      "type": "color",
+      "id": "accent_blue",
+      "label": "Primary Blue Accent (#7aa2f7)",
+      "default": "#7aa2f7"
+    },
+    {
+      "type": "color",
+      "id": "accent_purple",
+      "label": "Secondary Purple Accent (#bb9af7)",
+      "default": "#bb9af7"
+    },
+    {
+      "type": "color",
+      "id": "accent_cyan",
+      "label": "Cyan Highlight (#7dcfff)",
+      "default": "#7dcfff"
+    },
+    {
+      "type": "header",
+      "content": "Section Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Scrollytelling Digital Storefront"
+    }
+  ]
+}
+{% endschema %}
