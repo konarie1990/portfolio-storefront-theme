@@ -2,6 +2,31 @@
   B1T-B0T Custom Conversational Assistant Snippet
 {%- endcomment -%}
 {{ 'agent-ui.css' | asset_url | stylesheet_tag }}
+<style>
+  body.cart-drawer-open #root,
+  body.cart-drawer-open #widget-container,
+  body.cart-drawer-open .crt-launcher,
+  body.cart-drawer-open .crt-container,
+  body.overflow-hidden #root,
+  body.overflow-hidden #widget-container,
+  body.overflow-hidden .crt-launcher,
+  body.overflow-hidden .crt-container,
+  body:has(cart-drawer.active) #root,
+  body:has(cart-drawer.active) #widget-container,
+  body:has(cart-drawer.active) .crt-launcher,
+  body:has(cart-drawer.active) .crt-container,
+  body:has(.drawer.active) #root,
+  body:has(.drawer.active) #widget-container,
+  body:has(.drawer.active) .crt-launcher,
+  body:has(.drawer.active) .crt-container {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transform: translateY(100px) !important;
+    z-index: -1 !important;
+  }
+</style>
 <div id="root"></div>
 <script type="module" src="{{ 'agent-ui.js' | asset_url }}"></script>
 <script src="{{ 'b1t-b0t.js' | asset_url }}" defer="defer"></script>

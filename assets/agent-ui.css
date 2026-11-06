@@ -1,2 +1,25 @@
 @keyframes crt-scanline{0%{background-position:0 0}to{background-position:0 100%}}#widget-container{z-index:999999;font-family:Courier New,Courier,monospace;position:fixed;bottom:20px;right:20px}.crt-launcher{color:#39ff14;text-shadow:0 0 6px #39ff14bf;cursor:pointer;background-color:#000;border:2px solid #39ff14;padding:10px 16px;font-family:Courier New,Courier,monospace;font-size:1rem;font-weight:700;box-shadow:0 0 12px #39ff1459}.crt-container{color:#39ff14;text-shadow:0 0 6px #39ff14bf;background-color:#000;border:2px solid #39ff14;flex-direction:column;width:350px;max-width:350px;max-height:500px;padding:16px;font-family:Courier New,Courier,monospace;display:flex;position:relative;overflow-y:auto;box-shadow:0 0 16px #39ff1466}.crt-container:after{content:"";pointer-events:none;background:repeating-linear-gradient(#0000 0 2px,#39ff141f 3px,#00000059 4px) 0 0/100% 8px;animation:8s linear infinite crt-scanline;position:absolute;inset:0}.crt-header{border-bottom:1px dashed #39ff14;align-items:center;gap:10px;margin-bottom:10px;padding-bottom:10px;display:flex}.crt-sprite{width:48px;height:48px;image-rendering:pixelated;border:1px solid #39ff14;flex-shrink:0}.crt-title{flex:1;min-width:0}.crt-title h1{margin:0 0 4px;font-size:.85rem}.crt-status{opacity:.85;font-size:.7rem}.crt-close{color:#39ff14;text-shadow:inherit;cursor:pointer;background-color:#000;border:1px solid #39ff14;align-self:flex-start;padding:4px 8px;font-family:inherit;font-size:.75rem;font-weight:700}.crt-messages{flex-direction:column;flex:1;gap:8px;min-height:200px;max-height:300px;margin-bottom:12px;display:flex;overflow-y:auto}.crt-message{word-break:break-word;font-size:.85rem;line-height:1.4}.crt-role{font-weight:700}.crt-form{gap:8px;display:flex}.crt-input{color:#39ff14;text-shadow:inherit;background-color:#000;border:1px solid #39ff14;outline:none;flex:1;padding:8px 10px;font-family:inherit;font-size:.85rem}.crt-button{color:#39ff14;text-shadow:inherit;cursor:pointer;background-color:#000;border:1px solid #39ff14;padding:8px 12px;font-family:inherit;font-size:.85rem;font-weight:700}.crt-button:disabled{opacity:.5;cursor:not-allowed}
 /*$vite$:1*/
+body.cart-drawer-open #root,
+body.cart-drawer-open #widget-container,
+body.cart-drawer-open .crt-launcher,
+body.cart-drawer-open .crt-container,
+body.overflow-hidden #root,
+body.overflow-hidden #widget-container,
+body.overflow-hidden .crt-launcher,
+body.overflow-hidden .crt-container,
+body:has(cart-drawer.active) #root,
+body:has(cart-drawer.active) #widget-container,
+body:has(cart-drawer.active) .crt-launcher,
+body:has(cart-drawer.active) .crt-container,
+body:has(.drawer.active) #root,
+body:has(.drawer.active) #widget-container,
+body:has(.drawer.active) .crt-launcher,
+body:has(.drawer.active) .crt-container {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transform: translateY(100px) !important;
+  z-index: -1 !important;
+}
