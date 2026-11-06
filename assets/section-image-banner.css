@@ -147,6 +147,32 @@
   left: 0;
   top: 0;
   width: 100%;
+  overflow: hidden;
+}
+
+.banner__media[data-scroll-zoom] {
+  overflow: hidden;
+}
+
+.banner__media[data-scroll-zoom] img,
+.sticky-zoom-wrapper .banner__media img {
+  will-change: transform;
+  transform-origin: center center;
+}
+
+.sticky-zoom-wrapper {
+  position: relative;
+}
+
+.sticky-zoom-wrapper .banner {
+  position: sticky;
+  top: var(--header-offset, 106px);
+  height: calc(100vh - var(--header-offset, 106px));
+  overflow: hidden;
+}
+
+.sticky-zoom-wrapper .banner.scroll-reveal {
+  transform: none;
 }
 
 .banner__media-half {

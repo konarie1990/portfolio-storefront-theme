@@ -1,0 +1,651 @@
+{%- comment -%}
+  Reverse Interview Modal & Sticky "Hire Me" Floating Bubble
+  Designed for Tokyo Night aesthetic and automated lead capture.
+{%- endcomment -%}
+
+{%- if section.settings.enable_modal -%}
+  <aside 
+    id="ReverseInterviewOverlay" 
+    class="rim-overlay rim-hidden" 
+    role="dialog" 
+    aria-modal="true" 
+    aria-labelledby="rim-title"
+    aria-describedby="rim-subtitle"
+  >
+    <div class="rim-modal-card">
+      <button type="button" class="rim-close-btn" id="RimCloseBtn" aria-label="Close application dialog">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="rim-header">
+        <span class="rim-badge">{{ section.settings.badge_text }}</span>
+        <h2 id="rim-title" class="rim-title">{{ section.settings.modal_title }}</h2>
+        <p id="rim-subtitle" class="rim-subtitle">{{ section.settings.modal_subtitle }}</p>
+      </div>
+
+      <div id="RimFormContainer">
+        {%- form 'contact', id: 'ReverseInterviewForm', class: 'rim-form' -%}
+          <div class="rim-form-status" id="RimFormSuccess" style="display: none;">
+            <div class="rim-success-icon">✓</div>
+            <h3>Inquiry Received!</h3>
+            <p>Thanks for reaching out! I've received your note and will review your team's role details. I'll get back to you directly via email soon.</p>
+          </div>
+
+          <div class="rim-fields-wrap" id="RimFieldsWrap">
+            <div class="rim-field-row">
+              <div class="rim-field">
+                <label for="RimCompany">Company Name <span class="rim-required">*</span></label>
+                <input 
+                  type="text" 
+                  id="RimCompany" 
+                  name="contact[company]" 
+                  placeholder="e.g. Stripe, Gymshark, or High-Growth DTC Brand" 
+                  required
+                >
+              </div>
+              <div class="rim-field">
+                <label for="RimContactName">Contact Name <span class="rim-required">*</span></label>
+                <input 
+                  type="text" 
+                  id="RimContactName" 
+                  name="contact[name]" 
+                  placeholder="e.g. Alex Morgan (VP of Engineering / Hiring Manager)" 
+                  required
+                >
+              </div>
+            </div>
+
+            <div class="rim-field-row">
+              <div class="rim-field">
+                <label for="RimEmail">Work Email <span class="rim-required">*</span></label>
+                <input 
+                  type="email" 
+                  id="RimEmail" 
+                  name="contact[email]" 
+                  placeholder="name@company.com" 
+                  required
+                >
+              </div>
+              <div class="rim-field">
+                <label for="RimPhone">Phone Number</label>
+                <input 
+                  type="tel" 
+                  id="RimPhone" 
+                  name="contact[phone]" 
+                  placeholder="+1 (555) 019-2834"
+                >
+              </div>
+            </div>
+
+            <div class="rim-field">
+              <label for="RimReason">Role Details & Team Info <span class="rim-required">*</span></label>
+              <textarea 
+                id="RimReason" 
+                name="contact[body]" 
+                rows="3" 
+                placeholder="Tell me about your tech stack, team structure, and the engineering role you're looking to fill..." 
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" class="rim-submit-btn" id="RimSubmitBtn">
+              <span>Send Inquiry</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+          </div>
+        {%- endform -%}
+      </div>
+
+      <div class="rim-footer">
+        <p>Prefer to review my specs first? <a href="{{ section.settings.resume_url | default: '/pages/about-me' }}" class="rim-resume-link">View My Resume & Experience →</a></p>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Sticky Floating "Hire Me" Bubble -->
+  <button 
+    type="button" 
+    id="HireMeBubble" 
+    class="rim-hire-bubble rim-bubble-hidden" 
+    aria-label="Open Reverse Interview Application"
+  >
+    <span class="rim-bubble-pulse"></span>
+    <span class="rim-bubble-icon">⚡</span>
+    <span class="rim-bubble-text">{{ section.settings.bubble_text }}</span>
+  </button>
+
+  <style>
+    /* Tokyo Night Color Constants */
+    :root {
+      --rim-bg: #1a1b26;
+      --rim-bg-dark: #16161e;
+      --rim-text: #c0caf5;
+      --rim-text-muted: #7aa2f7;
+      --rim-accent-blue: #7aa2f7;
+      --rim-accent-purple: #bb9af7;
+      --rim-cyan: #7dcfff;
+      --rim-green: #9ece6a;
+      --rim-red: #f7768e;
+      --rim-border: rgba(122, 162, 247, 0.25);
+    }
+
+    /* Modal Overlay */
+    .rim-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 999990;
+      background: rgba(22, 22, 30, 0.78);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .rim-overlay.rim-hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    /* Modal Card */
+    .rim-modal-card {
+      position: relative;
+      width: 100%;
+      max-width: 580px;
+      background: var(--rim-bg);
+      border: 1px solid var(--rim-border);
+      border-radius: 16px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.65), 0 0 35px rgba(122, 162, 247, 0.12);
+      padding: 32px;
+      color: var(--rim-text);
+      transform: translateY(0) scale(1);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .rim-overlay.rim-hidden .rim-modal-card {
+      transform: translateY(20px) scale(0.96);
+    }
+
+    /* Close Button */
+    .rim-close-btn {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--rim-text);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .rim-close-btn:hover {
+      background: rgba(247, 118, 142, 0.2);
+      border-color: var(--rim-red);
+      color: var(--rim-red);
+      transform: rotate(90deg);
+    }
+
+    /* Header */
+    .rim-header {
+      margin-bottom: 24px;
+      text-align: left;
+    }
+
+    .rim-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--rim-accent-blue);
+      background: rgba(122, 162, 247, 0.12);
+      border: 1px solid rgba(122, 162, 247, 0.3);
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+
+    .rim-title {
+      font-size: 26px;
+      font-weight: 800;
+      color: #ffffff;
+      margin: 0 0 8px 0;
+      line-height: 1.2;
+    }
+
+    .rim-subtitle {
+      font-size: 14px;
+      line-height: 1.5;
+      color: #a9b1d6;
+      margin: 0;
+    }
+
+    /* Form Fields */
+    .rim-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .rim-field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 600px) {
+      .rim-field-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      .rim-modal-card {
+        padding: 24px 18px;
+      }
+    }
+
+    .rim-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      text-align: left;
+    }
+
+    .rim-field label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: #7aa2f7;
+    }
+
+    .rim-required {
+      color: var(--rim-red);
+    }
+
+    .rim-field input,
+    .rim-field textarea {
+      width: 100%;
+      background: var(--rim-bg-dark);
+      border: 1px solid var(--rim-border);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 14px;
+      color: #ffffff;
+      font-family: inherit;
+      box-sizing: border-box;
+      transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+    }
+
+    .rim-field input::placeholder,
+    .rim-field textarea::placeholder {
+      color: #565f89;
+      font-size: 13px;
+    }
+
+    .rim-field input:focus,
+    .rim-field textarea:focus {
+      outline: none;
+      border-color: var(--rim-accent-blue);
+      box-shadow: 0 0 0 3px rgba(122, 162, 247, 0.25);
+      background: #1f2335;
+    }
+
+    /* Submit Button */
+    .rim-submit-btn {
+      width: 100%;
+      background: linear-gradient(135deg, #7aa2f7 0%, #bb9af7 100%);
+      color: #16161e;
+      border: none;
+      border-radius: 8px;
+      padding: 13px 20px;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+      margin-top: 8px;
+    }
+
+    .rim-submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(122, 162, 247, 0.4);
+    }
+
+    .rim-submit-btn:active {
+      transform: translateY(0);
+    }
+
+    /* Success Status */
+    .rim-form-status {
+      text-align: center;
+      padding: 24px 16px;
+      background: rgba(158, 206, 106, 0.08);
+      border: 1px solid rgba(158, 206, 106, 0.3);
+      border-radius: 12px;
+    }
+
+    .rim-success-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--rim-green);
+      color: #16161e;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .rim-form-status h3 {
+      color: #ffffff;
+      margin: 0 0 8px 0;
+      font-size: 20px;
+    }
+
+    .rim-form-status p {
+      color: #a9b1d6;
+      font-size: 14px;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* Footer */
+    .rim-footer {
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      text-align: center;
+      font-size: 13px;
+      color: #7982a9;
+    }
+
+    .rim-resume-link {
+      color: var(--rim-cyan);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s, text-decoration 0.2s;
+    }
+
+    .rim-resume-link:hover {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+
+    /* Sticky Floating "Hire Me" Bubble */
+    .rim-hire-bubble {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 999980;
+      background: linear-gradient(135deg, #7aa2f7 0%, #bb9af7 100%);
+      color: #16161e;
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      padding: 12px 20px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(122, 162, 247, 0.35), 0 0 15px rgba(187, 154, 247, 0.3);
+      transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.25s ease, visibility 0.25s ease;
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .rim-hire-bubble.rim-bubble-hidden {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(16px) scale(0.85);
+      pointer-events: none;
+    }
+
+    .rim-hire-bubble:hover {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 12px 30px rgba(122, 162, 247, 0.55), 0 0 25px rgba(187, 154, 247, 0.45);
+    }
+
+    @media (max-width: 768px) {
+      .rim-hire-bubble {
+        bottom: 20px;
+        left: 20px;
+        right: auto;
+      }
+    }
+
+    .rim-bubble-pulse {
+      position: absolute;
+      inset: -4px;
+      border-radius: 999px;
+      border: 2px solid var(--rim-cyan);
+      opacity: 0;
+      animation: rim-pulse-animation 2.8s infinite;
+      pointer-events: none;
+    }
+
+    @keyframes rim-pulse-animation {
+      0% {
+        transform: scale(0.95);
+        opacity: 0.8;
+      }
+      50% {
+        transform: scale(1.15);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1.15);
+        opacity: 0;
+      }
+    }
+
+    .rim-bubble-icon {
+      font-size: 16px;
+    }
+  </style>
+
+  <script>
+    (function () {
+      const STORAGE_KEY = 'ron_reverse_interview_dismissed';
+      const SUBMITTED_KEY = 'ron_reverse_interview_submitted';
+      const DELAY_MS = {{ section.settings.trigger_delay | default: 4 }} * 1000;
+
+      const overlay = document.getElementById('ReverseInterviewOverlay');
+      const closeBtn = document.getElementById('RimCloseBtn');
+      const bubble = document.getElementById('HireMeBubble');
+      const form = document.getElementById('ReverseInterviewForm');
+      const fieldsWrap = document.getElementById('RimFieldsWrap');
+      const successBlock = document.getElementById('RimFormSuccess');
+
+      if (!overlay || !bubble) return;
+
+      function openModal() {
+        overlay.classList.remove('rim-hidden');
+        bubble.classList.add('rim-bubble-hidden');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal(markDismissed = true) {
+        overlay.classList.add('rim-hidden');
+        bubble.classList.remove('rim-bubble-hidden');
+        document.body.style.overflow = '';
+        if (markDismissed) {
+          try {
+            localStorage.setItem(STORAGE_KEY, 'true');
+          } catch (e) {
+            // LocalStorage disabled or unavailable
+          }
+        }
+      }
+
+      // Check initial state
+      let isDismissed = false;
+      let isSubmitted = false;
+      try {
+        isDismissed = localStorage.getItem(STORAGE_KEY) === 'true';
+        isSubmitted = localStorage.getItem(SUBMITTED_KEY) === 'true';
+      } catch (e) {
+        // Fallback
+      }
+
+      if (isDismissed || isSubmitted) {
+        // Render sticky bubble immediately if dismissed previously
+        bubble.classList.remove('rim-bubble-hidden');
+      } else {
+        // Trigger auto popup after delay
+        setTimeout(function () {
+          try {
+            if (localStorage.getItem(STORAGE_KEY) !== 'true' && localStorage.getItem(SUBMITTED_KEY) !== 'true') {
+              openModal();
+            }
+          } catch (e) {
+            openModal();
+          }
+        }, DELAY_MS);
+      }
+
+      // Event Listeners
+      closeBtn.addEventListener('click', function () {
+        closeModal(true);
+      });
+
+      overlay.addEventListener('click', function (e) {
+        if (e.target === overlay) {
+          closeModal(true);
+        }
+      });
+
+      bubble.addEventListener('click', function () {
+        openModal();
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !overlay.classList.contains('rim-hidden')) {
+          closeModal(true);
+        }
+      });
+
+      // AJAX form submission handling
+      if (form) {
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          const submitBtn = document.getElementById('RimSubmitBtn');
+          if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.style.opacity = '0.6';
+            submitBtn.querySelector('span').textContent = 'Submitting Application...';
+          }
+
+          const formData = new FormData(form);
+          fetch(form.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+              'Accept': 'application/json, text/javascript, */*; q=0.01',
+              'X-Requested-With': 'XMLHttpRequest'
+            }
+          })
+          .then(function () {
+            if (fieldsWrap) fieldsWrap.style.display = 'none';
+            if (successBlock) successBlock.style.display = 'block';
+            try {
+              localStorage.setItem(SUBMITTED_KEY, 'true');
+              localStorage.setItem(STORAGE_KEY, 'true');
+            } catch (err) {}
+            setTimeout(function () {
+              closeModal(true);
+            }, 5000);
+          })
+          .catch(function () {
+            // Fallback: standard submission if AJAX blocked
+            form.submit();
+          });
+        });
+      }
+    })();
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Reverse Interview Modal",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_modal",
+      "label": "Enable Reverse Interview Lead Capture",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "trigger_delay",
+      "min": 2,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "label": "Auto-popup Delay",
+      "default": 4
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "CONTACT RON HAJEWSKI"
+    },
+    {
+      "type": "text",
+      "id": "modal_title",
+      "label": "Modal Title",
+      "default": "Looking for a Shopify engineer?"
+    },
+    {
+      "type": "textarea",
+      "id": "modal_subtitle",
+      "label": "Modal Subtitle",
+      "default": "I'm a senior frontend & Shopify developer currently open to full-time engineering roles. If you're looking for an experienced developer to join your internal product team, send me a note below!"
+    },
+    {
+      "type": "text",
+      "id": "bubble_text",
+      "label": "Floating Bubble Text",
+      "default": "Hire Me"
+    },
+    {
+      "type": "text",
+      "id": "resume_url",
+      "label": "Resume Page Link",
+      "default": "/pages/about-me"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Reverse Interview Modal"
+    }
+  ]
+}
+{% endschema %}

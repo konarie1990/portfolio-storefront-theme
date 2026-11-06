@@ -1,0 +1,7 @@
+{%- comment -%}
+  B1T-B0T Custom Conversational Assistant Snippet
+{%- endcomment -%}
+{{ 'agent-ui.css' | asset_url | stylesheet_tag }}
+<div id="root"></div>
+<script type="module" src="{{ 'agent-ui.js' | asset_url }}"></script>
+<script src="{{ 'b1t-b0t.js' | asset_url }}" defer="defer"></script>

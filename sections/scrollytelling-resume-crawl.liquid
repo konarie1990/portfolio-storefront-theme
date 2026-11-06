@@ -1,0 +1,680 @@
+{% comment %}
+  Section 3: Scrollytelling Resume Crawl & CTA (Tokyo Night Grand Finale)
+  Description: Star Wars-inspired 3D perspective crawl mapped to GSAP ScrollTrigger with CRT glitch/flicker typography and an interactive neon-glitch CTA button.
+{% endcomment %}
+
+{%- style -%}
+  #ScrollyCrawl-{{ section.id }} {
+    --tn-bg: {{ section.settings.bg_color | default: '#1a1b26' }};
+    --tn-bg-dark: {{ section.settings.bg_dark_color | default: '#16161e' }};
+    --tn-fg: {{ section.settings.text_color | default: '#c0caf5' }};
+    --tn-blue: {{ section.settings.accent_blue | default: '#7aa2f7' }};
+    --tn-purple: {{ section.settings.accent_purple | default: '#bb9af7' }};
+    --tn-cyan: {{ section.settings.accent_cyan | default: '#7dcfff' }};
+    --tn-green: #9ece6a;
+    --tn-red: #f7768e;
+    --sticky-header-offset: 98px;
+
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse at 50% 15%, rgba(187, 154, 247, 0.14) 0%, transparent 55%),
+      radial-gradient(circle at 50% 75%, var(--tn-bg) 0%, var(--tn-bg-dark) 100%);
+    color: var(--tn-fg);
+    padding-top: calc(var(--sticky-header-offset) + {{ section.settings.padding_top }}px);
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    user-select: none;
+  }
+
+  /* Deep Space Starfield & Horizon Grid */
+  #ScrollyCrawl-{{ section.id }} .sc-starfield {
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(1.5px 1.5px at 18% 22%, var(--tn-cyan), transparent),
+      radial-gradient(1px 1px at 74% 16%, var(--tn-fg), transparent),
+      radial-gradient(2px 2px at 42% 68%, var(--tn-purple), transparent),
+      radial-gradient(1.5px 1.5px at 85% 58%, var(--tn-blue), transparent),
+      radial-gradient(1px 1px at 28% 82%, var(--tn-green), transparent),
+      radial-gradient(1.5px 1.5px at 62% 36%, var(--tn-cyan), transparent),
+      linear-gradient(to bottom, transparent 55%, rgba(122, 162, 247, 0.07) 100%);
+    background-size: 320px 320px, 260px 260px, 400px 400px, 290px 290px, 350px 350px, 240px 240px, 100% 100%;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.75;
+  }
+
+  /* Top & Bottom Horizon Vignette Mask for Authentic Star Wars Crawl Fade-Out */
+  #ScrollyCrawl-{{ section.id }} .sc-horizon-fade {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      var(--tn-bg-dark) 0%,
+      rgba(22, 22, 30, 0.85) 14%,
+      transparent 35%,
+      transparent 72%,
+      rgba(22, 22, 30, 0.92) 92%,
+      var(--tn-bg-dark) 100%
+    );
+    pointer-events: none;
+    z-index: 4;
+  }
+
+  /* CRT Scanline Overlay */
+  #ScrollyCrawl-{{ section.id }} .sc-crt-scanlines {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      rgba(22, 22, 30, 0) 50%, 
+      rgba(22, 22, 30, 0.38) 50%
+    );
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 10;
+    opacity: 0.45;
+  }
+
+  /* Top Telemetry Bar */
+  #ScrollyCrawl-{{ section.id }} .sc-hud-bar {
+    position: relative;
+    margin: 1.75rem auto 0;
+    width: min(88vw, 1100px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--tn-cyan);
+    z-index: 8;
+    opacity: 0.85;
+  }
+
+  #ScrollyCrawl-{{ section.id }} .sc-progress-track {
+    flex: 1;
+    height: 2px;
+    margin: 0 1.25rem;
+    background: rgba(192, 202, 245, 0.14);
+    position: relative;
+    overflow: hidden;
+  }
+
+  #ScrollyCrawl-{{ section.id }} .sc-progress-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, var(--tn-cyan), var(--tn-purple), var(--tn-red));
+    transform-origin: left center;
+    transform: scaleX(0);
+  }
+
+  /* 3D Perspective Stage (Star Wars Crawl Container) */
+  #ScrollyCrawl-{{ section.id }} .sc-perspective-stage {
+    position: relative;
+    flex: 1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 420px;
+    -webkit-perspective: 420px;
+    perspective-origin: 50% 20%;
+    -webkit-perspective-origin: 50% 20%;
+    overflow: hidden;
+    z-index: 3;
+  }
+
+  #ScrollyCrawl-{{ section.id }} .sc-crawl-plane {
+    width: min(92vw, 1080px);
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    transform-origin: 50% 50%;
+    will-change: transform, opacity;
+    text-align: center;
+    padding: 0 1rem;
+  }
+
+  #ScrollyCrawl-{{ section.id }} .sc-crawl-kicker {
+    display: inline-block;
+    font-size: clamp(0.75rem, 1.4vw, 1rem);
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--tn-purple);
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 14px rgba(187, 154, 247, 0.7);
+  }
+
+  /* Massive 3D Crawl H1 Typography + Retro CRT Flicker & Glitch */
+  #ScrollyCrawl-{{ section.id }} .sc-crawl-h1 {
+    position: relative;
+    margin: 0;
+    font-size: clamp(2.4rem, 6.8vw, 6.25rem);
+    font-weight: 900;
+    line-height: 1.08;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--tn-cyan);
+    text-shadow:
+      -3px 0 var(--tn-red),
+      3px 0 var(--tn-blue),
+      0 0 22px rgba(125, 207, 255, 0.75),
+      0 0 48px rgba(122, 162, 247, 0.45);
+    animation: scCrtTextGlitch-{{ section.id }} 1.4s steps(2, start) infinite;
+  }
+
+  @keyframes scCrtTextGlitch-{{ section.id }} {
+    0%, 100% {
+      opacity: 1;
+      text-shadow:
+        -3px 0 var(--tn-red),
+        3px 0 var(--tn-blue),
+        0 0 22px rgba(125, 207, 255, 0.75),
+        0 0 48px rgba(122, 162, 247, 0.45);
+      filter: hue-rotate(0deg);
+    }
+    15% {
+      opacity: 0.92;
+      text-shadow:
+        4px -1px var(--tn-purple),
+        -4px 1px var(--tn-green),
+        0 0 28px var(--tn-cyan);
+    }
+    30% {
+      opacity: 0.98;
+      text-shadow:
+        -2px 0 var(--tn-red),
+        2px 0 var(--tn-cyan),
+        0 0 16px var(--tn-blue);
+    }
+    52% {
+      opacity: 0.76;
+      text-shadow:
+        6px 0 var(--tn-red),
+        -6px 0 var(--tn-blue),
+        0 0 36px var(--tn-purple);
+    }
+    70% {
+      opacity: 1;
+      text-shadow:
+        -3px 1px var(--tn-purple),
+        3px -1px var(--tn-cyan),
+        0 0 24px var(--tn-green);
+    }
+    85% {
+      opacity: 0.89;
+      text-shadow:
+        -4px 0 var(--tn-red),
+        4px 0 var(--tn-blue),
+        0 0 30px var(--tn-cyan);
+    }
+  }
+
+  /* Bottom Anchored CTA Dock */
+  #ScrollyCrawl-{{ section.id }} .sc-cta-dock {
+    position: relative;
+    z-index: 9;
+    padding: 1.5rem 1.25rem 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.9rem;
+  }
+
+  /* Intense Flickery Neon-Glow Glitch CTA Button (Idle & Hover) */
+  #ScrollyCrawl-{{ section.id }} .sc-glitch-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1.15rem 2.85rem;
+    font-family: inherit;
+    font-size: clamp(0.95rem, 1.5vw, 1.2rem);
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--tn-fg);
+    background: rgba(22, 22, 30, 0.92);
+    border: 2px solid var(--tn-cyan);
+    border-radius: 4px;
+    cursor: pointer;
+    overflow: visible;
+    box-shadow:
+      0 0 14px rgba(125, 207, 255, 0.55),
+      0 0 32px rgba(122, 162, 247, 0.35),
+      inset 0 0 14px rgba(125, 207, 255, 0.25);
+    animation: scBtnIdleFlicker-{{ section.id }} 2.2s infinite;
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background 0.2s ease, border-color 0.2s ease;
+  }
+
+  /* Chromatic Aberration Glitch Layers on Button */
+  #ScrollyCrawl-{{ section.id }} .sc-glitch-btn::before,
+  #ScrollyCrawl-{{ section.id }} .sc-glitch-btn::after {
+    content: attr(data-text);
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    border-radius: 4px;
+    opacity: 0.75;
+  }
+
+  #ScrollyCrawl-{{ section.id }} .sc-glitch-btn::before {
+    color: var(--tn-red);
+    border: 1px solid var(--tn-red);
+    transform: translate(-2px, -1px);
+    clip-path: polygon(0 0, 100% 0, 100% 42%, 0 42%);
+    animation: scBtnGlitchTop-{{ section.id }} 1.8s infinite linear alternate-reverse;
+  }
+
+  #ScrollyCrawl-{{ section.id }} .sc-glitch-btn::after {
+    color: var(--tn-purple);
+    border: 1px solid var(--tn-blue);
+    transform: translate(2px, 1px);
+    clip-path: polygon(0 58%, 100% 58%, 100% 100%, 0 100%);
+    animation: scBtnGlitchBottom-{{ section.id }} 1.5s infinite linear alternate-reverse;
+  }
+
+  /* Intense Hover State */
+  #ScrollyCrawl-{{ section.id }} .sc-glitch-btn:hover,
+  #ScrollyCrawl-{{ section.id }} .sc-glitch-btn:focus-visible {
+    color: var(--tn-bg-dark);
+    background: var(--tn-cyan);
+    border-color: var(--tn-fg);
+    transform: scale(1.06) translateY(-2px);
+    box-shadow:
+      -4px 0 18px var(--tn-red),
+      4px 0 18px var(--tn-purple),
+      0 0 28px var(--tn-cyan),
+      0 0 64px rgba(125, 207, 255, 0.85);
+    animation: scBtnHoverFrenzy-{{ section.id }} 0.28s steps(2, end) infinite;
+    outline: none;
+  }
+
+  #ScrollyCrawl-{{ section.id }} .sc-glitch-btn:hover::before,
+  #ScrollyCrawl-{{ section.id }} .sc-glitch-btn:hover::after {
+    opacity: 1;
+    background: rgba(22, 22, 30, 0.15);
+  }
+
+  /* When Scroll Climax Reaches Bottom, Amplify CTA Beacon */
+  #ScrollyCrawl-{{ section.id }}.is-climax .sc-glitch-btn {
+    border-color: var(--tn-green);
+    box-shadow:
+      0 0 20px var(--tn-green),
+      0 0 45px var(--tn-cyan),
+      0 0 80px rgba(187, 154, 247, 0.6);
+  }
+
+  @keyframes scBtnIdleFlicker-{{ section.id }} {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+      opacity: 1;
+      box-shadow:
+        0 0 14px rgba(125, 207, 255, 0.55),
+        0 0 32px rgba(122, 162, 247, 0.35),
+        inset 0 0 14px rgba(125, 207, 255, 0.25);
+    }
+    20%, 24%, 55% {
+      opacity: 0.78;
+      box-shadow:
+        -3px 0 12px var(--tn-red),
+        3px 0 12px var(--tn-purple),
+        inset 0 0 6px var(--tn-cyan);
+    }
+  }
+
+  @keyframes scBtnGlitchTop-{{ section.id }} {
+    0%, 80%, 100% { transform: translate(0, 0); opacity: 0; }
+    82% { transform: translate(-4px, -2px); opacity: 0.9; }
+    86% { transform: translate(4px, 1px); opacity: 0.7; }
+    90% { transform: translate(-2px, 2px); opacity: 0.85; }
+  }
+
+  @keyframes scBtnGlitchBottom-{{ section.id }} {
+    0%, 75%, 100% { transform: translate(0, 0); opacity: 0; }
+    78% { transform: translate(4px, 2px); opacity: 0.9; }
+    84% { transform: translate(-5px, -1px); opacity: 0.75; }
+    92% { transform: translate(3px, -2px); opacity: 0.85; }
+  }
+
+  @keyframes scBtnHoverFrenzy-{{ section.id }} {
+    0% {
+      transform: scale(1.06) translate(0, -2px);
+      text-shadow: -2px 0 var(--tn-red), 2px 0 var(--tn-blue);
+    }
+    25% {
+      transform: scale(1.07) translate(-2px, -1px);
+      text-shadow: 2px 0 var(--tn-purple), -2px 0 var(--tn-red);
+    }
+    50% {
+      transform: scale(1.05) translate(2px, -3px);
+      text-shadow: -3px 0 var(--tn-blue), 3px 0 var(--tn-red);
+    }
+    75% {
+      transform: scale(1.06) translate(-1px, -2px);
+      text-shadow: 2px 1px var(--tn-red), -2px -1px var(--tn-purple);
+    }
+    100% {
+      transform: scale(1.06) translate(0, -2px);
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    #ScrollyCrawl-{{ section.id }} {
+      --sticky-header-offset: 65px;
+    }
+
+    #ScrollyCrawl-{{ section.id }} .sc-perspective-stage {
+      perspective: 300px;
+      -webkit-perspective: 300px;
+    }
+
+    #ScrollyCrawl-{{ section.id }} .sc-glitch-btn {
+      width: min(88vw, 340px);
+      padding: 1rem 1.5rem;
+    }
+  }
+{%- endstyle -%}
+
+<section id="ScrollyCrawl-{{ section.id }}" class="scrolly-crawl-section" data-section-id="{{ section.id }}">
+  <div class="sc-starfield"></div>
+  <div class="sc-horizon-fade"></div>
+  <div class="sc-crt-scanlines"></div>
+
+  <!-- Top Telemetry Bar -->
+  <div class="sc-hud-bar">
+    <span>TRANSMISSION // FINALE-03</span>
+    <div class="sc-progress-track">
+      <div class="sc-progress-fill" data-progress-fill></div>
+    </div>
+    <span data-status-readout>CRAWL: INITIALIZING</span>
+  </div>
+
+  <!-- 3D Perspective Star Wars Crawl Stage -->
+  <div class="sc-perspective-stage">
+    <div class="sc-crawl-plane" data-crawl-plane>
+      {%- if section.settings.subheading_text != blank -%}
+        <span class="sc-crawl-kicker">{{ section.settings.subheading_text | escape }}</span>
+      {%- endif -%}
+      <h1 class="sc-crawl-h1">
+        {{ section.settings.crawl_text | newline_to_br }}
+      </h1>
+    </div>
+  </div>
+
+  <!-- Anchored Action Button Dock -->
+  <div class="sc-cta-dock" data-cta-dock>
+    <a
+      href="{{ section.settings.button_link | default: '#' }}"
+      class="sc-glitch-btn"
+      data-text="{{ section.settings.button_label | escape }}"
+    >
+      <span>{{ section.settings.button_label | escape }}</span>
+    </a>
+  </div>
+</section>
+
+<!-- Load Lenis, GSAP & ScrollTrigger from CDN if not already loaded -->
+<script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+
+<script>
+  (function() {
+    const sectionId = '{{ section.id }}';
+    const sectionSelector = '#ScrollyCrawl-' + sectionId;
+
+    function ensureLenisSmoothScroll() {
+      if (window.__tnLenisInstance || typeof Lenis === 'undefined' || typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+        return;
+      }
+      const lenis = new Lenis({
+        lerp: 0.08,
+        wheelMultiplier: 0.95,
+        smoothWheel: true,
+        syncTouch: false
+      });
+      window.__tnLenisInstance = lenis;
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add(function(time) {
+        lenis.raf(time * 1000);
+      });
+      gsap.ticker.lagSmoothing(0);
+    }
+
+    function initScrollyCrawl() {
+      if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined' || typeof Lenis === 'undefined') {
+        setTimeout(initScrollyCrawl, 50);
+        return;
+      }
+
+      gsap.registerPlugin(ScrollTrigger);
+      ensureLenisSmoothScroll();
+
+      const sectionEl = document.querySelector(sectionSelector);
+      if (!sectionEl) return;
+
+      // Clean up existing ScrollTrigger instances on Shopify Theme Editor re-renders
+      ScrollTrigger.getAll().forEach((st) => {
+        if (st.vars && st.vars.id === 'scrolly-crawl-' + sectionId) {
+          st.kill();
+        }
+      });
+
+      const crawlPlane = sectionEl.querySelector('[data-crawl-plane]');
+      const ctaDock = sectionEl.querySelector('[data-cta-dock]');
+      const progressFill = sectionEl.querySelector('[data-progress-fill]');
+      const statusReadout = sectionEl.querySelector('[data-status-readout]');
+
+      // Initial 3D Star Wars Crawl posture: tilted back in 3D space below the lower horizon
+      gsap.set(crawlPlane, {
+        rotateX: 62,
+        yPercent: 115,
+        z: -120,
+        scale: 1.25,
+        opacity: 0.15
+      });
+
+      gsap.set(ctaDock, {
+        y: 30,
+        opacity: 0.75
+      });
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          id: 'scrolly-crawl-' + sectionId,
+          trigger: sectionEl,
+          pin: true,
+          pinSpacing: true,
+          start: 'top top',
+          end: '+=2200',
+          scrub: 1.2,
+          anticipatePin: 1,
+          onUpdate: (self) => {
+            if (progressFill) {
+              gsap.set(progressFill, { scaleX: self.progress });
+            }
+
+            if (self.progress >= 0.85) {
+              if (!sectionEl.classList.contains('is-climax')) {
+                sectionEl.classList.add('is-climax');
+                if (statusReadout) statusReadout.textContent = 'CRAWL: LOCKED // READY';
+              }
+            } else {
+              if (sectionEl.classList.contains('is-climax')) {
+                sectionEl.classList.remove('is-climax');
+              }
+              if (statusReadout) {
+                statusReadout.textContent = self.progress > 0.03
+                  ? 'TRANSMITTING (' + Math.round(self.progress * 100) + '%)'
+                  : 'CRAWL: INITIALIZING';
+              }
+            }
+          }
+        }
+      });
+
+      // Stage 1: Crawl rises from bottom foreground into commanding center-screen 3D plane
+      tl.to(crawlPlane, {
+        rotateX: 52,
+        yPercent: 5,
+        z: 0,
+        scale: 1,
+        opacity: 1,
+        ease: 'power1.out',
+        duration: 0.55
+      }, 0);
+
+      // Stage 2: Crawl continues receding upward toward the deep-space vanishing point while staying legible above CTA
+      tl.to(crawlPlane, {
+        rotateX: 58,
+        yPercent: -32,
+        z: -160,
+        scale: 0.78,
+        opacity: 0.92,
+        ease: 'none',
+        duration: 0.45
+      }, 0.55);
+
+      // Anchor & energize the prominent CTA dock as the crawl reaches climax
+      tl.to(ctaDock, {
+        y: 0,
+        opacity: 1,
+        scale: 1.04,
+        ease: 'power2.out',
+        duration: 0.4
+      }, 0.45);
+    }
+
+    document.addEventListener('DOMContentLoaded', initScrollyCrawl);
+    document.addEventListener('shopify:section:load', function(event) {
+      if (event.detail && event.detail.sectionId === sectionId) {
+        initScrollyCrawl();
+      }
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Scrolly Resume Crawl",
+  "tag": "section",
+  "class": "section-scrollytelling-resume-crawl",
+  "settings": [
+    {
+      "type": "header",
+      "content": "3D Crawl Typography"
+    },
+    {
+      "type": "text",
+      "id": "subheading_text",
+      "label": "Subheading / Kicker Text",
+      "default": "EPISODE III // AGENTIC ARCHITECT"
+    },
+    {
+      "type": "textarea",
+      "id": "crawl_text",
+      "label": "Main Animated Crawl Text",
+      "default": "CLICK THE CTA BELOW TO VIEW MY RESUME"
+    },
+    {
+      "type": "header",
+      "content": "Action Button (CTA)"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "VIEW RESUME"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "header",
+      "content": "Tokyo Night Palette"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background (#1a1b26)",
+      "default": "#1a1b26"
+    },
+    {
+      "type": "color",
+      "id": "bg_dark_color",
+      "label": "Dark Background (#16161e)",
+      "default": "#16161e"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Foreground / Text (#c0caf5)",
+      "default": "#c0caf5"
+    },
+    {
+      "type": "color",
+      "id": "accent_blue",
+      "label": "Primary Blue Accent (#7aa2f7)",
+      "default": "#7aa2f7"
+    },
+    {
+      "type": "color",
+      "id": "accent_purple",
+      "label": "Secondary Purple Accent (#bb9af7)",
+      "default": "#bb9af7"
+    },
+    {
+      "type": "color",
+      "id": "accent_cyan",
+      "label": "Cyan Highlight (#7dcfff)",
+      "default": "#7dcfff"
+    },
+    {
+      "type": "header",
+      "content": "Section Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Scrollytelling Resume Crawl & CTA"
+    }
+  ]
+}
+{% endschema %}
