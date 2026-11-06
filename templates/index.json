@@ -22,15 +22,15 @@
         "template--18309637636369__6a3bb789-ce10-45f5-ae67-e2063ef8c76b-168016437761699a6e-1": {
           "type": "text",
           "settings": {
-            "text": "With nearly a decade of web development experience—and 6+ years scaling DTC brands—I architect high-performance Shopify storefronts. I bridge meticulous front-end design with robust cloud infrastructure to elevate user experiences and drive revenue. Enjoy the demo store!",
+            "text": "With nearly a decade of web development experience—and 6+ years scaling DTC brands—I architect high-performance Shopify storefronts. I bridge meticulous front-end design with robust cloud infrastructure using AI workflow automation to elevate user experiences and drive revenue. Enjoy the demo store!",
             "text_style": "body"
           }
         },
         "template--18309637636369__6a3bb789-ce10-45f5-ae67-e2063ef8c76b-168016437761699a6e-2": {
           "type": "buttons",
           "settings": {
-            "button_label_1": "EXPLORE MY WORK",
-            "button_link_1": "#functions",
+            "button_label_1": "EXPLORE MY WORKFLOW",
+            "button_link_1": "#architecture",
             "button_style_secondary_1": false,
             "button_label_2": "",
             "button_link_2": "",
@@ -46,6 +46,10 @@
       "custom_css": [],
       "settings": {
         "image": "shopify://shop_images/3c773590-dc62-45f3-bcfa-2b166a474869.jpg",
+        "enable_sticky_zoom": false,
+        "sticky_scroll_distance": 400,
+        "header_offset": 106,
+        "enable_scroll_zoom": false,
         "image_overlay_opacity": 0,
         "image_height": "medium",
         "desktop_content_position": "middle-left",
@@ -56,6 +60,71 @@
         "mobile_content_alignment": "left",
         "stack_images_on_mobile": true,
         "show_text_below": true
+      }
+    },
+    "custom_liquid_LwixEP": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<div id=\"architecture\"> </div>",
+        "color_scheme": "background-1",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "architecture_diagram": {
+      "type": "architecture-diagram",
+      "settings": {
+        "kicker": "SYSTEM ARCHITECTURE // INTERACTIVE",
+        "heading": "How This Storefront Is Built",
+        "subheading": "Click any node in the pipeline below to inspect the tech stack, data flow, and infrastructure components powering this portfolio.",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "rich_text_bEe6kT": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_My6iQM": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "Talk about your brand",
+            "heading_size": "h1"
+          }
+        },
+        "text_mk3LWh": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>"
+          }
+        },
+        "button_6NXBeL": {
+          "type": "button",
+          "settings": {
+            "button_label": "UNDER THE HOOD",
+            "button_link": "#functions",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_My6iQM",
+        "text_mk3LWh",
+        "button_6NXBeL"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 40
       }
     },
     "featured_collection": {
@@ -210,21 +279,13 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
-    },
-    "architecture_diagram": {
-      "type": "architecture-diagram",
-      "settings": {
-        "kicker": "SYSTEM ARCHITECTURE // INTERACTIVE",
-        "heading": "How This Storefront Is Built",
-        "subheading": "Click any node in the pipeline below to inspect the tech stack, data flow, and infrastructure components powering this portfolio.",
-        "padding_top": 60,
-        "padding_bottom": 60
-      }
     }
   },
   "order": [
     "6a3bb789-ce10-45f5-ae67-e2063ef8c76b",
+    "custom_liquid_LwixEP",
     "architecture_diagram",
+    "rich_text_bEe6kT",
     "featured_collection",
     "f1552b18-6017-4231-810d-74e61da22c37",
     "image_with_text_NWepJY",
