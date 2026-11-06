@@ -1,0 +1,956 @@
+{% comment %}
+  Section: Interactive Checkout Architecture & Functions Showcase
+  Theme: Tokyo Night SaaS Style Dual-Perspective Component
+  Provides an interactive animated toggle between Business Value (ROI) and Under The Hood (Tech Specs)
+{% endcomment %}
+
+<section
+  id="functions"
+  class="ica-section"
+  data-section-id="{{ section.id }}"
+  style="--ica-pt: {{ section.settings.padding_top | default: 60 }}px; --ica-pb: {{ section.settings.padding_bottom | default: 60 }}px;"
+>
+  <!-- Hidden anchor tag to satisfy legacy #extensibility anchor links -->
+  <span id="extensibility" class="ica-anchor-target" aria-hidden="true"></span>
+
+  <div class="ica-container">
+    <!-- Header -->
+    <div class="ica-header">
+      <div class="ica-kicker-badge">
+        <span class="ica-kicker-dot"></span>
+        <span class="ica-kicker-text">{{ section.settings.kicker | default: 'SHOPIFY PLUS ARCHITECTURE // DUAL PERSPECTIVE' }}</span>
+      </div>
+      <h2 class="ica-title">{{ section.settings.heading | default: 'Shopify Functions & Checkout Extensibility' }}</h2>
+      <p class="ica-subtitle">
+        {{ section.settings.subheading | default: 'How native server-side logic and checkout UI extensions replace brittle third-party apps with zero-latency, high-converting checkout experiences.' }}
+      </p>
+
+      <!-- Toggle Switch Control -->
+      <div class="ica-toggle-wrapper">
+        <div class="ica-toggle-control" role="tablist" aria-label="Perspective View Toggle">
+          <button
+            type="button"
+            class="ica-toggle-btn active"
+            data-target-view="business"
+            role="tab"
+            aria-selected="true"
+            aria-controls="ica-view-business-{{ section.id }}"
+            id="tab-business-{{ section.id }}"
+          >
+            <span class="ica-btn-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+              </svg>
+            </span>
+            <span class="ica-btn-label">Business Value &amp; ROI</span>
+          </button>
+
+          <button
+            type="button"
+            class="ica-toggle-btn"
+            data-target-view="technical"
+            role="tab"
+            aria-selected="false"
+            aria-controls="ica-view-technical-{{ section.id }}"
+            id="tab-technical-{{ section.id }}"
+          >
+            <span class="ica-btn-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+            </span>
+            <span class="ica-btn-label">Under The Hood (Tech Specs)</span>
+          </button>
+          
+          <div class="ica-toggle-slider" aria-hidden="true"></div>
+        </div>
+        <div class="ica-toggle-hint">
+          <span class="ica-hint-badge">LIVE DEMO STATE</span>
+          <span class="ica-hint-text">Both features are actively running on this demo storefront.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dual Cards Showcase -->
+    <div class="ica-cards-grid">
+      
+      <!-- CARD 1: Shopify Functions -->
+      <div class="ica-card" data-feature="functions">
+        <div class="ica-card-inner">
+          <div class="ica-card-top">
+            <div class="ica-card-badge-row">
+              <span class="ica-tag ica-tag-cyan">BACKEND LOGIC</span>
+              <span class="ica-status-pill">
+                <span class="ica-live-indicator"></span> ACTIVE IN CART
+              </span>
+            </div>
+            <h3 class="ica-card-title">Shopify Functions</h3>
+            <div class="ica-card-desc-container">
+              <!-- Business View Content -->
+              <div class="ica-state-panel ica-state-business active" id="ica-view-business-{{ section.id }}-f">
+                <div class="ica-metric-strip">
+                  <div class="ica-metric-item">
+                    <span class="ica-metric-val">&lt; 5ms</span>
+                    <span class="ica-metric-label">Server Latency</span>
+                  </div>
+                  <div class="ica-metric-item">
+                    <span class="ica-metric-val">0 KB</span>
+                    <span class="ica-metric-label">Client JS Bloat</span>
+                  </div>
+                  <div class="ica-metric-item">
+                    <span class="ica-metric-val">100%</span>
+                    <span class="ica-metric-label">Native Reliability</span>
+                  </div>
+                </div>
+                <p class="ica-card-body">
+                  Legacy stores rely on client-side script tags and third-party apps that slow down cart performance and introduce checkout drop-offs. With <strong>Shopify Functions</strong>, all business rules—from complex bundle generation to volume tiers—execute on Shopify’s global server infrastructure with zero front-end overhead.
+                </p>
+                <div class="ica-active-feature-callout">
+                  <div class="ica-callout-header">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#9ece6a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                      <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                    <span>Powering This Store:</span>
+                  </div>
+                  <p>
+                    Bundle items added to your cart are automatically parsed and expanded natively at checkout without third-party app delays.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Technical View Content -->
+              <div class="ica-state-panel ica-state-technical" id="ica-view-technical-{{ section.id }}-f">
+                <div class="ica-tech-strip">
+                  <span class="ica-tech-badge">Rust / Wasm</span>
+                  <span class="ica-tech-badge">Cart Transform API</span>
+                  <span class="ica-tech-badge">GraphQL Metafields</span>
+                </div>
+                <p class="ica-card-body">
+                  Using <strong>Shopify Functions</strong> to create a bundle — we loop through cart lines in a sandboxed WebAssembly runtime, query items carrying custom bundle metafields, parse the JSON array of variant IDs from the Shopify Admin, and dispatch an <code>expand</code> operation to the Cart Transform API. The bundled sub-items are injected dynamically into checkout with sub-millisecond execution guarantees.
+                </p>
+                <div class="ica-code-preview">
+                  <div class="ica-code-header">
+                    <span class="ica-code-file">run.rs (Wasm Target)</span>
+                    <span class="ica-code-runtime">&lt; 5ms timeout constraint</span>
+                  </div>
+                  <pre><code>// Cart Transform: Expand bundle to components
+let operations = lines.iter()
+  .filter(|line| line.bundle_metafield.is_some())
+  .map(|line| Operation::Expand(ExpandOperation {
+    parent_line_id: line.id.clone(),
+    expanded_cart_items: parse_variants(&amp;line.metafield),
+  }));</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ica-card-footer">
+            <span class="ica-footer-meta">Replaces client-side JS bundling with native edge Wasm</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 2: Checkout UI Extensibility -->
+      <div class="ica-card" data-feature="extensibility">
+        <div class="ica-card-inner">
+          <div class="ica-card-top">
+            <div class="ica-card-badge-row">
+              <span class="ica-tag ica-tag-purple">CHECKOUT EXTENSION</span>
+              <span class="ica-status-pill">
+                <span class="ica-live-indicator"></span> ACTIVE AT CHECKOUT
+              </span>
+            </div>
+            <h3 class="ica-card-title">Checkout Extensibility</h3>
+            <div class="ica-card-desc-container">
+              <!-- Business View Content -->
+              <div class="ica-state-panel ica-state-business active" id="ica-view-business-{{ section.id }}-e">
+                <div class="ica-metric-strip">
+                  <div class="ica-metric-item">
+                    <span class="ica-metric-val">+18%</span>
+                    <span class="ica-metric-label">Target AOV Lift</span>
+                  </div>
+                  <div class="ica-metric-item">
+                    <span class="ica-metric-val">1-Click</span>
+                    <span class="ica-metric-label">In-Cart Upsells</span>
+                  </div>
+                  <div class="ica-metric-item">
+                    <span class="ica-metric-val">100%</span>
+                    <span class="ica-metric-label">PCI-Compliant</span>
+                  </div>
+                </div>
+                <p class="ica-card-body">
+                  Modern Shopify Plus checkout eliminates monolithic <code>checkout.liquid</code> files in favor of secure, sandboxed extensions. Merchants gain high-converting, personalized upsells directly within the checkout funnel—boosting Average Order Value (AOV) without sacrificing checkout speed or security.
+                </p>
+                <div class="ica-active-feature-callout">
+                  <div class="ica-callout-header">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#9ece6a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                      <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                    <span>Powering This Store:</span>
+                  </div>
+                  <p>
+                    Add the <strong>Robot Starter Kit</strong> to your cart and view checkout to unlock our real-time <em>Free Sticker Pack</em> complimentary gift block.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Technical View Content -->
+              <div class="ica-state-panel ica-state-technical" id="ica-view-technical-{{ section.id }}-e">
+                <div class="ica-tech-strip">
+                  <span class="ica-tech-badge">Preact / Web Components</span>
+                  <span class="ica-tech-badge">Storefront Cart API</span>
+                  <span class="ica-tech-badge">GraphQL Target GID</span>
+                </div>
+                <p class="ica-card-body">
+                  The "Free Sticker Pack" block is a custom Checkout UI Extension built with Preact and Shopify's native web components. Driven by admin-configurable settings for the target Variant GID, custom heading, and optional subtext, the extension dynamically queries product details via GraphQL and renders inside Shopify's checkout grid. It handles the "Add" mutation via the Storefront Cart API without page refreshes, and features lifecycle error boundaries to fail silently if misconfigured.
+                </p>
+                <div class="ica-code-preview">
+                  <div class="ica-code-header">
+                    <span class="ica-code-file">CheckoutBlock.jsx (Preact UI)</span>
+                    <span class="ica-code-runtime">Storefront Cart API Direct</span>
+                  </div>
+                  <pre><code>// Dynamic Checkout Upsell with GraphQL & Cart API
+export default function CheckoutExtension() {
+  const { applyCartLinesChange } = useApplyCartLinesChange();
+  const { data } = useQuery(PRODUCT_QUERY, { variables: { id: variantGid } });
+  return &lt;BlockStack&gt; ... &lt;Button onPress={handleAdd} /&gt;&lt;/BlockStack&gt;;
+}</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ica-card-footer">
+            <span class="ica-footer-meta">Preact UI rendered inside Shopify's sandboxed worker thread</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Live Storefront Test Banner -->
+    <div class="ica-cta-banner">
+      <div class="ica-cta-content">
+        <div class="ica-cta-badge">EXPERIENCE BOTH IN REAL-TIME</div>
+        <h4 class="ica-cta-title">See Functions &amp; Extensibility In Action</h4>
+        <p class="ica-cta-description">
+          Add the Robot Starter Kit to your cart. Notice how the bundle automatically calculates in your drawer, then proceed to checkout to inspect the dynamic Free Sticker Pack checkout extension.
+        </p>
+      </div>
+      <div class="ica-cta-actions">
+        <a href="{{ section.settings.primary_button_link | default: '/products/robot-starter-kit' }}" class="ica-btn ica-btn-primary">
+          <span>{{ section.settings.primary_button_label | default: 'GO TO STARTER KIT' }}</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+        <a href="#architecture" class="ica-btn ica-btn-secondary">
+          <span>VIEW SYSTEM ARCHITECTURE</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .ica-section {
+    --tn-bg: #1a1b26;
+    --tn-bg-dark: #16161e;
+    --tn-card-bg: rgba(22, 22, 30, 0.85);
+    --tn-card-border: rgba(122, 162, 247, 0.22);
+    --tn-text: #c0caf5;
+    --tn-text-muted: #9aa5ce;
+    --tn-blue: #7aa2f7;
+    --tn-purple: #bb9af7;
+    --tn-cyan: #7dcfff;
+    --tn-green: #9ece6a;
+    --tn-red: #f7768e;
+
+    background-color: var(--tn-bg);
+    color: var(--tn-text);
+    padding-top: var(--ica-pt);
+    padding-bottom: var(--ica-pb);
+    border-top: 1px solid rgba(122, 162, 247, 0.15);
+    border-bottom: 1px solid rgba(122, 162, 247, 0.15);
+    position: relative;
+    font-family: var(--font-body-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+    scroll-margin-top: 80px;
+  }
+
+  .ica-anchor-target {
+    position: absolute;
+    top: -80px;
+    left: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .ica-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* Header */
+  .ica-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 48px auto;
+  }
+
+  .ica-kicker-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    color: var(--tn-cyan);
+    background: rgba(125, 207, 255, 0.08);
+    border: 1px solid rgba(125, 207, 255, 0.3);
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+
+  .ica-kicker-dot {
+    width: 6px;
+    height: 6px;
+    background-color: var(--tn-cyan);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--tn-cyan);
+    animation: ica-pulse 2s infinite ease-in-out;
+  }
+
+  @keyframes ica-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.85); }
+  }
+
+  .ica-title {
+    font-size: clamp(26px, 3.5vw, 38px);
+    font-weight: 800;
+    line-height: 1.15;
+    margin: 0 0 14px 0;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+  }
+
+  .ica-subtitle {
+    font-size: clamp(14px, 1.8vw, 16px);
+    color: var(--tn-text-muted);
+    line-height: 1.6;
+    margin: 0 auto 32px auto;
+    max-width: 660px;
+  }
+
+  /* Toggle Control */
+  .ica-toggle-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .ica-toggle-control {
+    position: relative;
+    display: inline-flex;
+    background: var(--tn-bg-dark);
+    padding: 6px;
+    border-radius: 999px;
+    border: 1px solid rgba(122, 162, 247, 0.25);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  }
+
+  .ica-toggle-btn {
+    position: relative;
+    z-index: 2;
+    background: transparent;
+    border: none;
+    color: var(--tn-text-muted);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    padding: 10px 22px;
+    border-radius: 999px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.25s ease;
+  }
+
+  .ica-toggle-btn.active {
+    color: #ffffff;
+  }
+
+  .ica-btn-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ica-toggle-slider {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    bottom: 6px;
+    width: calc(50% - 6px);
+    background: linear-gradient(135deg, rgba(122, 162, 247, 0.35), rgba(187, 154, 247, 0.45));
+    border: 1px solid rgba(125, 207, 255, 0.5);
+    border-radius: 999px;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 2px 12px rgba(122, 162, 247, 0.3);
+    z-index: 1;
+  }
+
+  .ica-toggle-control[data-active-view="technical"] .ica-toggle-slider {
+    transform: translateX(100%);
+  }
+
+  .ica-toggle-hint {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--tn-text-muted);
+  }
+
+  .ica-hint-badge {
+    background: rgba(158, 206, 106, 0.15);
+    color: var(--tn-green);
+    border: 1px solid rgba(158, 206, 106, 0.3);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+
+  /* Grid & Cards */
+  .ica-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+    margin-bottom: 40px;
+  }
+
+  .ica-card {
+    background: var(--tn-card-bg);
+    border: 1px solid var(--tn-card-border);
+    border-radius: 16px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.28);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(12px);
+    transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .ica-card:hover {
+    border-color: rgba(125, 207, 255, 0.45);
+    transform: translateY(-2px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+  }
+
+  .ica-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--tn-blue), var(--tn-purple));
+    opacity: 0.8;
+  }
+
+  .ica-card[data-feature="extensibility"]::before {
+    background: linear-gradient(90deg, var(--tn-purple), var(--tn-cyan));
+  }
+
+  .ica-card-badge-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .ica-tag {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    padding: 4px 10px;
+    border-radius: 6px;
+    text-transform: uppercase;
+  }
+
+  .ica-tag-cyan {
+    background: rgba(125, 207, 255, 0.12);
+    color: var(--tn-cyan);
+    border: 1px solid rgba(125, 207, 255, 0.3);
+  }
+
+  .ica-tag-purple {
+    background: rgba(187, 154, 247, 0.12);
+    color: var(--tn-purple);
+    border: 1px solid rgba(187, 154, 247, 0.3);
+  }
+
+  .ica-status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: var(--tn-green);
+    background: rgba(158, 206, 106, 0.1);
+    border: 1px solid rgba(158, 206, 106, 0.25);
+    padding: 3px 8px;
+    border-radius: 999px;
+  }
+
+  .ica-live-indicator {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--tn-green);
+    box-shadow: 0 0 6px var(--tn-green);
+  }
+
+  .ica-card-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 16px 0;
+    letter-spacing: -0.01em;
+  }
+
+  /* State Content Transitions */
+  .ica-card-desc-container {
+    position: relative;
+    min-height: 280px;
+  }
+
+  .ica-state-panel {
+    display: none;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .ica-state-panel.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Metric Strips */
+  .ica-metric-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(122, 162, 247, 0.15);
+    border-radius: 10px;
+    padding: 12px;
+    margin-bottom: 18px;
+    text-align: center;
+  }
+
+  .ica-metric-val {
+    display: block;
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--tn-cyan);
+    line-height: 1.2;
+  }
+
+  .ica-metric-label {
+    display: block;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--tn-text-muted);
+    margin-top: 2px;
+  }
+
+  .ica-tech-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .ica-tech-badge {
+    font-size: 11px;
+    font-weight: 600;
+    font-family: monospace;
+    background: rgba(122, 162, 247, 0.12);
+    color: var(--tn-blue);
+    border: 1px solid rgba(122, 162, 247, 0.25);
+    padding: 4px 10px;
+    border-radius: 6px;
+  }
+
+  .ica-card-body {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--tn-text);
+    margin: 0 0 18px 0;
+  }
+
+  .ica-card-body strong {
+    color: #ffffff;
+  }
+
+  /* Callout box for Live Feature */
+  .ica-active-feature-callout {
+    background: rgba(158, 206, 106, 0.08);
+    border-left: 3px solid var(--tn-green);
+    padding: 12px 14px;
+    border-radius: 0 8px 8px 0;
+  }
+
+  .ica-callout-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: var(--tn-green);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .ica-active-feature-callout p {
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: #d5e4fc;
+    margin: 0;
+  }
+
+  /* Code Block styling */
+  .ica-code-preview {
+    background: #101015;
+    border: 1px solid rgba(122, 162, 247, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 14px;
+  }
+
+  .ica-code-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #181924;
+    padding: 6px 12px;
+    border-bottom: 1px solid rgba(122, 162, 247, 0.15);
+    font-size: 11px;
+    font-family: monospace;
+  }
+
+  .ica-code-file {
+    color: var(--tn-cyan);
+    font-weight: 700;
+  }
+
+  .ica-code-runtime {
+    color: var(--tn-red);
+    font-size: 10px;
+  }
+
+  .ica-code-preview pre {
+    margin: 0;
+    padding: 12px;
+    overflow-x: auto;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 11.5px;
+    line-height: 1.5;
+    color: #c0caf5;
+  }
+
+  .ica-code-preview code {
+    font-family: inherit;
+  }
+
+  .ica-card-footer {
+    border-top: 1px solid rgba(122, 162, 247, 0.15);
+    padding-top: 16px;
+    margin-top: 16px;
+  }
+
+  .ica-footer-meta {
+    font-size: 11.5px;
+    color: var(--tn-text-muted);
+    font-style: italic;
+  }
+
+  /* CTA Banner */
+  .ica-cta-banner {
+    background: linear-gradient(135deg, rgba(22, 22, 30, 0.95), rgba(26, 27, 38, 0.9));
+    border: 1px solid rgba(125, 207, 255, 0.35);
+    border-radius: 16px;
+    padding: 32px 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ica-cta-banner::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(125, 207, 255, 0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .ica-cta-content {
+    max-width: 640px;
+  }
+
+  .ica-cta-badge {
+    font-size: 10.5px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    color: var(--tn-cyan);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .ica-cta-title {
+    font-size: 22px;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 8px 0;
+    letter-spacing: -0.01em;
+  }
+
+  .ica-cta-description {
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--tn-text);
+    margin: 0;
+  }
+
+  .ica-cta-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 250px;
+  }
+
+  .ica-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .ica-btn-primary {
+    background: linear-gradient(135deg, var(--tn-blue), var(--tn-purple));
+    color: #ffffff;
+    box-shadow: 0 4px 16px rgba(122, 162, 247, 0.35);
+  }
+
+  .ica-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 22px rgba(122, 162, 247, 0.5);
+    color: #ffffff;
+  }
+
+  .ica-btn-secondary {
+    background: transparent;
+    color: var(--tn-text);
+    border: 1px solid rgba(122, 162, 247, 0.3);
+  }
+
+  .ica-btn-secondary:hover {
+    background: rgba(122, 162, 247, 0.1);
+    color: #ffffff;
+    border-color: var(--tn-cyan);
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 860px) {
+    .ica-cards-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .ica-card {
+      padding: 24px;
+    }
+
+    .ica-card-desc-container {
+      min-height: auto;
+    }
+
+    .ica-cta-banner {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 24px;
+      gap: 20px;
+    }
+
+    .ica-cta-actions {
+      width: 100%;
+    }
+
+    .ica-btn {
+      width: 100%;
+    }
+
+    .ica-toggle-btn {
+      font-size: 12px;
+      padding: 8px 14px;
+    }
+  }
+</style>
+
+<script>
+  (function() {
+    function initInteractiveCheckoutArchitecture() {
+      const section = document.querySelector('.ica-section[data-section-id="{{ section.id }}"]');
+      if (!section) return;
+
+      const toggleControl = section.querySelector('.ica-toggle-control');
+      const toggleButtons = section.querySelectorAll('.ica-toggle-btn');
+      const businessPanels = section.querySelectorAll('.ica-state-business');
+      const technicalPanels = section.querySelectorAll('.ica-state-technical');
+
+      if (!toggleControl || !toggleButtons.length) return;
+
+      function switchView(targetView) {
+        // Update control container attribute for slider transition
+        toggleControl.setAttribute('data-active-view', targetView);
+
+        // Update button states
+        toggleButtons.forEach(btn => {
+          const isActive = btn.dataset.targetView === targetView;
+          btn.classList.toggle('active', isActive);
+          btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        });
+
+        // Switch panels with smooth fade
+        if (targetView === 'business') {
+          technicalPanels.forEach(p => p.classList.remove('active'));
+          businessPanels.forEach(p => p.classList.add('active'));
+        } else {
+          businessPanels.forEach(p => p.classList.remove('active'));
+          technicalPanels.forEach(p => p.classList.add('active'));
+        }
+      }
+
+      toggleButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+          const target = this.dataset.targetView;
+          switchView(target);
+        });
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initInteractiveCheckoutArchitecture);
+    } else {
+      initInteractiveCheckoutArchitecture();
+    }
+
+    // Support Shopify Theme Editor dynamic events
+    document.addEventListener('shopify:section:load', function(e) {
+      if (e.target.contains(document.querySelector('.ica-section[data-section-id="{{ section.id }}"]'))) {
+        initInteractiveCheckoutArchitecture();
+      }
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Interactive Architecture",
+  "tag": "section",
+  "class": "section-interactive-checkout-architecture",
+  "settings": [
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Kicker Tag",
+      "default": "SHOPIFY PLUS ARCHITECTURE // DUAL PERSPECTIVE"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Shopify Functions & Checkout Extensibility"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "How native server-side logic and checkout UI extensions replace brittle third-party apps with zero-latency, high-converting checkout experiences."
+    },
+    {
+      "type": "text",
+      "id": "primary_button_label",
+      "label": "Primary Button Label",
+      "default": "GO TO STARTER KIT"
+    },
+    {
+      "type": "url",
+      "id": "primary_button_link",
+      "label": "Primary Button Link"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 60
+    }
+  ],
+  "presets": [
+    {
+      "name": "Interactive Architecture"
+    }
+  ]
+}
+{% endschema %}

@@ -154,97 +154,16 @@
         "padding_bottom": 36
       }
     },
-    "f1552b18-6017-4231-810d-74e61da22c37": {
-      "type": "image-with-text",
-      "blocks": {
-        "template--18309637636369__f1552b18-6017-4231-810d-74e61da22c37-1680164422d7fb2efc-0": {
-          "type": "heading",
-          "settings": {
-            "heading": "Shopify Functions",
-            "heading_size": "h1"
-          }
-        },
-        "template--18309637636369__f1552b18-6017-4231-810d-74e61da22c37-1680164422d7fb2efc-1": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Using Shopify Functions to create a bundle - here we loop through the cart lines, find any items that have the bundle metafield, parse the JSON list of variant IDs from the admin, and tell Shopify to execute an expand operation. Now you will see the bundled items at the checkout.&nbsp;</p>",
-            "text_style": "body"
-          }
-        },
-        "template--18309637636369__f1552b18-6017-4231-810d-74e61da22c37-1680164422d7fb2efc-2": {
-          "type": "button",
-          "settings": {
-            "button_label": "CHECKOUT EXTENSIBILITY",
-            "button_link": "#extensibility"
-          }
-        }
-      },
-      "block_order": [
-        "template--18309637636369__f1552b18-6017-4231-810d-74e61da22c37-1680164422d7fb2efc-0",
-        "template--18309637636369__f1552b18-6017-4231-810d-74e61da22c37-1680164422d7fb2efc-1",
-        "template--18309637636369__f1552b18-6017-4231-810d-74e61da22c37-1680164422d7fb2efc-2"
-      ],
+    "interactive_checkout_architecture": {
+      "type": "interactive-checkout-architecture",
       "settings": {
-        "heading_id": "functions",
-        "image": "shopify://shop_images/e86918f4-230f-44fa-9442-3f56941a2245.jpg",
-        "height": "adapt",
-        "desktop_image_width": "medium",
-        "layout": "text_first",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "left",
-        "content_layout": "no-overlap",
-        "color_scheme": "accent-1",
-        "image_behavior": "none",
-        "mobile_content_alignment": "left",
+        "kicker": "SHOPIFY PLUS ARCHITECTURE // DUAL PERSPECTIVE",
+        "heading": "Shopify Functions & Checkout Extensibility",
+        "subheading": "How native server-side logic and checkout UI extensions replace brittle third-party apps with zero-latency, high-converting checkout experiences.",
+        "primary_button_label": "GO TO STARTER KIT",
+        "primary_button_link": "/products/robot-starter-kit",
         "padding_top": 60,
         "padding_bottom": 60
-      }
-    },
-    "image_with_text_NWepJY": {
-      "type": "image-with-text",
-      "blocks": {
-        "heading_nz8Ve6": {
-          "type": "heading",
-          "settings": {
-            "heading": "Checkout Extensibility",
-            "heading_size": "h1"
-          }
-        },
-        "text_KDkPT3": {
-          "type": "text",
-          "settings": {
-            "text": "<p>The \"Free Sticker Pack\" block is a custom Checkout UI Extension built with Preact and Shopify's native web components that allows customers to seamlessly add a complimentary gift to their order. Driven by admin-configurable settings for the target Variant GID, custom heading, and optional subtext, the extension dynamically fetches the product's image and details via a GraphQL query and renders them in a responsive grid layout. It leverages the Storefront Cart API to handle the \"Add\" action without page reloads, while incorporating robust error handling and lifecycle cleanup to silently hide the component if misconfigured, ensuring the core checkout experience is never disrupted.</p><p></p><p>Add the \"Robot Started Kit\" to your cart and go to checkout to see these in action!</p>",
-            "text_style": "body"
-          }
-        },
-        "button_8yBWXz": {
-          "type": "button",
-          "settings": {
-            "button_label": "GO TO STARTER KIT",
-            "button_link": "shopify://products/robot-starter-kit"
-          }
-        }
-      },
-      "block_order": [
-        "heading_nz8Ve6",
-        "text_KDkPT3",
-        "button_8yBWXz"
-      ],
-      "name": "t:sections.image-with-text.presets.name",
-      "settings": {
-        "heading_id": "extensibility",
-        "image": "shopify://shop_images/generated-robot-stickers-thumb.jpg",
-        "height": "adapt",
-        "desktop_image_width": "medium",
-        "layout": "image_first",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "left",
-        "content_layout": "no-overlap",
-        "color_scheme": "accent-2",
-        "image_behavior": "none",
-        "mobile_content_alignment": "left",
-        "padding_top": 36,
-        "padding_bottom": 36
       }
     },
     "38cdf60f-e431-43b5-aac3-7e6215447d67": {
@@ -287,8 +206,7 @@
     "architecture_diagram",
     "rich_text_bEe6kT",
     "featured_collection",
-    "f1552b18-6017-4231-810d-74e61da22c37",
-    "image_with_text_NWepJY",
+    "interactive_checkout_architecture",
     "38cdf60f-e431-43b5-aac3-7e6215447d67"
   ]
 }
