@@ -36,13 +36,13 @@ class CartDrawer extends HTMLElement {
       trapFocus(containerToTrapFocusOn, focusElement);
     }, { once: true });
 
-    document.body.classList.add('overflow-hidden');
+    document.body.classList.add('overflow-hidden', 'cart-drawer-open');
   }
 
   close() {
     this.classList.remove('active');
     removeTrapFocus(this.activeElement);
-    document.body.classList.remove('overflow-hidden');
+    document.body.classList.remove('overflow-hidden', 'cart-drawer-open');
   }
 
   setSummaryAccessibility(cartDrawerNote) {

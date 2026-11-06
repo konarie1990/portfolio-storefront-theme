@@ -400,7 +400,7 @@
       position: fixed;
       bottom: 24px;
       right: 24px;
-      z-index: 999980;
+      z-index: 990;
       background: linear-gradient(135deg, #7aa2f7 0%, #bb9af7 100%);
       color: #16161e;
       border: 2px solid rgba(255, 255, 255, 0.4);
@@ -426,6 +426,18 @@
       pointer-events: none;
     }
 
+    /* Hide Hire Me button when Cart Drawer or modal is open */
+    body.cart-drawer-open .rim-hire-bubble,
+    body.overflow-hidden .rim-hire-bubble,
+    body:has(cart-drawer.active) .rim-hire-bubble,
+    body:has(.drawer.active) .rim-hire-bubble {
+      opacity: 0 !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+      transform: translateY(16px) scale(0.85) !important;
+      display: none !important;
+    }
+
     .rim-hire-bubble:hover {
       transform: translateY(-4px) scale(1.05);
       box-shadow: 0 12px 30px rgba(122, 162, 247, 0.55), 0 0 25px rgba(187, 154, 247, 0.45);
@@ -433,9 +445,9 @@
 
     @media (max-width: 768px) {
       .rim-hire-bubble {
-        bottom: 20px;
-        left: 20px;
-        right: auto;
+        bottom: 20px !important;
+        left: 20px !important;
+        right: auto !important;
       }
     }
 
